@@ -27,7 +27,7 @@ export default function SpinWheelClient({ winner, setWinner }) {
     img.onload = () => setOverlayImg(img);
     img.onerror = (error) =>
       console.error("Lỗi khi tải hình ảnh overlay:", error);
-    img.src = "/images/overlay.svg";
+    img.src = "/overlay.svg";
   }, []);
 
   useEffect(() => {
