@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuthStore, useSpinWheelStore } from "../store";
 import dynamic from "next/dynamic";
 
 const SpinWheelClient = dynamic(() => import("./SpinWheelClient"), {
@@ -14,29 +15,36 @@ const SpinWheelClient = dynamic(() => import("./SpinWheelClient"), {
 });
 
 export default function SpinWheel() {
-  const [winner, setWinner] = useState(null);
+  const router = useRouter();
+  const { isLoggedIn } = useAuthStore();
+  const { prize } = useSpinWheelStore();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push("/");
+    }
+  }, [isLoggedIn, router]);
+
+  if (!isLoggedIn) {
+    return <div>Đang chuyển hướng...</div>;
+  }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 gap-6">
-      <h1 className="text-3xl font-bold mb-6">Vòng Quay May Mắn</h1>
+    <>
+      <h1 className="text-2xl font-bold text-center text-primary-color">
+        <span>Vòng Quay May Mắn</span>
+      </h1>
 
-      {winner && (
-        <div className="mt-6 p-4 bg-green-100 dark:bg-green-900 rounded-lg text-center">
-          <h2 className="text-xl font-bold">Chúc mừng!</h2>
-          <p className="text-lg">Bạn đã trúng: {winner}</p>
-        </div>
-      )}
+      <div className="w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center gap-6">
+        {prize && (
+          <div className="w-full m-6 p-4 bg-green-100 dark:bg-green-900 rounded-lg text-center">
+            <h2 className="text-xl font-bold">Chúc mừng!</h2>
+            <p className="text-lg">Bạn đã trúng: {prize}</p>
+          </div>
+        )}
 
-      <SpinWheelClient winner={winner} setWinner={setWinner} />
-
-      <div className="mt-4">
-        <Link
-          href="/"
-          className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-        >
-          Quay về
-        </Link>
+        <SpinWheelClient />
       </div>
-    </div>
+    </>
   );
 }

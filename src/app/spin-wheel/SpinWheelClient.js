@@ -1,12 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useSpinWheelStore } from "../store";
 import { Wheel } from "spin-wheel";
 import items from "./items";
 
-export default function SpinWheelClient({ winner, setWinner }) {
+export default function SpinWheelClient() {
   const wheelContainerRef = useRef(null);
-  const [isSpinning, setIsSpinning] = useState(false);
+  const { isSpinning, setIsSpinning, prize, setPrize } = useSpinWheelStore();
   const [wheel, setWheel] = useState(null);
   const [overlayImg, setOverlayImg] = useState(null);
 
@@ -52,12 +53,12 @@ export default function SpinWheelClient({ winner, setWinner }) {
         onRest: (event) => {
           const { currentIndex } = event;
           const winningItem = items[currentIndex];
-          if (setWinner) setWinner(winningItem.label);
+          if (setPrize) setPrize(winningItem.label);
           setIsSpinning(false);
         },
         onSpin: () => {
           setIsSpinning(true);
-          if (setWinner) setWinner(null);
+          if (setPrize) setPrize(null);
         },
       };
 
@@ -66,16 +67,16 @@ export default function SpinWheelClient({ winner, setWinner }) {
     } catch (error) {
       console.error("Lỗi khởi tạo vòng quay:", error);
     }
-  }, [overlayImg, items, setWinner]);
+  }, [overlayImg, items, setPrize]);
 
   return (
     <>
       <div
         ref={wheelContainerRef}
-        className="w-full max-w-lg mx-auto mb-6 h-[500px]"
+        className="size-75 mx-auto"
       ></div>
 
-      {!winner && (
+      {!prize && (
         <button
           onClick={handleSpin}
           disabled={isSpinning || !wheel}
