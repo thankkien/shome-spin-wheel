@@ -1,5 +1,9 @@
-const { decreasePrizeQuantity, getAllPrizes, getPrizeById } = require('../models/prize');
-const { recordSpin, hasUserSpun, getUserPrize } = require('../models/spinHistory');
+const { decreasePrizeQuantity, getAllPrizes } = require("../models/prize");
+const {
+  recordSpin,
+  hasUserSpun,
+  getUserPrize,
+} = require("../models/spinHistory");
 
 /**
  * Lấy thông tin người dùng đã quay hay chưa
@@ -8,24 +12,22 @@ const { recordSpin, hasUserSpun, getUserPrize } = require('../models/spinHistory
  */
 async function getUserSpinStatus(userId) {
   try {
-    // Kiểm tra xem người dùng đã quay chưa
     const hasSpun = await hasUserSpun(userId);
-    
+
     if (hasSpun) {
-      // Lấy thông tin giải thưởng đã quay
       const prize = await getUserPrize(userId);
       return {
         hasSpun: true,
-        prize
+        prize,
       };
     }
-    
+
     return {
       hasSpun: false,
-      prize: null
+      prize: null,
     };
   } catch (error) {
-    console.error('Lỗi khi kiểm tra trạng thái quay:', error);
+    console.error("Lỗi khi kiểm tra trạng thái quay:", error);
     throw error;
   }
 }
@@ -43,26 +45,30 @@ async function spinWheel(userId) {
     if (spinStatus.hasSpun) {
       return {
         success: false,
-        error: 'Bạn đã quay vòng quay trước đó',
-        prize: spinStatus.prize
+        error: "Bạn đã quay vòng quay trước đó",
+        prize: spinStatus.prize,
       };
     }
 
     // Lấy danh sách giải thưởng còn hàng
-    const availablePrizes = (await getAllPrizes(true))
-      .filter(prize => prize.quantity > 0);
+    const availablePrizes = (await getAllPrizes(true)).filter(
+      (prize) => prize.quantity > 0
+    );
 
     if (availablePrizes.length === 0) {
-      throw new Error('Đã hết giải thưởng, vui lòng quay lại sau');
+      throw new Error("Đã hết giải thưởng, vui lòng quay lại sau");
     }
 
     // Tính tổng số lượng của tất cả giải thưởng
-    const totalItems = availablePrizes.reduce((sum, prize) => sum + prize.quantity, 0);
-    
+    const totalItems = availablePrizes.reduce(
+      (sum, prize) => sum + prize.quantity,
+      0
+    );
+
     // Chọn giải thưởng ngẫu nhiên
     let randomNumber = Math.floor(Math.random() * totalItems);
     let selectedPrize = null;
-    
+
     // Thuật toán lựa chọn dựa trên số lượng
     for (const prize of availablePrizes) {
       if (randomNumber < prize.quantity) {
@@ -79,31 +85,30 @@ async function spinWheel(userId) {
 
     // Giảm số lượng giải thưởng
     await decreasePrizeQuantity(selectedPrize.id);
-    
+
     // Ghi nhận lịch sử quay
     await recordSpin({
       userId,
       prizeId: selectedPrize.id,
-      prizeLabel: selectedPrize.label
     });
 
     return {
       success: true,
       prize: {
         id: selectedPrize.id,
-        label: selectedPrize.label
-      }
+        prize_label: selectedPrize.label,
+      },
     };
   } catch (error) {
-    console.error('Lỗi khi quay vòng quay:', error);
+    console.error("Lỗi khi quay vòng quay:", error);
     return {
       success: false,
-      error: error.message || 'Đã xảy ra lỗi khi quay vòng quay'
+      error: error.message || "Đã xảy ra lỗi khi quay vòng quay",
     };
   }
 }
 
 module.exports = {
   getUserSpinStatus,
-  spinWheel
-}; 
+  spinWheel,
+};

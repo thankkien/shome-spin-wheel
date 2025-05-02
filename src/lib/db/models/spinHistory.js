@@ -1,4 +1,4 @@
-const { query, get, run } = require('../index');
+const { query, get, run } = require("../index");
 
 /**
  * Lấy lịch sử quay của một người dùng
@@ -7,7 +7,7 @@ const { query, get, run } = require('../index');
  */
 async function getUserSpinHistory(userId) {
   return await query(
-    `SELECT h.id, h.created_at, h.prize_label, p.id as prize_id
+    `SELECT h.id, h.created_at, p.label as prize_label, p.id as prize_id
      FROM spin_history h
      LEFT JOIN prizes p ON h.prize_id = p.id
      WHERE h.user_id = ?
@@ -23,7 +23,7 @@ async function getUserSpinHistory(userId) {
  */
 async function hasUserSpun(userId) {
   const result = await get(
-    'SELECT COUNT(*) as count FROM spin_history WHERE user_id = ?',
+    "SELECT COUNT(*) as count FROM spin_history WHERE user_id = ?",
     [userId]
   );
   return result && result.count > 0;
@@ -36,8 +36,9 @@ async function hasUserSpun(userId) {
  */
 async function getUserPrize(userId) {
   return await get(
-    `SELECT h.prize_id, h.prize_label, h.created_at
+    `SELECT h.prize_id, p.label as prize_label, h.created_at
      FROM spin_history h
+     JOIN prizes p ON h.prize_id = p.id
      WHERE h.user_id = ?`,
     [userId]
   );
@@ -50,10 +51,11 @@ async function getUserPrize(userId) {
  */
 async function getSpinById(spinId) {
   return await get(
-    `SELECT h.id, h.user_id, h.prize_id, h.prize_label, h.created_at, 
+    `SELECT h.id, h.user_id, h.prize_id, p.label as prize_label, h.created_at, 
             u.email as user_email
      FROM spin_history h
      JOIN users u ON h.user_id = u.id
+     JOIN prizes p ON h.prize_id = p.id
      WHERE h.id = ?`,
     [spinId]
   );
@@ -64,20 +66,19 @@ async function getSpinById(spinId) {
  * @param {Object} spinData - Thông tin lần quay
  * @param {number} spinData.userId - ID người dùng
  * @param {number} spinData.prizeId - ID giải thưởng
- * @param {string} spinData.prizeLabel - Tên giải thưởng
  * @returns {Promise<Object>} Kết quả thực hiện
  * @throws {Error} Lỗi nếu người dùng đã quay trước đó
  */
-async function recordSpin({ userId, prizeId, prizeLabel }) {
+async function recordSpin({ userId, prizeId }) {
   // Kiểm tra xem người dùng đã quay chưa
   const hasSpun = await hasUserSpun(userId);
   if (hasSpun) {
-    throw new Error('Người dùng đã quay trước đó');
+    throw new Error("Người dùng đã quay trước đó");
   }
 
   return await run(
-    'INSERT INTO spin_history (user_id, prize_id, prize_label) VALUES (?, ?, ?)',
-    [userId, prizeId, prizeLabel]
+    "INSERT INTO spin_history (user_id, prize_id) VALUES (?, ?)",
+    [userId, prizeId]
   );
 }
 
@@ -87,23 +88,26 @@ async function recordSpin({ userId, prizeId, prizeLabel }) {
  */
 async function getSpinStats() {
   // Tổng số lần quay
-  const totalSpins = await get('SELECT COUNT(*) as count FROM spin_history');
-  
+  const totalSpins = await get("SELECT COUNT(*) as count FROM spin_history");
+
   // Số người đã quay
-  const uniqueUsers = await get('SELECT COUNT(DISTINCT user_id) as count FROM spin_history');
-  
+  const uniqueUsers = await get(
+    "SELECT COUNT(DISTINCT user_id) as count FROM spin_history"
+  );
+
   // Thống kê theo giải thưởng
   const prizeStats = await query(
-    `SELECT prize_label, COUNT(*) as count 
-     FROM spin_history 
-     GROUP BY prize_label 
+    `SELECT p.label as prize_label, COUNT(*) as count 
+     FROM spin_history h
+     JOIN prizes p ON h.prize_id = p.id
+     GROUP BY p.label 
      ORDER BY count DESC`
   );
-  
+
   return {
     totalSpins: totalSpins.count,
     uniqueUsers: uniqueUsers.count,
-    prizeStats
+    prizeStats,
   };
 }
 
@@ -113,7 +117,7 @@ async function getSpinStats() {
  * @returns {Promise<Object>} Kết quả thực hiện
  */
 async function resetUserSpin(userId) {
-  return await run('DELETE FROM spin_history WHERE user_id = ?', [userId]);
+  return await run("DELETE FROM spin_history WHERE user_id = ?", [userId]);
 }
 
 /**
@@ -121,7 +125,7 @@ async function resetUserSpin(userId) {
  * @returns {Promise<Object>} Kết quả thực hiện
  */
 async function resetAllSpins() {
-  return await run('DELETE FROM spin_history');
+  return await run("DELETE FROM spin_history");
 }
 
 module.exports = {
@@ -132,5 +136,5 @@ module.exports = {
   recordSpin,
   getSpinStats,
   resetUserSpin,
-  resetAllSpins
-}; 
+  resetAllSpins,
+};

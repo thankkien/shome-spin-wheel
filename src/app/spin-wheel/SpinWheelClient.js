@@ -1,14 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useSpinWheelStore } from "@/store";
+import { useSpinWheelStore } from "@/store/useSpinWheelStore";
 import { cn } from "@/utils/classname";
 import { Wheel } from "spin-wheel";
 import items from "@/config/items";
 
-export default function SpinWheelClient() {
+export default function SpinWheelClient({ userId, hasSpun, onSpinComplete }) {
   const wheelContainerRef = useRef(null);
-  const { isSpinning, setIsSpinning, prize, setPrize } = useSpinWheelStore();
+  const { isSpinning, setIsSpinning, prize, setPrize, spin, isLoading } =
+    useSpinWheelStore();
   const [wheel, setWheel] = useState(null);
   const [overlayImg, setOverlayImg] = useState(null);
 
@@ -16,12 +17,32 @@ export default function SpinWheelClient() {
     const itemIndex = Math.floor(Math.random() * items.length);
     const duration = Math.floor(Math.random() * (3600 - 2600 + 1)) + 2600;
     return [itemIndex, duration];
-  }, [items]);
+  }, []);
 
-  const handleSpin = () => {
-    if (!wheel || isSpinning) return;
+  const handleSpin = async () => {
+    if (!wheel || isSpinning || isLoading || !userId || hasSpun) return;
+
     setIsSpinning(true);
-    wheel.spinToItem(...calcSpinToValues());
+
+    // Gọi API quay
+    const result = await spin(userId);
+
+    if (result.success) {
+      // Tìm index của giải thưởng trong danh sách items
+      const prizeIndex = items.findIndex(
+        (item) => item.label === result.prize.prize_label
+      );
+
+      // Quay đến giải thưởng đã được xác định bởi backend
+      const index =
+        prizeIndex >= 0 ? prizeIndex : Math.floor(Math.random() * items.length);
+      const duration = Math.floor(Math.random() * (3600 - 2600 + 1)) + 2600;
+
+      wheel.spinToItem(index, duration);
+    } else {
+      setIsSpinning(false);
+      alert(result.error || "Có lỗi xảy ra khi quay");
+    }
   };
 
   useEffect(() => {
@@ -52,14 +73,13 @@ export default function SpinWheelClient() {
         items,
         isInteractive: false,
         onRest: (event) => {
-          const { currentIndex } = event;
-          const winningItem = items[currentIndex];
-          if (setPrize) setPrize(winningItem.label);
-          setIsSpinning(false);
+          setTimeout(() => {
+            if (onSpinComplete) onSpinComplete();
+            setIsSpinning(false);
+          }, 1000);
         },
         onSpin: () => {
           setIsSpinning(true);
-          if (setPrize) setPrize(null);
         },
       };
 
@@ -68,7 +88,7 @@ export default function SpinWheelClient() {
     } catch (error) {
       console.error("Lỗi khởi tạo vòng quay:", error);
     }
-  }, [overlayImg, items, setPrize]);
+  }, [overlayImg, onSpinComplete]);
 
   return (
     <div className="relative">
@@ -80,19 +100,19 @@ export default function SpinWheelClient() {
         )}
       ></div>
 
-      {!prize && (
+      {!hasSpun && !isSpinning && (
         <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center">
           <button
             onClick={handleSpin}
-            disabled={isSpinning || !wheel}
+            disabled={!wheel || isLoading}
             className={cn(
               "px-8 py-3 rounded-full text-white font-bold text-lg transition-colors shadow-lg",
-              isSpinning || !wheel
+              !wheel || isLoading
                 ? "bg-gray-500 cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700"
             )}
           >
-            {isSpinning ? "Đang quay..." : wheel ? "QUAY NGAY" : "Đang tải..."}
+            {isLoading ? "ĐANG XỬ LÝ..." : wheel ? "QUAY NGAY" : "Đang tải..."}
           </button>
         </div>
       )}
