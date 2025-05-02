@@ -46,7 +46,7 @@ export default function SpinWheel() {
 
       <PrizeBadge prize={prize} className="mb-4" />
 
-      <div className="w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center">
+      <div className="w-full bg-card p-2 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center">
         <SpinWheelClient />
       </div>
     </>
