@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useSpinWheelStore } from "../store";
+import { useSpinWheelStore } from "@/store";
+import { cn } from "@/utils/classname";
 import { Wheel } from "spin-wheel";
-import items from "./items";
+import items from "@/config/items";
 
 export default function SpinWheelClient() {
   const wheelContainerRef = useRef(null);
@@ -73,22 +74,32 @@ export default function SpinWheelClient() {
     <>
       <div
         ref={wheelContainerRef}
-        className="size-75 mx-auto"
-      ></div>
-
-      {!prize && (
-        <button
-          onClick={handleSpin}
-          disabled={isSpinning || !wheel}
-          className={`mt-4 px-8 py-3 rounded-full text-white font-bold text-lg transition-colors ${
-            isSpinning || !wheel
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700"
-          }`}
-        >
-          {isSpinning ? "Đang quay..." : wheel ? "QUAY NGAY" : "Đang tải..."}
-        </button>
-      )}
+        className={cn(
+          "size-75 mx-auto relative transition-opacity duration-300",
+          !isSpinning && !prize ? "opacity-60" : "opacity-100"
+        )}
+      >
+        {!prize && (
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <button
+              onClick={handleSpin}
+              disabled={isSpinning || !wheel}
+              className={cn(
+                "px-8 py-3 rounded-full text-white font-bold text-lg transition-colors",
+                isSpinning || !wheel
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700"
+              )}
+            >
+              {isSpinning
+                ? "Đang quay..."
+                : wheel
+                ? "QUAY NGAY"
+                : "Đang tải..."}
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 }

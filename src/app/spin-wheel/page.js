@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthStore, useSpinWheelStore } from "../store";
+import { useAuthStore, useSpinWheelStore } from "@/store";
 import dynamic from "next/dynamic";
 
 const SpinWheelClient = dynamic(() => import("./SpinWheelClient"), {
@@ -25,24 +25,20 @@ export default function SpinWheel() {
     }
   }, [isLoggedIn, router]);
 
-  if (!isLoggedIn) {
-    return <div>Đang chuyển hướng...</div>;
-  }
-
   return (
     <>
       <h1 className="text-2xl font-bold text-center text-primary-color">
         <span>Vòng Quay May Mắn</span>
       </h1>
 
-      <div className="w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center gap-6">
-        {prize && (
-          <div className="w-full m-6 p-4 bg-green-100 dark:bg-green-900 rounded-lg text-center">
-            <h2 className="text-xl font-bold">Chúc mừng!</h2>
-            <p className="text-lg">Bạn đã trúng: {prize}</p>
-          </div>
-        )}
+      {prize && (
+        <div className="w-full m-6 p-4 bg-green-100 dark:bg-green-900 rounded-lg text-center">
+          <h2 className="text-xl font-bold">Chúc mừng!</h2>
+          <p className="text-lg">Bạn đã trúng: {prize}</p>
+        </div>
+      )}
 
+      <div className="w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center gap-6">
         <SpinWheelClient />
       </div>
     </>

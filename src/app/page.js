@@ -1,26 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { useAuthStore, useSpinWheelStore } from "./store";
+import { useAuthStore, useSpinWheelStore } from "@/store";
 
 export default function Home() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isLoggedIn, user, error, login, clearError } = useAuthStore();
   const { prize } = useSpinWheelStore();
 
-  useEffect(() => {
-    if (prize) {
-      router.push("/spin-wheel");
-    }
-  }, [router, prize]);
 
-  if (prize) {
-    return <div>Đang chuyển hướng...</div>;
-  }
 
   useEffect(() => {
     if (error) {
