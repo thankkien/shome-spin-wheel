@@ -32,60 +32,51 @@ export default function PrizeBadge({ prize, className }) {
         {/* Góc */}
         <div
           className={cn(
-            "absolute -top-4 -left-4 w-8 h-8 bg-pink-500 rounded-full opacity-0",
-            animate ? "animate-firework1" : ""
+            "absolute -top-4 -left-4 w-8 h-8 bg-pink-500 rounded-full opacity-0 animate-firework1"
           )}
         ></div>
         <div
           className={cn(
-            "absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full opacity-0",
-            animate ? "animate-firework2" : ""
+            "absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full opacity-0 animate-firework2"
           )}
         ></div>
         <div
           className={cn(
-            "absolute -bottom-4 -left-4 w-8 h-8 bg-green-500 rounded-full opacity-0",
-            animate ? "animate-firework3" : ""
+            "absolute -bottom-4 -left-4 w-8 h-8 bg-green-500 rounded-full opacity-0 animate-firework3"
           )}
         ></div>
         <div
           className={cn(
-            "absolute -bottom-4 -right-4 w-8 h-8 bg-purple-500 rounded-full opacity-0",
-            animate ? "animate-firework4" : ""
+            "absolute -bottom-4 -right-4 w-8 h-8 bg-purple-500 rounded-full opacity-0 animate-firework4"
           )}
         ></div>
 
         {/* Thêm nhiều pháo hoa hơn ở các vị trí khác */}
         <div
           className={cn(
-            "absolute top-1/3 -left-2 w-6 h-6 bg-orange-500 rounded-full opacity-0",
-            animate ? "animate-firework5" : ""
+            "absolute top-1/3 -left-2 w-6 h-6 bg-orange-500 rounded-full opacity-0 animate-firework5"
           )}
         ></div>
         <div
           className={cn(
-            "absolute top-1/3 -right-2 w-6 h-6 bg-teal-500 rounded-full opacity-0",
-            animate ? "animate-firework6" : ""
+            "absolute top-1/3 -right-2 w-6 h-6 bg-teal-500 rounded-full opacity-0 animate-firework6"
           )}
         ></div>
         <div
           className={cn(
-            "absolute top-1/4 left-1/4 w-5 h-5 bg-red-500 rounded-full opacity-0",
-            animate ? "animate-firework7" : ""
+            "absolute top-1/4 left-1/4 w-5 h-5 bg-red-500 rounded-full opacity-0 animate-firework7"
           )}
         ></div>
         <div
           className={cn(
-            "absolute top-1/4 right-1/4 w-5 h-5 bg-indigo-500 rounded-full opacity-0",
-            animate ? "animate-firework8" : ""
+            "absolute top-1/4 right-1/4 w-5 h-5 bg-indigo-500 rounded-full opacity-0 animate-firework8"
           )}
         ></div>
 
         {/* Hiệu ứng tỏa sáng từ trung tâm */}
         <div
           className={cn(
-            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-yellow-400 rounded-full opacity-0",
-            animate ? "animate-starburst" : ""
+            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-yellow-400 rounded-full opacity-0 animate-starburst"
           )}
         ></div>
 
@@ -116,8 +107,7 @@ export default function PrizeBadge({ prize, className }) {
       {/* Viền sáng đặc biệt */}
       <div
         className={cn(
-          "absolute inset-0 border-4 border-transparent opacity-0 rounded-lg",
-          animate ? "animate-sparkle-border" : ""
+          "absolute inset-0 border-4 border-transparent opacity-0 rounded-lg animate-sparkle-border"
         )}
       ></div>
 
@@ -125,9 +115,7 @@ export default function PrizeBadge({ prize, className }) {
       <div className="relative z-10">
         <h2
           className={cn(
-            "text-2xl font-extrabold text-yellow-800 dark:text-yellow-200",
-            "mb-2 drop-shadow-md",
-            animate ? "animate-pulse" : ""
+            "text-2xl font-extrabold text-yellow-800 dark:text-yellow-200 mb-2 drop-shadow-md animate-pulse"
           )}
         >
           🎉 Chúc mừng! 🎉
