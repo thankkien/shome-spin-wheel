@@ -6,14 +6,17 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:setup": "node src/lib/db/setup.js"
   },
   "dependencies": {
+    "better-sqlite3": "^11.9.1",
     "clsx": "^2.1.1",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "spin-wheel": "^5.0.2",
+    "sqlite3": "^5.1.7",
     "tailwind-merge": "^3.2.0",
     "zustand": "^5.0.3"
   },
