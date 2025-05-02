@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
                 priority
               />
             </header>
-            <main className="flex flex-col gap-[24px] items-center w-full max-w-sm">
+            <main className="w-full max-w-md">
               {children}
             </main>
             <footer className="flex gap-4 flex-wrap items-center justify-center py-6 text-xs text-gray-500">

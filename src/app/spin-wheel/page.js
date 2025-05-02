@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore, useSpinWheelStore } from "@/store";
 import dynamic from "next/dynamic";
+import PrizeBadge from "@/components/PrizeBadge";
 
 const SpinWheelClient = dynamic(() => import("./SpinWheelClient"), {
   ssr: false,
@@ -25,20 +26,27 @@ export default function SpinWheel() {
     }
   }, [isLoggedIn, router]);
 
+  if (!isLoggedIn) {
+    return null;
+  }
+
   return (
     <>
-      <h1 className="text-2xl font-bold text-center text-primary-color">
-        <span>Vòng Quay May Mắn</span>
-      </h1>
+      <div className="flex justify-between items-center w-full mb-4">
+        <h1 className="text-2xl font-bold text-center text-primary-color">
+          <span>Vòng Quay May Mắn</span>
+        </h1>
+        <button
+          onClick={() => router.push("/")}
+          className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
+        >
+          Quay lại
+        </button>
+      </div>
 
-      {prize && (
-        <div className="w-full m-6 p-4 bg-green-100 dark:bg-green-900 rounded-lg text-center">
-          <h2 className="text-xl font-bold">Chúc mừng!</h2>
-          <p className="text-lg">Bạn đã trúng: {prize}</p>
-        </div>
-      )}
+      <PrizeBadge prize={prize} className="mb-4" />
 
-      <div className="w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center gap-6">
+      <div className="w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center">
         <SpinWheelClient />
       </div>
     </>

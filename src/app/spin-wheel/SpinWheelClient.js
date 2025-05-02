@@ -71,35 +71,31 @@ export default function SpinWheelClient() {
   }, [overlayImg, items, setPrize]);
 
   return (
-    <>
+    <div className="relative">
       <div
         ref={wheelContainerRef}
         className={cn(
-          "size-75 mx-auto relative transition-opacity duration-300",
+          "size-73 md:size-82 mx-auto transition-opacity duration-300",
           !isSpinning && !prize ? "opacity-60" : "opacity-100"
         )}
-      >
-        {!prize && (
-          <div className="absolute inset-0 flex items-center justify-center z-10">
-            <button
-              onClick={handleSpin}
-              disabled={isSpinning || !wheel}
-              className={cn(
-                "px-8 py-3 rounded-full text-white font-bold text-lg transition-colors",
-                isSpinning || !wheel
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
-              )}
-            >
-              {isSpinning
-                ? "Đang quay..."
-                : wheel
-                ? "QUAY NGAY"
-                : "Đang tải..."}
-            </button>
-          </div>
-        )}
-      </div>
-    </>
+      ></div>
+
+      {!prize && (
+        <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center">
+          <button
+            onClick={handleSpin}
+            disabled={isSpinning || !wheel}
+            className={cn(
+              "px-8 py-3 rounded-full text-white font-bold text-lg transition-colors shadow-lg",
+              isSpinning || !wheel
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700"
+            )}
+          >
+            {isSpinning ? "Đang quay..." : wheel ? "QUAY NGAY" : "Đang tải..."}
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
