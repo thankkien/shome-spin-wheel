@@ -2,70 +2,40 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSpinWheelStore } from "@/store/useSpinWheelStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import PrizeBadge from "@/components/PrizeBadge";
 
 export default function Home() {
   const router = useRouter();
-  const { isLoggedIn, user, logout, fetchUserData, loading, spinStatus: authSpinStatus } = useAuthStore();
-  const { setPrize, spinStatus, setSpinStatus } = useSpinWheelStore();
-  const [localLoading, setLocalLoading] = useState(false);
+  const { user, logout } = useAuthStore();
+  const { hasSpun, loading, fetchSpinStatus } = useSpinWheelStore();
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!user) {
       router.push("/login");
     } else {
-      // Nếu đã có spinStatus trong auth store, sử dụng lại
-      if (authSpinStatus) {
-        setSpinStatus(authSpinStatus);
-        if (authSpinStatus.hasSpun && authSpinStatus.prize) {
-          setPrize(authSpinStatus.prize.prize_label);
-        }
-      } else {
-        // Chỉ gọi API nếu chưa có dữ liệu
-        loadUserData();
-      }
+      fetchSpinStatus(user.id);
     }
-  }, [isLoggedIn, router, authSpinStatus]);
-
-  const loadUserData = async () => {
-    setLocalLoading(true);
-    const data = await fetchUserData();
-
-    if (data && data.success) {
-      // Lưu trạng thái quay
-      setSpinStatus(data.spinStatus);
-
-      // Nếu đã quay và có giải thưởng, lưu giải thưởng vào store
-      if (data.spinStatus.hasSpun && data.spinStatus.prize) {
-        setPrize(data.spinStatus.prize.prize_label);
-      }
-    }
-    setLocalLoading(false);
-  };
+  }, [user, router, hasSpun]);
 
   const handleLogout = async () => {
     await logout();
     router.push("/login");
   };
 
-  if (!isLoggedIn) {
+  if (!user) {
     return null;
   }
 
-  // Hiển thị loading khi đang tải dữ liệu
-  if (loading || localLoading) {
+  if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[300px]">
         <div className="animate-spin h-10 w-10 border-4 border-primary border-t-transparent rounded-full"></div>
       </div>
     );
   }
-
-  // Ưu tiên sử dụng spinStatus từ SpinWheelStore, nếu không có thì dùng từ AuthStore
-  const displaySpinStatus = spinStatus || authSpinStatus;
 
   return (
     <>
@@ -90,17 +60,13 @@ export default function Home() {
           </button>
         </div>
 
-        {displaySpinStatus?.hasSpun && displaySpinStatus.prize ? (
-          <PrizeBadge prize={displaySpinStatus.prize.prize_label} className="mb-6" />
-        ) : null}
+        <PrizeBadge className="mb-6" />
 
         <Link
           className="btn-primary rounded-md font-medium h-12 px-5 w-full flex items-center justify-center"
           href="/spin-wheel"
         >
-          {displaySpinStatus?.hasSpun
-            ? "Xem Lại Vòng Quay"
-            : "Bắt Đầu Vòng Quay May Mắn"}
+          {hasSpun ? "Xem Lại Vòng Quay" : "Bắt Đầu Vòng Quay May Mắn"}
         </Link>
       </div>
     </>

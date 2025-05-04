@@ -47,6 +47,7 @@ async function spinWheel(userId) {
         success: false,
         error: "Bạn đã quay vòng quay trước đó",
         prize: spinStatus.prize,
+        hasSpun: spinStatus.hasSpun,
       };
     }
 
@@ -96,8 +97,9 @@ async function spinWheel(userId) {
       success: true,
       prize: {
         id: selectedPrize.id,
-        prize_label: selectedPrize.label,
+        label: selectedPrize.label,
       },
+      hasSpun: true,
     };
   } catch (error) {
     console.error("Lỗi khi quay vòng quay:", error);

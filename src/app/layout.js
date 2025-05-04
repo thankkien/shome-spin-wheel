@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SHome's 7th birthday",
-  description: "Lucky spin to celebrate SHome's 7th birthday",
+  title: "SHome's 7th Birthday",
+  description: "Lucky spin to celebrate SHome's 7th Birthday",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   icons: {
     icon: "/favicon.png",

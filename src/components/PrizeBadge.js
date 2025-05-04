@@ -2,9 +2,12 @@
 
 import { cn } from "@/utils/classname";
 import { useEffect, useState } from "react";
+import { useSpinWheelStore } from "@/store/useSpinWheelStore";
 
-export default function PrizeBadge({ prize, className }) {
+export default function PrizeBadge({ className }) {
   const [animate, setAnimate] = useState(false);
+
+  const { hasSpun, prize } = useSpinWheelStore();
 
   useEffect(() => {
     if (prize) {
@@ -14,7 +17,7 @@ export default function PrizeBadge({ prize, className }) {
     }
   }, [prize]);
 
-  if (!prize) return null;
+  if (!hasSpun) return null;
 
   return (
     <div
@@ -131,7 +134,7 @@ export default function PrizeBadge({ prize, className }) {
             animate ? "scale-110 animate-prize-glow" : ""
           )}
         >
-          {prize}
+          {prize?.label ?? ""}
         </p>
       </div>
     </div>

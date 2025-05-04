@@ -4,52 +4,77 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useSpinWheelStore } from "@/store/useSpinWheelStore";
 import { cn } from "@/utils/classname";
 import { Wheel } from "spin-wheel";
-import items from "@/config/items";
 
-export default function SpinWheelClient({ userId, hasSpun, onSpinComplete }) {
+export default function SpinWheelClient() {
   const wheelContainerRef = useRef(null);
-  const { isSpinning, setIsSpinning, prize, setPrize, spin, isLoading } =
-    useSpinWheelStore();
+
+  const {
+    prizeList,
+    prize,
+    setPrize,
+    hasSpun,
+    setHasSpun,
+    spin,
+    isSpinning,
+    setIsSpinning,
+    isLoading,
+    fetchPrizes,
+  } = useSpinWheelStore();
   const [wheel, setWheel] = useState(null);
   const [overlayImg, setOverlayImg] = useState(null);
 
-  const calcSpinToValues = useCallback(() => {
-    const itemIndex = Math.floor(Math.random() * items.length);
+  const calcSpinToValues = useCallback((itemIndex) => {
     const duration = Math.floor(Math.random() * (3600 - 2600 + 1)) + 2600;
-    return [itemIndex, duration];
+    const spinToCenter = false;
+    const numberOfRevolutions = 10;
+    const direction = 1;
+    const easingFunction = null;
+    return [
+      itemIndex,
+      duration,
+      spinToCenter,
+      numberOfRevolutions,
+      direction,
+      easingFunction,
+    ];
   }, []);
 
   const handleSpin = async () => {
-    if (!wheel || isSpinning || isLoading || !userId || hasSpun) return;
+    if (!wheel || isSpinning || isLoading || hasSpun) return;
 
-    setIsSpinning(true);
-
-    // Gọi API quay
-    const result = await spin(userId);
+    const result = await spin();
 
     if (result.success) {
-      // Tìm index của giải thưởng trong danh sách items
-      const prizeIndex = items.findIndex(
-        (item) => item.label === result.prize.prize_label
+      const prizeIndex = prizeList.findIndex(
+        (item) => item.id === result.prize.id
       );
-
-      // Quay đến giải thưởng đã được xác định bởi backend
-      const index =
-        prizeIndex >= 0 ? prizeIndex : Math.floor(Math.random() * items.length);
-      const duration = Math.floor(Math.random() * (3600 - 2600 + 1)) + 2600;
-
-      wheel.spinToItem(index, duration);
+      if (prizeIndex === -1) {
+        return;
+      }
+      wheel.spinToItem(...calcSpinToValues(prizeIndex));
     } else {
-      setIsSpinning(false);
+      const { hasSpun, prize } = result;
+      console.log(result);
+      if (hasSpun !== undefined && hasSpun !== null) {
+        setHasSpun(hasSpun);
+      }
+      if (prize !== undefined && prize !== null) {
+        setPrize(prize);
+      }
       alert(result.error || "Có lỗi xảy ra khi quay");
     }
   };
 
   useEffect(() => {
+    fetchPrizes();
+  }, []);
+
+  useEffect(() => {
     const img = new Image();
     img.onload = () => setOverlayImg(img);
-    img.onerror = (error) =>
+    img.onerror = (error) => {
       console.error("Lỗi khi tải hình ảnh overlay:", error);
+    };
     img.src = "/overlay.svg";
   }, []);
 
@@ -70,13 +95,14 @@ export default function SpinWheelClient({ userId, hasSpun, onSpinComplete }) {
         lineWidth: 1,
         lineColor: "#000",
         overlayImage: overlayImg,
-        items,
+        items: prizeList,
         isInteractive: false,
         onRest: (event) => {
-          setTimeout(() => {
-            if (onSpinComplete) onSpinComplete();
-            setIsSpinning(false);
-          }, 1000);
+          const { currentIndex } = event;
+          const winningItem = prizeList[currentIndex];
+          setPrize({ id: winningItem.id, label: winningItem.label });
+          setHasSpun(true);
+          setIsSpinning(false);
         },
         onSpin: () => {
           setIsSpinning(true);
@@ -88,7 +114,7 @@ export default function SpinWheelClient({ userId, hasSpun, onSpinComplete }) {
     } catch (error) {
       console.error("Lỗi khởi tạo vòng quay:", error);
     }
-  }, [overlayImg, onSpinComplete]);
+  }, [overlayImg]);
 
   return (
     <div className="relative">

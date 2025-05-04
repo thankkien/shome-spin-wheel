@@ -36,7 +36,7 @@ async function hasUserSpun(userId) {
  */
 async function getUserPrize(userId) {
   return await get(
-    `SELECT h.prize_id, p.label as prize_label, h.created_at
+    `SELECT p.id, p.label, h.created_at
      FROM spin_history h
      JOIN prizes p ON h.prize_id = p.id
      WHERE h.user_id = ?`,

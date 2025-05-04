@@ -2,44 +2,34 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/store/useAuthStore";
+import { useAuthStore } from "@/store";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {
-    isLoggedIn,
-    login,
-    error: storeError,
-    clearError,
-    loading,
-  } = useAuthStore();
+  const { user, login, error, clearError, isLoading } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (!!user) {
       router.push("/");
     }
-  }, [isLoggedIn, router]);
+  }, [user, router]);
 
   useEffect(() => {
-    if (storeError) {
+    if (error) {
       clearError();
     }
-  }, [email, password, storeError, clearError]);
+  }, [email, password, error, clearError]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
-      clearError();
-      return;
+      return clearError();
     }
 
-    // Gọi phương thức login từ store
-    const success = await login(email, password);
-
-    if (success) {
+    if (await login(email, password)) {
       router.push("/");
     }
   };
@@ -72,7 +62,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             className="h-10 px-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             placeholder="Nhập email của bạn"
-            disabled={loading}
+            disabled={isLoading}
           />
         </div>
 
@@ -87,18 +77,18 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             className="h-10 px-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             placeholder="Nhập mật khẩu"
-            disabled={loading}
+            disabled={isLoading}
           />
         </div>
 
-        {storeError && <p className="text-error text-sm">{storeError}</p>}
+        {error && <p className="text-error text-sm">{error}</p>}
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={isLoading}
           className="btn-primary rounded-md font-medium h-12 px-5 w-full mt-2 flex items-center justify-center"
         >
-          {loading ? (
+          {isLoading ? (
             <span className="flex items-center">
               <svg
                 className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
