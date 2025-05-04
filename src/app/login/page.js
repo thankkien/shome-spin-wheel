@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store";
 
 export default function Login() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, login, error, clearError, isLoading } = useAuthStore();
-  const router = useRouter();
 
   useEffect(() => {
     if (!!user) {
@@ -36,21 +36,13 @@ export default function Login() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-center text-primary-color">
-        <span>Vòng Quay May Mắn</span>
-        <p className="text-sm font-light text-center text-gray-500 dark:text-gray-200 mb-4">
-          Chào mừng đến với Vòng Quay May Mắn nhân dịp sinh nhật lần thứ 7 của
-          SHome.
-        </p>
-      </h1>
-      <p className="text-center text-gray-600 dark:text-gray-300 mb-4">
-        Vui lòng đăng nhập để bắt đầu.
-      </p>
-
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700"
       >
+        <p className="text-center text-gray-600 dark:text-gray-300 mb-4">
+          Vui lòng đăng nhập để bắt đầu.
+        </p>
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="text-sm font-medium">
             Email

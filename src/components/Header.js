@@ -1,0 +1,66 @@
+"use client";
+import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useCallback, useState } from "react";
+import { useAuthStore } from "@/store";
+
+export default function Header() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const { user, logout } = useAuthStore();
+  const [isHomePage, setIsHomePage] = useState(false);
+
+  useEffect(() => {
+    setIsHomePage(pathname === "/");
+  }, [pathname]);
+
+  const handleLogout = useCallback(async () => {
+    await logout();
+    router.push("/login");
+  }, [logout, router]);
+
+  const handleGoHome = useCallback(async () => {
+    router.push("/");
+  }, [router]);
+
+  return (
+    <header className="py-4 gap-2 w-full flex flex-col justify-between items-center">
+      <Image
+        src="/logo.svg"
+        alt="SHome logo"
+        width={180}
+        height={38}
+        priority
+      />
+      <div className="w-full flex justify-between items-center">
+        <h1 className="w-full text-2xl font-bold text-center text-primary-color">
+          <span>Chúc Mừng Sinh Nhật 7 tuổi</span>
+        </h1>
+      </div>
+      <div className="w-full flex justify-between items-center mb-6">
+        {user ? (
+          <p className="text-gray-600 dark:text-gray-300">
+            Xin chào, <span className="font-medium">{user.email}</span>
+          </p>
+        ) : (
+          <span></span>
+        )}
+        {isHomePage ? (
+          <button
+            onClick={handleLogout}
+            className="text-sm text-gray-500 hover:text-red-500 transition-colors"
+          >
+            Đăng xuất
+          </button>
+        ) : (
+          <button
+            onClick={handleGoHome}
+            className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
+          >
+            Quay lại
+          </button>
+        )}
+      </div>
+    </header>
+  );
+}

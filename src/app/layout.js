@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Image from "next/image";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,28 +31,16 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-md mx-auto`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-md mx-auto font-[family-name:var(--font-geist-sans)]`}
       >
-        <div className="mobile-container">
-          <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 gap-8 font-[family-name:var(--font-geist-sans)]">
-            <header className="py-4">
-              <Image
-                src="/logo.svg"
-                alt="SHome logo"
-                width={180}
-                height={38}
-                priority
-              />
-            </header>
-            <main className="w-full max-w-md">
-              {children}
-            </main>
-            <footer className="flex gap-4 flex-wrap items-center justify-center py-6 text-xs text-gray-500">
-              <p className="flex items-center">
-                <span>©</span> Copyright 2023. Công ty TNHH TM S.Home Solution
-              </p>
-            </footer>
-          </div>
+        <div className="flex flex-col min-h-screen p-8">
+          <Header />
+          <main className="w-full max-w-md flex-grow">{children}</main>
+          <footer className="flex gap-4 flex-wrap items-center justify-center py-6 text-xs text-gray-500 mt-auto">
+            <p className="flex items-center">
+              <span>©</span> Copyright 2023. Công ty TNHH TM S.Home Solution
+            </p>
+          </footer>
         </div>
       </body>
     </html>

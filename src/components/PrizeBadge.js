@@ -128,7 +128,7 @@ export default function PrizeBadge({ className }) {
         </p>
         <p
           className={cn(
-            "text-xl font-bold text-red-600 dark:text-red-400 px-4 py-2",
+            "text-xl font-bold  text-yellow-800 dark:text-yellow-200 px-4 py-2",
             "bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-20 rounded-lg inline-block",
             "transform transition-all duration-500 shadow-lg",
             animate ? "scale-110 animate-prize-glow" : ""

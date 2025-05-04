@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useSpinWheelStore } from "@/store/useSpinWheelStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import dynamic from "next/dynamic";
 import PrizeBadge from "@/components/PrizeBadge";
+import withAuth from "@/components/withAuth";
 
-const SpinWheelClient = dynamic(() => import("./SpinWheelClient"), {
+const SpinWheelClient = dynamic(() => import("@/components/SpinWheel"), {
   ssr: false,
   loading: () => (
     <div className="w-full max-w-lg mx-auto mb-6 h-[500px] flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
@@ -16,37 +16,18 @@ const SpinWheelClient = dynamic(() => import("./SpinWheelClient"), {
   ),
 });
 
-export default function SpinWheel() {
-  const router = useRouter();
+function SpinWheelPage() {
   const { user } = useAuthStore();
-  const { hasSpun, fetchSpinStatus } = useSpinWheelStore();
+  const { fetchSpinStatus } = useSpinWheelStore();
 
   useEffect(() => {
-    if (!user) {
-      router.push("/");
-    } else {
+    if (user) {
       fetchSpinStatus(user.id);
     }
-  }, [user, router, fetchSpinStatus]);
-
-  if (!user) {
-    return null;
-  }
+  }, [user, fetchSpinStatus]);
 
   return (
     <>
-      <div className="flex justify-between items-center w-full mb-4">
-        <h1 className="text-2xl font-bold text-center text-primary-color">
-          <span>Vòng Quay May Mắn</span>
-        </h1>
-        <button
-          onClick={() => router.push("/")}
-          className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
-        >
-          Quay lại
-        </button>
-      </div>
-
       <PrizeBadge className="mb-4" />
 
       <div className="w-full bg-card p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col items-center">
@@ -55,3 +36,5 @@ export default function SpinWheel() {
     </>
   );
 }
+
+export default withAuth(SpinWheelPage);
