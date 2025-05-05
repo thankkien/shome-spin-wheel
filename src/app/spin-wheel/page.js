@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSpinWheelStore } from "@/store/useSpinWheelStore";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth, useSpinWheel } from "@/hooks";
 import dynamic from "next/dynamic";
 import PrizeBadge from "@/components/PrizeBadge";
 import withAuth from "@/components/hoc/withAuth";
@@ -17,8 +16,8 @@ const SpinWheelClient = dynamic(() => import("@/components/SpinWheel"), {
 });
 
 function SpinWheelPage() {
-  const { user } = useAuth();
-  const { fetchSpinStatus } = useSpinWheelStore();
+  const user = useAuth((state) => state.user);
+  const fetchSpinStatus = useSpinWheel((state) => state.fetchSpinStatus);
 
   useEffect(() => {
     if (user) {

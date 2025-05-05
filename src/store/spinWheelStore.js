@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { authStore } from "./authStore";
 
-export const useSpinWheelStore = create(
+export const spinWheelStore = create(
   persist(
     (set, get) => ({
       isSpinning: false,

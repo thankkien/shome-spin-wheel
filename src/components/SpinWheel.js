@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useSpinWheelStore } from "@/store/useSpinWheelStore";
+import { useSpinWheel } from "@/hooks";
 import { cn } from "@/utils/classname";
 import { Wheel } from "spin-wheel";
 
@@ -19,7 +19,7 @@ export default function SpinWheelClient() {
     setIsSpinning,
     isLoading,
     fetchPrizes,
-  } = useSpinWheelStore();
+  } = useSpinWheel((state) => state);
   const [wheel, setWheel] = useState(null);
   const [overlayImg, setOverlayImg] = useState(null);
 
