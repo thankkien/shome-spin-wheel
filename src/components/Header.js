@@ -2,34 +2,30 @@
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useCallback, useState } from "react";
-import { useAuthStore } from "@/store";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
-  const { user, logout } = useAuthStore();
+  const { user, logout } = useAuth();
   const [isHomePage, setIsHomePage] = useState(false);
 
-  useEffect(() => {
-    setIsHomePage(pathname === "/");
-  }, [pathname]);
+  useEffect(() => setIsHomePage(pathname === "/"), [pathname]);
 
   const handleLogout = useCallback(async () => {
     await logout();
     router.push("/login");
   }, [logout, router]);
 
-  const handleGoHome = useCallback(async () => {
-    router.push("/");
-  }, [router]);
+  const handleGoHome = useCallback(() => router.push("/"), [router]);
 
   return (
     <header className="py-4 gap-2 w-full flex flex-col justify-between items-center">
       <Image
         src="/logo.svg"
         alt="SHome logo"
-        width={180}
-        height={38}
+        width={200}
+        height={50}
         priority
       />
       <div className="w-full flex justify-between items-center">

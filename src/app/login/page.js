@@ -1,20 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/store";
+import { useAuth } from "@/hooks/useAuth";
+import withAuth from "@/components/hoc/withAuth";
 
-export default function Login() {
+const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, login, error, clearError, isLoading } = useAuthStore();
-
-  useEffect(() => {
-    if (!!user) {
-      router.push("/");
-    }
-  }, [user, router]);
+  const { login, error, clearError, isLoading } = useAuth();
 
   useEffect(() => {
     if (error) {
@@ -22,7 +17,7 @@ export default function Login() {
     }
   }, [email, password, error, clearError]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -32,7 +27,7 @@ export default function Login() {
     if (await login(email, password)) {
       router.push("/");
     }
-  };
+  }, [email, password, login, clearError, router]);
 
   return (
     <>
@@ -112,3 +107,5 @@ export default function Login() {
     </>
   );
 }
+
+export default withAuth(Login);

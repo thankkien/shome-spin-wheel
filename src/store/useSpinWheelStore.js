@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { useAuthStore } from "./useAuthStore";
+import { authStore } from "./authStore";
 
 export const useSpinWheelStore = create(
   persist(
@@ -16,8 +16,8 @@ export const useSpinWheelStore = create(
 
       spin: async () => {
         try {
-          const authStore = useAuthStore.getState();
-          if (!authStore?.user?.id) {
+          const authState = authStore.getState();
+          if (!authState?.user?.id) {
             return { success: false, error: "ID người dùng không hợp lệ" };
           }
 
@@ -28,7 +28,7 @@ export const useSpinWheelStore = create(
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ userId: authStore.user.id }),
+            body: JSON.stringify({ userId: authState.user.id }),
           });
 
           const data = await response.json();

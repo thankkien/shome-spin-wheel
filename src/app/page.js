@@ -3,19 +3,19 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSpinWheelStore } from "@/store/useSpinWheelStore";
-import { useAuthStore } from "@/store/useAuthStore";
+import { useAuth } from "@/hooks/useAuth";
 import PrizeBadge from "@/components/PrizeBadge";
-import withAuth from "@/components/withAuth";
+import withAuth from "@/components/hoc/withAuth";
 
 function HomePage() {
-  const { user } = useAuthStore();
+  const { user } = useAuth();
   const { hasSpun, fetchSpinStatus } = useSpinWheelStore();
 
   useEffect(() => {
     if (user) {
       fetchSpinStatus(user.id);
     }
-  }, [user, fetchSpinStatus]);
+  }, [user]);
 
   return (
     <>
