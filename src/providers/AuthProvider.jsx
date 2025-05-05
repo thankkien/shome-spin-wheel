@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext } from "react";
-import { authStore } from "@/store/authStore";
+import { authStore } from "@/stores/authStore";
 
 export const AuthStoreContext = createContext(null);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext } from "react";
-import { spinWheelStore } from "@/store/spinWheelStore";
+import { spinWheelStore } from "@/stores/spinWheelStore";
 
 export const SpinWheelStoreContext = createContext(null);
 
