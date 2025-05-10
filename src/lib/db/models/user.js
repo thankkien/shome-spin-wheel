@@ -5,7 +5,7 @@ const { query, get, run } = require("../index");
  * @returns {Promise<Array>} Danh sách người dùng
  */
 async function getAllUsers() {
-  return await query("SELECT id, email, employeeId FROM users ORDER BY id ASC");
+  return await query("SELECT id, email, employeeId, role, fullname, department FROM users ORDER BY id ASC");
 }
 
 /**
@@ -14,7 +14,7 @@ async function getAllUsers() {
  * @returns {Promise<Object>} Thông tin người dùng
  */
 async function getUserById(id) {
-  return await get("SELECT id, email, employeeId FROM users WHERE id = ?", [id]);
+  return await get("SELECT id, email, employeeId, role, fullname, department FROM users WHERE id = ?", [id]);
 }
 
 /**
@@ -61,9 +61,12 @@ async function authenticateUser(email, password) {
  * @param {string} userData.email - Email người dùng
  * @param {string} userData.password - Mật khẩu người dùng
  * @param {string} userData.employeeId - ID nhân viên
+ * @param {string} userData.role - Role người dùng
+ * @param {string} userData.fullname - Tên người dùng
+ * @param {string} userData.department - Phòng ban người dùng
  * @returns {Promise<Object>} Kết quả thực hiện
  */
-async function createUser({ email, password, employeeId }) {
+async function createUser({ email, password, employeeId, role = 'user', fullname, department }) {
   const existingUser = await getUserByEmail(email);
   if (existingUser) {
     throw new Error("Email đã tồn tại");
@@ -73,10 +76,20 @@ async function createUser({ email, password, employeeId }) {
   if (existingEmployee) {
     throw new Error("employeeId đã tồn tại");
   }
-  return await run("INSERT INTO users (email, password, employeeId) VALUES (?, ?, ?)", [
+  // Chỉ cho phép role là 'admin' hoặc 'user'
+  if (role !== 'admin' && role !== 'user') {
+    throw new Error("Role không hợp lệ");
+  }
+  if (!fullname || !department) {
+    throw new Error("fullname và department là bắt buộc");
+  }
+  return await run("INSERT INTO users (email, password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?)", [
     email,
     password,
     employeeId,
+    role,
+    fullname,
+    department,
   ]);
 }
 
@@ -122,6 +135,25 @@ async function deleteUser(id) {
   return await run("DELETE FROM users WHERE id = ?", [id]);
 }
 
+/**
+ * Cập nhật thông tin người dùng
+ * @param {number} id - ID người dùng
+ * @param {Object} data - Dữ liệu cập nhật
+ * @returns {Promise<Object>} Kết quả thực hiện
+ */
+async function updateUser(id, data) {
+  const fields = [];
+  const values = [];
+  for (const key in data) {
+    fields.push(`${key} = ?`);
+    values.push(data[key]);
+  }
+  if (fields.length === 0) throw new Error('Không có trường nào để cập nhật');
+  values.push(id);
+  const sql = `UPDATE users SET ${fields.join(', ')} WHERE id = ?`;
+  return await run(sql, values);
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -130,4 +162,5 @@ module.exports = {
   createUser,
   changePassword,
   deleteUser,
+  updateUser,
 };
