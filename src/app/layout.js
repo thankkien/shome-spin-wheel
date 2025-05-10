@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { cn } from "@/lib/utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,17 +31,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-md font-[family-name:var(--font-geist-sans)]`}
+        className={cn(
+          "antialiased max-w-md mx-auto min-h-screen p-2 flex flex-col",
+          geistSans.variable,
+          geistMono.variable
+        )}
       >
-          <div className="flex flex-col mx-auto min-h-screen p-8">
-            <Header />
-            <main className="w-full max-w-md flex-grow">{children}</main>
-            <footer className="flex gap-4 flex-wrap items-center justify-center py-6 text-xs text-gray-500 mt-auto">
-              <p className="flex items-center">
-                <span>©</span> Copyright 2023. Công ty TNHH TM S.Home Solution
-              </p>
-            </footer>
-          </div>
+        <Header />
+        <main className="w-full flex-grow">{children}</main>
+        <footer className="flex gap-4 flex-wrap items-center justify-center py-6 text-xs text-muted-foreground mt-auto">
+          <p className="flex items-center">
+            <span>©</span> Copyright 2023. Công ty TNHH TM S.Home Solution
+          </p>
+        </footer>
       </body>
     </html>
   );
