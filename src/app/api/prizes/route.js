@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAllPrizes } from "@/lib/db/models/prize";
+import { query } from "@/lib/db";
 import { pick } from "lodash";
 
 /**
@@ -8,7 +8,7 @@ import { pick } from "lodash";
  */
 export async function GET() {
   try {
-    const prizes = await getAllPrizes();
+    const prizes = await query("SELECT * FROM prizes ORDER BY id ASC");
 
     return NextResponse.json({
       success: true,
