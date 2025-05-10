@@ -1,20 +1,63 @@
-import { Alert as ChakraAlert } from '@chakra-ui/react'
-import * as React from 'react'
+import * as React from "react"
+import { cva } from "class-variance-authority";
 
-export const Alert = React.forwardRef(function Alert(props, ref) {
-  const { title, children, icon, startElement, endElement, ...rest } = props
+import { cn } from "@/lib/utils"
+
+const alertVariants = cva(
+  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  {
+    variants: {
+      variant: {
+        default: "bg-card text-card-foreground",
+        destructive:
+          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+function Alert({
+  className,
+  variant,
+  ...props
+}) {
   return (
-    <ChakraAlert.Root ref={ref} {...rest}>
-      {startElement || <ChakraAlert.Indicator>{icon}</ChakraAlert.Indicator>}
-      {children ? (
-        <ChakraAlert.Content>
-          <ChakraAlert.Title>{title}</ChakraAlert.Title>
-          <ChakraAlert.Description>{children}</ChakraAlert.Description>
-        </ChakraAlert.Content>
-      ) : (
-        <ChakraAlert.Title flex='1'>{title}</ChakraAlert.Title>
+    <div
+      data-slot="alert"
+      role="alert"
+      className={cn(alertVariants({ variant }), className)}
+      {...props} />
+  );
+}
+
+function AlertTitle({
+  className,
+  ...props
+}) {
+  return (
+    <div
+      data-slot="alert-title"
+      className={cn("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className)}
+      {...props} />
+  );
+}
+
+function AlertDescription({
+  className,
+  ...props
+}) {
+  return (
+    <div
+      data-slot="alert-description"
+      className={cn(
+        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+        className
       )}
-      {endElement}
-    </ChakraAlert.Root>
-  )
-})
+      {...props} />
+  );
+}
+
+export { Alert, AlertTitle, AlertDescription }

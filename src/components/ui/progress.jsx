@@ -1,26 +1,29 @@
-import { Progress as ChakraProgress } from '@chakra-ui/react'
-import { InfoTip } from './toggle-tip'
-import * as React from 'react'
+"use client"
 
-export const ProgressBar = React.forwardRef(function ProgressBar(props, ref) {
+import * as React from "react"
+import * as ProgressPrimitive from "@radix-ui/react-progress"
+
+import { cn } from "@/lib/utils"
+
+function Progress({
+  className,
+  value,
+  ...props
+}) {
   return (
-    <ChakraProgress.Track {...props} ref={ref}>
-      <ChakraProgress.Range />
-    </ChakraProgress.Track>
-  )
-})
+    <ProgressPrimitive.Root
+      data-slot="progress"
+      className={cn(
+        "bg-primary/20 relative h-2 w-full overflow-hidden rounded-full",
+        className
+      )}
+      {...props}>
+      <ProgressPrimitive.Indicator
+        data-slot="progress-indicator"
+        className="bg-primary h-full w-full flex-1 transition-all"
+        style={{ transform: `translateX(-${100 - (value || 0)}%)` }} />
+    </ProgressPrimitive.Root>
+  );
+}
 
-export const ProgressLabel = React.forwardRef(
-  function ProgressLabel(props, ref) {
-    const { children, info, ...rest } = props
-    return (
-      <ChakraProgress.Label {...rest} ref={ref}>
-        {children}
-        {info && <InfoTip>{info}</InfoTip>}
-      </ChakraProgress.Label>
-    )
-  },
-)
-
-export const ProgressRoot = ChakraProgress.Root
-export const ProgressValueText = ChakraProgress.ValueText
+export { Progress }

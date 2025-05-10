@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { Provider } from "@/components/ui/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +29,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head></head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-md mx-auto font-[family-name:var(--font-geist-sans)]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-md font-[family-name:var(--font-geist-sans)]`}
       >
-        <Provider>
-          <div className="flex flex-col min-h-screen p-8">
+          <div className="flex flex-col mx-auto min-h-screen p-8">
             <Header />
             <main className="w-full max-w-md flex-grow">{children}</main>
             <footer className="flex gap-4 flex-wrap items-center justify-center py-6 text-xs text-gray-500 mt-auto">
@@ -44,7 +41,6 @@ export default function RootLayout({ children }) {
               </p>
             </footer>
           </div>
-        </Provider>
       </body>
     </html>
   );

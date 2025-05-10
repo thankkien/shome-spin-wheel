@@ -1,55 +1,29 @@
-function _optionalChain(ops) {
-  let lastAccessLHS = undefined
-  let value = ops[0]
-  let i = 1
-  while (i < ops.length) {
-    const op = ops[i]
-    const fn = ops[i + 1]
-    i += 2
-    if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) {
-      return undefined
-    }
-    if (op === 'access' || op === 'optionalAccess') {
-      lastAccessLHS = value
-      value = fn(value)
-    } else if (op === 'call' || op === 'optionalCall') {
-      value = fn((...args) => value.call(lastAccessLHS, ...args))
-      lastAccessLHS = undefined
-    }
-  }
-  return value
-}
-import { Switch as ChakraSwitch } from '@chakra-ui/react'
-import * as React from 'react'
+"use client"
 
-export const Switch = React.forwardRef(function Switch(props, ref) {
-  const { inputProps, children, rootRef, trackLabel, thumbLabel, ...rest } =
-    props
+import * as React from "react"
+import * as SwitchPrimitive from "@radix-ui/react-switch"
 
+import { cn } from "@/lib/utils"
+
+function Switch({
+  className,
+  ...props
+}) {
   return (
-    <ChakraSwitch.Root ref={rootRef} {...rest}>
-      <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
-      <ChakraSwitch.Control>
-        <ChakraSwitch.Thumb>
-          {thumbLabel && (
-            <ChakraSwitch.ThumbIndicator
-              fallback={_optionalChain([
-                thumbLabel,
-                'optionalAccess',
-                (_) => _.off,
-              ])}
-            >
-              {_optionalChain([thumbLabel, 'optionalAccess', (_2) => _2.on])}
-            </ChakraSwitch.ThumbIndicator>
-          )}
-        </ChakraSwitch.Thumb>
-        {trackLabel && (
-          <ChakraSwitch.Indicator fallback={trackLabel.off}>
-            {trackLabel.on}
-          </ChakraSwitch.Indicator>
-        )}
-      </ChakraSwitch.Control>
-      {children != null && <ChakraSwitch.Label>{children}</ChakraSwitch.Label>}
-    </ChakraSwitch.Root>
-  )
-})
+    <SwitchPrimitive.Root
+      data-slot="switch"
+      className={cn(
+        "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      )}
+      {...props}>
+      <SwitchPrimitive.Thumb
+        data-slot="switch-thumb"
+        className={cn(
+          "bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0"
+        )} />
+    </SwitchPrimitive.Root>
+  );
+}
+
+export { Switch }
