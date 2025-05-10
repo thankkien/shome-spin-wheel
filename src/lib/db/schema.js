@@ -12,7 +12,10 @@ CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   email TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
-  employeeId TEXT UNIQUE NOT NULL
+  employeeId TEXT UNIQUE NOT NULL,
+  role TEXT NOT NULL DEFAULT 'user',
+  fullname TEXT NOT NULL,
+  department TEXT NOT NULL
 )
 `;
 

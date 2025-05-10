@@ -5,21 +5,16 @@ const { run, initializeDatabase, query } = require("./index");
  */
 async function seedUsers() {
   try {
-    const password = "123456";
-
     const existingUsers = await query("SELECT COUNT(*) as count FROM users");
 
     if (existingUsers[0].count === 0) {
-      await run("INSERT INTO users (email, password, employeeId) VALUES (?, ?, ?)", [
-        "user@shome.vn",
-        password,
-        "EMP001"
-      ]);
-
-      await run("INSERT INTO users (email, password, employeeId) VALUES (?, ?, ?)", [
+      await run("INSERT INTO users (email, password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?)", [
         "admin@shome.vn",
-        password,
-        "EMP002"
+        "@dmin246",
+        "NSH-ADMIN",
+        "admin",
+        "Trần Thành Kiên",
+        "Quản trị hệ thống"
       ]);
 
       console.log("Đã thêm dữ liệu người dùng mẫu");
