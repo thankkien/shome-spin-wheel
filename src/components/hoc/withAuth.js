@@ -11,7 +11,6 @@ export default function withAuth(Component) {
     const { user } = useAuth();
 
     useEffect(() => {
-      console.log("withAuth", {user, router, pathname})
       if (!user) {
         router.push("/login");
       } else if (pathname === "/login") {
