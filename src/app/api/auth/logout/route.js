@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { COOKIE_NAME } from "@/lib/jwt";
 
 /**
@@ -7,21 +8,16 @@ import { COOKIE_NAME } from "@/lib/jwt";
  */
 export async function POST() {
   try {
-    const response = NextResponse.json({
+    // Xóa cookie
+    cookies().delete(COOKIE_NAME);
+
+    return NextResponse.json({
       success: true,
     });
-    response.headers.set(
-      "Set-Cookie",
-      `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
-    );
-    return response;
   } catch (error) {
-    console.error("Lỗi khi đăng xuất:", error);
+    console.error("Logout error:", error);
     return NextResponse.json(
-      {
-        success: false,
-        error: "Đã xảy ra lỗi khi đăng xuất",
-      },
+      { success: false, error: "Lỗi server" },
       { status: 500 }
     );
   }

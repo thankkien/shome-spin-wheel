@@ -1,32 +1,35 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
-const SECRET = process.env.JWT_SECRET || "shome-secret-key";
-const COOKIE_NAME = "act";
+const JWT_SECRET = process.env.JWT_SECRET;
 
-function signJwt(payload, options = {}) {
-  return jwt.sign(payload, SECRET, { expiresIn: "7d", ...options });
-}
+export const COOKIE_NAME = "act";
 
-function verifyJwt(token) {
-  try {
-    return jwt.verify(token, SECRET);
-  } catch {
-    return null;
-  }
-}
+export const jwtService = {
+  sign: (payload, expiresIn = "7d") => {
+    return jwt.sign(payload, JWT_SECRET, { expiresIn });
+  },
 
-// Lấy user từ request (Next.js API Route)
-function getUserFromRequest(request) {
+  verify: (token) => {
+    try {
+      return jwt.verify(token, JWT_SECRET);
+    } catch (error) {
+      return null;
+    }
+  },
+
+  decode: (token) => {
+    try {
+      return jwt.decode(token);
+    } catch (error) {
+      return null;
+    }
+  },
+};
+
+export function getUserFromRequest(request) {
   const cookie = request.headers.get("cookie") || "";
   const match = cookie.match(new RegExp(`${COOKIE_NAME}=([^;]+)`));
   if (!match) return null;
   const token = match[1];
-  return verifyJwt(token);
+  return jwtService.verify(token);
 }
-
-module.exports = {
-  signJwt,
-  verifyJwt,
-  getUserFromRequest,
-  COOKIE_NAME,
-};

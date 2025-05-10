@@ -1,22 +1,21 @@
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
-import { db } from "@/lib/db";
+import { cookies } from "next/headers";
+import { jwtService, COOKIE_NAME } from "@/lib/jwt";
+import { get } from "@/lib/db";
+import { omit } from "lodash";
 
-export async function POST(request) {
+export async function POST() {
   try {
-    // Lấy token từ header
-    const authHeader = request.headers.get("authorization");
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    const token = cookies().get(COOKIE_NAME)?.value;
+
+    if (!token) {
       return NextResponse.json(
-        { success: false, error: "Token không hợp lệ" },
+        { success: false, error: "Không tìm thấy token" },
         { status: 401 }
       );
     }
 
-    const token = authHeader.split(" ")[1];
-
-    // Xác thực token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwtService.verify(token);
     if (!decoded) {
       return NextResponse.json(
         { success: false, error: "Token không hợp lệ" },
@@ -24,10 +23,10 @@ export async function POST(request) {
       );
     }
 
-    // Kiểm tra user trong database
-    const user = db
-      .prepare("SELECT * FROM users WHERE id = ?")
-      .get(decoded.userId);
+    const user = await get(
+      `SELECT * FROM users WHERE id = ?`,
+      [decoded.id]
+    );
 
     if (!user) {
       return NextResponse.json(
@@ -36,17 +35,16 @@ export async function POST(request) {
       );
     }
 
-    // Trả về thông tin user (không bao gồm password)
-    const { password, ...userWithoutPassword } = user;
+    const userWithoutPassword = omit(user, ['password']);
     return NextResponse.json({
       success: true,
       user: userWithoutPassword,
     });
   } catch (error) {
-    console.error("Lỗi xác thực:", error);
+    console.error("Verify error:", error);
     return NextResponse.json(
-      { success: false, error: "Token không hợp lệ" },
-      { status: 401 }
+      { success: false, error: "Lỗi server" },
+      { status: 500 }
     );
   }
 }

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
-import { authenticateUser } from "@/lib/db/models/user";
-import { signJwt, COOKIE_NAME } from "@/lib/jwt";
+import { cookies } from "next/headers";
+import { jwtService, COOKIE_NAME } from "@/lib/jwt";
+import { get } from "@/lib/db";
+import { omit } from "lodash";
 
 /**
  * Xử lý đăng nhập người dùng
@@ -10,60 +12,40 @@ export async function POST(request) {
   try {
     const { email, password } = await request.json();
 
-    if (!email || !password) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Vui lòng nhập đầy đủ email và mật khẩu",
-        },
-        { status: 400 }
-      );
-    }
+    const user = await get(
+      `SELECT * FROM users WHERE email = ?`,
+      [email]
+    );
 
-    const user = await authenticateUser(email, password);
-
-    if (!user) {
+    if (!user || user.password !== password) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Email hoặc mật khẩu không chính xác",
-        },
+        { success: false, error: "Email hoặc mật khẩu không đúng" },
         { status: 401 }
       );
     }
 
-    // Tạo JWT và set vào cookie HttpOnly
-    const token = signJwt({
+    const token = jwtService.sign({
       id: user.id,
       email: user.email,
       role: user.role,
-      employeeId: user.employeeId,
-      fullname: user.fullname,
-      department: user.department,
     });
-    const response = NextResponse.json({
+
+    cookies().set(COOKIE_NAME, token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60, // 7 days
+    });
+
+    const userWithoutPassword = omit(user, ['password']);
+    return NextResponse.json({
       success: true,
-      user: {
-        id: user.id,
-        email: user.email,
-        employeeId: user.employeeId,
-        role: user.role,
-        fullname: user.fullname,
-        department: user.department,
-      },
+      user: userWithoutPassword,
     });
-    response.headers.set(
-      "Set-Cookie",
-      `${COOKIE_NAME}=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=604800`
-    );
-    return response;
   } catch (error) {
-    console.error("Lỗi đăng nhập:", error);
+    console.error("Login error:", error);
     return NextResponse.json(
-      {
-        success: false,
-        error: "Đã xảy ra lỗi khi đăng nhập",
-      },
+      { success: false, error: "Lỗi server" },
       { status: 500 }
     );
   }
