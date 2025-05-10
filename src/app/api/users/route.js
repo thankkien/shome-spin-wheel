@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAllUsers, createUser, deleteUser } from "@/lib/db/models/user";
+import { query, run } from "@/lib/db";
 import { z } from "zod";
 import { getUserFromRequest } from "@/lib/jwt";
 
@@ -24,7 +24,9 @@ export async function GET(request) {
       { status: 403 }
     );
   }
-  const users = await getAllUsers();
+  const users = await query(
+    "SELECT id, email, employeeId, role, fullname, department FROM users ORDER BY id ASC"
+  );
   return NextResponse.json({ success: true, users });
 }
 
@@ -38,7 +40,36 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const data = userSchema.parse(body);
-    const result = await createUser(data);
+
+    // Kiểm tra email đã tồn tại
+    const existingUser = await query(
+      "SELECT * FROM users WHERE email = ?",
+      [data.email]
+    );
+    if (existingUser.length > 0) {
+      throw new Error("Email đã tồn tại");
+    }
+
+    // Kiểm tra employeeId đã tồn tại
+    const existingEmployee = await query(
+      "SELECT * FROM users WHERE employeeId = ?",
+      [data.employeeId]
+    );
+    if (existingEmployee.length > 0) {
+      throw new Error("employeeId đã tồn tại");
+    }
+
+    const result = await run(
+      "INSERT INTO users (email, password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?)",
+      [
+        data.email,
+        data.password,
+        data.employeeId,
+        data.role,
+        data.fullname,
+        data.department,
+      ]
+    );
     return NextResponse.json({ success: true, result });
   } catch (error) {
     return NextResponse.json(
@@ -76,7 +107,7 @@ export async function DELETE(request) {
     }
     const results = [];
     for (const id of ids) {
-      const result = await deleteUser(id);
+      const result = await run("DELETE FROM users WHERE id = ?", [id]);
       results.push({ id, result });
     }
     return NextResponse.json({ success: true, results });

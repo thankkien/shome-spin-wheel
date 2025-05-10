@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getUserById, deleteUser, updateUser } from "@/lib/db/models/user";
+import { get, run } from "@/lib/db";
 import { z } from "zod";
 import { getUserFromRequest } from "@/lib/jwt";
 
@@ -28,7 +28,53 @@ export async function PATCH(request, { params }) {
     const id = params.id;
     const body = await request.json();
     const data = updateUserSchema.parse(body);
-    const result = await updateUser(id, data);
+
+    // Kiểm tra user tồn tại
+    const user = await get("SELECT * FROM users WHERE id = ?", [id]);
+    if (!user) {
+      throw new Error("Không tìm thấy user");
+    }
+
+    // Kiểm tra email mới nếu có
+    if (data.email && data.email !== user.email) {
+      const existingUser = await get(
+        "SELECT * FROM users WHERE email = ? AND id != ?",
+        [data.email, id]
+      );
+      if (existingUser) {
+        throw new Error("Email đã tồn tại");
+      }
+    }
+
+    // Kiểm tra employeeId mới nếu có
+    if (data.employeeId && data.employeeId !== user.employeeId) {
+      const existingEmployee = await get(
+        "SELECT * FROM users WHERE employeeId = ? AND id != ?",
+        [data.employeeId, id]
+      );
+      if (existingEmployee) {
+        throw new Error("employeeId đã tồn tại");
+      }
+    }
+
+    // Tạo câu lệnh UPDATE động
+    const fields = [];
+    const values = [];
+    for (const [key, value] of Object.entries(data)) {
+      if (value !== undefined) {
+        fields.push(`${key} = ?`);
+        values.push(value);
+      }
+    }
+
+    if (fields.length === 0) {
+      throw new Error("Không có trường nào để cập nhật");
+    }
+
+    values.push(id);
+    const sql = `UPDATE users SET ${fields.join(", ")} WHERE id = ?`;
+    const result = await run(sql, values);
+
     return NextResponse.json({ success: true, result });
   } catch (error) {
     return NextResponse.json(
@@ -47,7 +93,7 @@ export async function DELETE(request, { params }) {
   }
   try {
     const id = params.id;
-    const result = await deleteUser(id);
+    const result = await run("DELETE FROM users WHERE id = ?", [id]);
     return NextResponse.json({ success: true, result });
   } catch (error) {
     return NextResponse.json(
