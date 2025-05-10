@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { authenticateUser } from "@/lib/db/models/user";
+import { signJwt, COOKIE_NAME } from "@/lib/jwt";
 
 /**
  * Xử lý đăng nhập người dùng
@@ -31,14 +32,31 @@ export async function POST(request) {
       );
     }
 
-    return NextResponse.json({
+    // Tạo JWT và set vào cookie HttpOnly
+    const token = signJwt({
+      id: user.id,
+      email: user.email,
+      role: user.role,
+      employeeId: user.employeeId,
+      fullname: user.fullname,
+      department: user.department,
+    });
+    const response = NextResponse.json({
       success: true,
       user: {
         id: user.id,
         email: user.email,
         employeeId: user.employeeId,
+        role: user.role,
+        fullname: user.fullname,
+        department: user.department,
       },
     });
+    response.headers.set(
+      "Set-Cookie",
+      `${COOKIE_NAME}=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=604800`
+    );
+    return response;
   } catch (error) {
     console.error("Lỗi đăng nhập:", error);
     return NextResponse.json(

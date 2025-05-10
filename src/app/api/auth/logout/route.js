@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { COOKIE_NAME } from "@/lib/jwt";
 
 /**
  * Xử lý đăng xuất người dùng
@@ -6,9 +7,14 @@ import { NextResponse } from "next/server";
  */
 export async function POST() {
   try {
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
     });
+    response.headers.set(
+      "Set-Cookie",
+      `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
+    );
+    return response;
   } catch (error) {
     console.error("Lỗi khi đăng xuất:", error);
     return NextResponse.json(
