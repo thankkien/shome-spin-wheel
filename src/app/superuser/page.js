@@ -8,7 +8,7 @@ import {
   HStack,
   Spinner,
   IconButton,
-} from "@/components/base-ui";
+} from "@/components/base";
 import { AddIcon, DeleteIcon, EditIcon, DownloadIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

@@ -1,11 +1,24 @@
 import React from "react";
+import { tv } from "tailwind-variants";
 
-export default function Spinner({ size = 24, color = "#319795", className = "", ...props }) {
+const spinner = tv({
+  base: "animate-spin",
+  variants: {
+    size: {
+      sm: "w-4 h-4",
+      md: "w-6 h-6",
+      lg: "w-8 h-8",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export default function Spinner({ size = "md", color = "#319795", className = "", ...props }) {
   return (
     <svg
-      className={`animate-spin ${className}`}
-      width={size}
-      height={size}
+      className={spinner({ size, className })}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

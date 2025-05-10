@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import withAuth from "@/components/hoc/withAuth";
-import { Box, Stack, Button, Spinner } from "@/components/base-ui";
+import { Box, Stack, Button, Spinner } from "@/components/base";
 import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
 import { Alert } from "@/components/ui/alert";
