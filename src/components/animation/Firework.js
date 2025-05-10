@@ -3,12 +3,13 @@
 import { cn } from "@/utils/classname";
 import { useState, useCallback } from "react";
 import { nanoid } from "nanoid";
+import { getRandomVariant } from "@/utils/getRandomVariant";
 
 const sizeVariants = {
-  sm: "size-4",
-  md: "size-6",
-  lg: "size-8",
-  xl: "size-10",
+  sm: "size-2",
+  md: "size-3",
+  lg: "size-4",
+  xl: "size-5",
 };
 
 const animationVariants = {
@@ -47,17 +48,9 @@ const topFractions = [
   "top-full",
 ];
 
-function getRandomVariant(input) {
-  if (Array.isArray(input)) {
-    return input[Math.floor(Math.random() * input.length)];
-  } else if (typeof input === "object" && input !== null) {
-    const values = Object.values(input);
-    return values[Math.floor(Math.random() * values.length)];
-  }
-  return input;
-}
 
 export default function Firework({ className, randomPosition = false }) {
+  const [key, setKey] = useState(nanoid());
   const [sizeClass, setSizeClass] = useState(() =>
     getRandomVariant(sizeVariants)
   );
@@ -71,7 +64,6 @@ export default function Firework({ className, randomPosition = false }) {
   const [leftClass, setLeftClass] = useState(() =>
     getRandomVariant(leftFractions)
   );
-  const [key, setKey] = useState(nanoid());
 
   const handleAnimationEnd = useCallback(() => {
     setSizeClass(getRandomVariant(sizeVariants));

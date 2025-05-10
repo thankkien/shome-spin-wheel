@@ -272,7 +272,7 @@ body {
 
 /* Hiệu ứng kim tuyến rơi */
 @theme {
-  --animate-confetti-fall: confetti-fall 3s ease-in-out 0.1s infinite;
+  --animate-confetti-fall: confetti-fall 3s ease-in-out 0.1s;
   @keyframes confetti-fall {
     0% {
       transform: translateY(0) rotate(0deg);

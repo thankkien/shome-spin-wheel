@@ -14,10 +14,11 @@ export default function FireworkEffect() {
       <Firework className="top-1/3 -right-2" />
       <Firework className="top-1/4 left-1/4" />
       <Firework className="top-1/4 right-1/4" />
+      <Firework className="top-1/2 right-1/2" />
 
       {/* Pháo hóa ở các vị trí ngẫu nhiên */}
-      {[...Array(4)].map((_) => (
-        <Firework randomPosition={true} />
+      {[...Array(4)].map((_, i) => (
+        <Firework key={i} randomPosition={true} />
       ))}
     </>
   );

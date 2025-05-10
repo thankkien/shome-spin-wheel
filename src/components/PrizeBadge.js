@@ -4,7 +4,7 @@ import { cn } from "@/utils/classname";
 import { useEffect, useState } from "react";
 import { useSpinWheel } from "@/hooks";
 import FireworkEffect from "./animation/FireworkEffect";
-
+import ConfettiEffect from "./animation/ConfettiEffect";
 export default function PrizeBadge({ className }) {
   const [animate, setAnimate] = useState(false);
 
@@ -34,35 +34,7 @@ export default function PrizeBadge({ className }) {
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <FireworkEffect />
-
-        {/* Hiệu ứng tỏa sáng từ trung tâm */}
-        <div
-          className={cn(
-            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-yellow-400 rounded-full opacity-0 animate-starburst"
-          )}
-        ></div>
-
-        {Array.from({ length: 15 }).map((_, i) => (
-          <div
-            key={i}
-            className={cn(
-              "absolute top-0 w-1 h-3 opacity-0",
-              `left-[${Math.floor(Math.random() * 100)}%]`,
-              animate ? `animate-confetti-fall` : ""
-            )}
-            style={{
-              backgroundColor: [
-                "#FFD700",
-                "#FF007F",
-                "#00FFFF",
-                "#FF00FF",
-                "#00FF00",
-              ][i % 5],
-              left: `${(i * 7) % 100}%`,
-              animationDelay: `${i * 0.1}s`,
-            }}
-          ></div>
-        ))}
+        <ConfettiEffect />
       </div>
 
       {/* Viền sáng đặc biệt */}
