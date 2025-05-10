@@ -36,6 +36,7 @@ export async function POST(request) {
       user: {
         id: user.id,
         email: user.email,
+        employeeId: user.employeeId,
       },
     });
   } catch (error) {

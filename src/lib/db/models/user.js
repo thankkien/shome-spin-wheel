@@ -5,7 +5,7 @@ const { query, get, run } = require("../index");
  * @returns {Promise<Array>} Danh sách người dùng
  */
 async function getAllUsers() {
-  return await query("SELECT id, email FROM users ORDER BY id ASC");
+  return await query("SELECT id, email, employeeId FROM users ORDER BY id ASC");
 }
 
 /**
@@ -14,7 +14,7 @@ async function getAllUsers() {
  * @returns {Promise<Object>} Thông tin người dùng
  */
 async function getUserById(id) {
-  return await get("SELECT id, email FROM users WHERE id = ?", [id]);
+  return await get("SELECT id, email, employeeId FROM users WHERE id = ?", [id]);
 }
 
 /**
@@ -60,17 +60,23 @@ async function authenticateUser(email, password) {
  * @param {Object} userData - Thông tin người dùng
  * @param {string} userData.email - Email người dùng
  * @param {string} userData.password - Mật khẩu người dùng
+ * @param {string} userData.employeeId - ID nhân viên
  * @returns {Promise<Object>} Kết quả thực hiện
  */
-async function createUser({ email, password }) {
+async function createUser({ email, password, employeeId }) {
   const existingUser = await getUserByEmail(email);
   if (existingUser) {
     throw new Error("Email đã tồn tại");
   }
-
-  return await run("INSERT INTO users (email, password) VALUES (?, ?)", [
+  // Kiểm tra employeeId đã tồn tại chưa
+  const existingEmployee = await get("SELECT * FROM users WHERE employeeId = ?", [employeeId]);
+  if (existingEmployee) {
+    throw new Error("employeeId đã tồn tại");
+  }
+  return await run("INSERT INTO users (email, password, employeeId) VALUES (?, ?, ?)", [
     email,
     password,
+    employeeId,
   ]);
 }
 

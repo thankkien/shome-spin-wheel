@@ -10,14 +10,16 @@ async function seedUsers() {
     const existingUsers = await query("SELECT COUNT(*) as count FROM users");
 
     if (existingUsers[0].count === 0) {
-      await run("INSERT INTO users (email, password) VALUES (?, ?)", [
+      await run("INSERT INTO users (email, password, employeeId) VALUES (?, ?, ?)", [
         "user@shome.vn",
         password,
+        "EMP001"
       ]);
 
-      await run("INSERT INTO users (email, password) VALUES (?, ?)", [
+      await run("INSERT INTO users (email, password, employeeId) VALUES (?, ?, ?)", [
         "admin@shome.vn",
         password,
+        "EMP002"
       ]);
 
       console.log("Đã thêm dữ liệu người dùng mẫu");

@@ -11,7 +11,8 @@ const createUsersTable = `
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   email TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  employeeId TEXT UNIQUE NOT NULL
 )
 `;
 
