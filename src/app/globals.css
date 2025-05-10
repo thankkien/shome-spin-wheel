@@ -109,205 +109,178 @@ body {
   color: var(--primary-contrast);
 }
 
-@keyframes firework {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.5) translateY(-20px);
+/* Hiệu ứng pháo hoa gốc */
+@theme {
+  --animate-firework: firework 1s ease-out 0.1s;
+  @keyframes firework {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.5) translateY(-20px);
+      opacity: 0;
+    }
   }
 }
 
-@keyframes firework-scatter {
-  0% {
-    opacity: 0;
-    transform: scale(0);
+/* Hiệu ứng pháo hoa tỏa ra */
+@theme {
+  --animate-firework-scatter: firework-scatter 1.5s ease-out 0.1s;
+  @keyframes firework-scatter {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    20% {
+      transform: scale(0.8);
+      opacity: 0.8;
+    }
+    40% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    60% {
+      box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.8);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+      opacity: 0;
+    }
   }
-  20% {
-    opacity: 0.8;
-    transform: scale(0.8);
-  }
-  40% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  60% {
-    opacity: 0.8;
-    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.8);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Hiệu ứng pháo hoa nổ */
+@theme {
+  --animate-firework-burst: firework-burst 1.2s ease-out forwards;
+  @keyframes firework-burst {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    25% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1) rotate(45deg);
+      opacity: 0.8;
+    }
+    75% {
+      transform: scale(1.5) rotate(-45deg);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(2) translateY(-30px);
+      opacity: 0;
+    }
   }
 }
 
 /* Hiệu ứng tỏa sáng từ trung tâm */
-@keyframes starburst {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.1);
-  }
-  25% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(2);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translate(-50%, -50%) scale(1.5);
-  }
-  75% {
-    opacity: 0.7;
-    transform: translate(-50%, -50%) scale(2.2);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(3);
+@theme {
+  --animate-starburst: starburst 2s ease-out 0.5s infinite;
+  @keyframes starburst {
+    0% {
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0;
+    }
+    25% {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.5);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translate(-50%, -50%) scale(2.2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0;
+    }
   }
 }
 
 /* Hiệu ứng nhấp nháy */
-@keyframes pulse-grow {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
+@theme {
+  --animate-pulse: pulse 1s ease-in-out infinite;
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
   }
 }
 
 /* Hiệu ứng viền lấp lánh */
-@keyframes sparkle-border {
-  0% {
-    opacity: 0;
-    border-color: rgba(255, 215, 0, 0);
-    box-shadow: 0 0 0 rgba(255, 215, 0, 0);
-  }
-  25% {
-    opacity: 0.5;
-    border-color: rgba(255, 215, 0, 0.8);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-  }
-  50% {
-    opacity: 0.3;
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  }
-  75% {
-    opacity: 0.5;
-    border-color: rgba(255, 215, 0, 0.8);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-  }
-  100% {
-    opacity: 0;
-    border-color: rgba(255, 215, 0, 0);
-    box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+@theme {
+  --animate-sparkle-border: sparkle-border 3s ease-in-out infinite;
+  @keyframes sparkle-border {
+    0% {
+      border-color: rgba(255, 215, 0, 0);
+      box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+      opacity: 0;
+    }
+    25% {
+      border-color: rgba(255, 215, 0, 0.8);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      opacity: 0.5;
+    }
+    50% {
+      border-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      opacity: 0.3;
+    }
+    75% {
+      border-color: rgba(255, 215, 0, 0.8);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      opacity: 0.5;
+    }
+    100% {
+      border-color: rgba(255, 215, 0, 0);
+      box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+      opacity: 0;
+    }
   }
 }
 
 /* Hiệu ứng phần thưởng phát sáng */
-@keyframes prize-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+@theme {
+  --animate-prize-glow: prize-glow 1.5s ease-in-out infinite;
+  @keyframes prize-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
   }
 }
 
 /* Hiệu ứng kim tuyến rơi */
-@keyframes confetti-fall {
-  0% {
-    opacity: 1;
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(100px) rotate(720deg);
-  }
-}
-
-@layer utilities {
-  /* Hiệu ứng pháo hoa gốc */
-  .animate-firework1 {
-    animation: firework 1s ease-out 0.1s infinite;
-  }
-
-  .animate-firework2 {
-    animation: firework 1s ease-out 0.3s infinite;
-  }
-
-  .animate-firework3 {
-    animation: firework 1s ease-out 0.5s infinite;
-  }
-
-  .animate-firework4 {
-    animation: firework 1s ease-out 0.7s infinite;
-  }
-
-  /* Hiệu ứng pháo hoa mở rộng */
-  .animate-firework5 {
-    animation: firework-scatter 1.2s ease-out 0.2s infinite;
-  }
-
-  .animate-firework6 {
-    animation: firework-scatter 1.2s ease-out 0.6s infinite;
-  }
-
-  .animate-firework7 {
-    animation: firework-scatter 1.2s ease-out 1s infinite;
-  }
-
-  .animate-firework8 {
-    animation: firework-scatter 1.2s ease-out 1.4s infinite;
-  }
-
-  /* Hiệu ứng tỏa sáng */
-  .animate-starburst {
-    animation: starburst 2s ease-out 0.5s infinite;
-  }
-
-  /* Hiệu ứng nhấp nháy */
-  .animate-pulse {
-    animation: pulse-grow 1s ease-in-out infinite;
-  }
-
-  /* Hiệu ứng viền lấp lánh */
-  .animate-sparkle-border {
-    animation: sparkle-border 3s ease-in-out infinite;
-  }
-
-  /* Hiệu ứng phần thưởng phát sáng */
-  .animate-prize-glow {
-    animation: prize-glow 1.5s ease-in-out infinite;
-  }
-
-  /* Hiệu ứng kim tuyến rơi */
-  .animate-confetti-1 {
-    animation: confetti-fall 3s ease-in-out 0.1s infinite;
-  }
-
-  .animate-confetti-2 {
-    animation: confetti-fall 2.7s ease-in-out 0.3s infinite;
-  }
-
-  .animate-confetti-3 {
-    animation: confetti-fall 2.9s ease-in-out 0.5s infinite;
-  }
-
-  .animate-confetti-4 {
-    animation: confetti-fall 3.2s ease-in-out 0.7s infinite;
-  }
-
-  .animate-confetti-5 {
-    animation: confetti-fall 2.5s ease-in-out 0.9s infinite;
+@theme {
+  --animate-confetti-fall: confetti-fall 3s ease-in-out 0.1s infinite;
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100px) rotate(720deg);
+      opacity: 0;
+    }
   }
 }

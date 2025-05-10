@@ -54,7 +54,6 @@ export default function SpinWheelClient() {
       wheel.spinToItem(...calcSpinToValues(prizeIndex));
     } else {
       const { hasSpun, prize } = result;
-      console.log(result);
       if (hasSpun !== undefined && hasSpun !== null) {
         setHasSpun(hasSpun);
       }
@@ -111,6 +110,13 @@ export default function SpinWheelClient() {
 
       const newWheel = new Wheel(wheelContainerRef.current, props);
       setWheel(newWheel);
+
+      if (prize) {
+        const prizeIndex = prizeList.findIndex((item) => item.id === prize.id);
+        if (prizeIndex !== -1) {
+          newWheel.spinToItem(prizeIndex, 0, false, 0, 1, null);
+        }
+      }
     } catch (error) {
       console.error("Lỗi khởi tạo vòng quay:", error);
     }
