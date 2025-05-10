@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ChakraProviders } from "@/components/providers";
+import { Provider } from "@/components/ui/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +29,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-md mx-auto font-[family-name:var(--font-geist-sans)]`}
       >
-        <ChakraProviders>
+        <Provider>
           <div className="flex flex-col min-h-screen p-8">
             <Header />
             <main className="w-full max-w-md flex-grow">{children}</main>
@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
               </p>
             </footer>
           </div>
-        </ChakraProviders>
+        </Provider>
       </body>
     </html>
   );

@@ -8,15 +8,25 @@ export default function withAuth(Component) {
   return function WithAuth(props) {
     const router = useRouter();
     const pathname = usePathname();
-    const { user } = useAuth();
+    const verify = useAuth((state) => state.verify);
 
     useEffect(() => {
-      if (!user) {
-        router.push("/login");
-      } else if (pathname === "/login") {
-        router.push("/");
-      }
-    }, [user, router, pathname]);
+      const validateAuth = async () => {
+        try {
+          const isValid = await verify();
+          if (!isValid) {
+            router.push("/login");
+          } else if (pathname === "/login") {
+            router.push("/");
+          }
+        } catch (error) {
+          console.error("Auth validation error:", error);
+          router.push("/login");
+        }
+      };
+
+      validateAuth();
+    }, [pathname, router, verify]);
 
     return <Component {...props} />;
   };
