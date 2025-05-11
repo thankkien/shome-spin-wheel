@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuthStore } from "@/stores/useAuthStore";
 import withAuth from "@/components/hoc/withAuth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -21,8 +20,8 @@ const loginSchema = z.object({
 
 function Login() {
   const router = useRouter();
-  const login = useAuth((state) => state.login);
-  const user = useAuth((state) => state.user);
+  const login = useAuthStore((state) => state.login);
+  const user = useAuthStore((state) => state.user);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -61,7 +60,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="flex items-center justify-center">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">Đăng nhập</CardTitle>

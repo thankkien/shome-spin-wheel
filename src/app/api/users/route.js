@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { query, run } from "@/lib/db";
 import { z } from "zod";
 import { getUserFromRequest } from "@/lib/jwt";
-
+import lodash from "lodash";
 const userSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
@@ -24,10 +24,81 @@ export async function GET(request) {
       { status: 403 }
     );
   }
-  const users = await query(
-    "SELECT id, email, employeeId, role, fullname, department FROM users ORDER BY id ASC"
-  );
-  return NextResponse.json({ success: true, users });
+
+  const { searchParams } = new URL(request.url);
+
+  const page = parseInt(searchParams.get("page")) || 1;
+  const limit = parseInt(searchParams.get("limit")) || 10;
+  const offset = (page - 1) * limit;
+
+  const orderBy = searchParams.get("order-by") || "id";
+  const order = (searchParams.get("order") || "asc").toUpperCase();
+
+  const validColumns = [
+    "id",
+    "email",
+    "employeeId",
+    "role",
+    "fullname",
+    "department",
+  ];
+  const safeOrderBy = validColumns.includes(orderBy) ? orderBy : "id";
+  const safeOrder = ["ASC", "DESC"].includes(order) ? order : "ASC";
+
+  const fields = lodash.uniq(searchParams.getAll("fields[]") ?? validColumns);
+console.log(fields)
+  const search = searchParams.get("search") || "";
+  const searchByParam =
+    searchParams.get("search-by") || "email,fullname,department";
+  const searchBy = searchByParam
+    .split(",")
+    .filter((field) => validColumns.includes(field));
+
+  let sql = `SELECT ${fields || "*"} FROM users`;
+  const params = [];
+
+  if (search && searchBy.length > 0) {
+    const searchConditions = searchBy
+      .map((field) => `${field} LIKE ?`)
+      .join(" OR ");
+    sql += ` WHERE (${searchConditions})`;
+    for (let i = 0; i < searchBy.length; i++) {
+      params.push(`%${search}%`);
+    }
+  }
+
+  sql += ` ORDER BY ${safeOrderBy} ${safeOrder} LIMIT ? OFFSET ?`;
+  params.push(limit, offset);
+
+  const users = await query(sql, params);
+
+  let countSql = "SELECT COUNT(*) as total FROM users";
+  const countParams = [];
+
+  if (search && searchBy.length > 0) {
+    const searchConditions = searchBy
+      .map((field) => `${field} LIKE ?`)
+      .join(" OR ");
+    countSql += ` WHERE (${searchConditions})`;
+    for (let i = 0; i < searchBy.length; i++) {
+      countParams.push(`%${search}%`);
+    }
+  }
+
+  const totalResult = await query(countSql, countParams);
+  const total = totalResult[0].total;
+  const totalPages = Math.ceil(total / limit);
+
+  return NextResponse.json({
+    success: true,
+    users,
+    pagination: {
+      total,
+      page,
+      limit,
+      totalPages,
+    },
+  });
 }
 
 export async function POST(request) {
@@ -42,10 +113,9 @@ export async function POST(request) {
     const data = userSchema.parse(body);
 
     // Kiểm tra email đã tồn tại
-    const existingUser = await query(
-      "SELECT * FROM users WHERE email = ?",
-      [data.email]
-    );
+    const existingUser = await query("SELECT * FROM users WHERE email = ?", [
+      data.email,
+    ]);
     if (existingUser.length > 0) {
       throw new Error("Email đã tồn tại");
     }

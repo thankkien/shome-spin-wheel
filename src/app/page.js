@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import { useAuth, useSpinWheel } from "@/hooks";
+import { useAuthStore, useSpinWheelStore } from "@/stores";
 import PrizeBadge from "@/components/PrizeBadge";
 import withAuth from "@/components/hoc/withAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 function HomePage() {
-  const user = useAuth(state => state.user);
-  const hasSpun = useSpinWheel(state => state.hasSpun);
-  const fetchSpinStatus = useSpinWheel(state => state.fetchSpinStatus);
+  const user = useAuthStore((state) => state.user);
+  const hasSpun = useSpinWheelStore((state) => state.hasSpun);
+  const fetchSpinStatus = useSpinWheelStore((state) => state.fetchSpinStatus);
 
   useEffect(() => {
     if (user) {

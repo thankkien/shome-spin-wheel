@@ -2,13 +2,14 @@
 
 import { useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuthStore } from "@/stores";
 
 export default function withAuth(Component) {
   return function WithAuth(props) {
     const router = useRouter();
     const pathname = usePathname();
-    const verify = useAuth((state) => state.verify);
+    const verify = useAuthStore((state) => state.verify);
+    const user = useAuthStore((state) => state.user);
 
     useEffect(() => {
       const validateAuth = async () => {
@@ -16,6 +17,8 @@ export default function withAuth(Component) {
           const isValid = await verify();
           if (!isValid) {
             router.push("/login");
+          } else if (user?.role === "admin") {
+            router.push("/superuser");
           } else if (pathname === "/login") {
             router.push("/");
           }

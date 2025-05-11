@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "antialiased max-w-md mx-auto min-h-screen p-2 flex flex-col",
+          "antialiased max-w-md mx-auto min-h-screen p-2 flex flex-col w-[100vw]",
           geistSans.variable,
           geistMono.variable
         )}

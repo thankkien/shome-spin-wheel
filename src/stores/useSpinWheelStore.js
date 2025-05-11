@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { useAuth } from "./useAuth";
+import { useAuthStore } from "./useAuthStore";
 
-export const useSpinWheel = create(
+export const useSpinWheelStore = create(
   persist(
     (set, get) => ({
       isSpinning: false,
@@ -16,7 +16,7 @@ export const useSpinWheel = create(
 
       spin: async () => {
         try {
-          const authState = useAuth.getState();
+          const authState = useAuthStore.getState();
           if (!authState?.user?.id) {
             return { success: false, error: "ID người dùng không hợp lệ" };
           }

@@ -2,14 +2,14 @@
 
 import { cn } from "@/utils/classname";
 import { useEffect, useState } from "react";
-import { useSpinWheel } from "@/hooks";
+import { useSpinWheelStore } from "@/stores";
 import FireworkEffect from "./animation/FireworkEffect";
 import ConfettiEffect from "./animation/ConfettiEffect";
 export default function PrizeBadge({ className }) {
   const [animate, setAnimate] = useState(false);
 
-  const hasSpun = useSpinWheel((state) => state.hasSpun);
-  const prize = useSpinWheel((state) => state.prize);
+  const hasSpun = useSpinWheelStore((state) => state.hasSpun);
+  const prize = useSpinWheelStore((state) => state.prize);
 
   useEffect(() => {
     if (prize) {

@@ -2,12 +2,14 @@
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useCallback, useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuthStore } from "@/stores/useAuthStore";
 
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
-  const { user, logout } = useAuth();
+  const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
+
   const [isHomePage, setIsHomePage] = useState(false);
 
   useEffect(() => setIsHomePage(pathname === "/"), [pathname]);

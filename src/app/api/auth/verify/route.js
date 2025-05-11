@@ -6,7 +6,7 @@ import { omit } from "lodash";
 
 export async function POST() {
   try {
-    const token = cookies().get(COOKIE_NAME)?.value;
+    const token = await (await cookies()).get(COOKIE_NAME)?.value;
 
     if (!token) {
       return NextResponse.json(
