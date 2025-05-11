@@ -80,7 +80,6 @@ export const useUserStore = create((set, get) => ({
       const test = {
         fields: { ...state.fields, ...newFields },
       }
-      console.log(test)
       return test
     });
     get().fetchUsers();
@@ -106,7 +105,7 @@ export const useUserStore = create((set, get) => ({
     console.log(selections)
     set({
       selections,
-      selectedUsers: lodash.pick(get().users, Object.keys(selections))
+      selectedUsers: lodash.pick(get().users, Object.keys(selections)).map((user) => user.id)
     });
   },
 
