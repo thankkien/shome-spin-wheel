@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Plus, Trash2, FileDown } from "lucide-react";
+import { Plus, Trash2, FileDown, Eye, ChevronDown } from "lucide-react";
 import { useUserStore } from "@/app/superuser/useUserStore";
 import {
   DropdownMenu,
@@ -10,9 +10,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import { debounce } from "lodash";
+import { useCallback } from "react";
 
 export function UserTableActions({ table }) {
-  const {selectedUsers, deleteUsers, exportUsers, openCreateForm} = useUserStore();
+  const {
+    selectedUsers,
+    deleteUsers,
+    exportUsers,
+    openCreateForm,
+    fields,
+    setSearch,
+    searchBy,
+    setSearchBy,
+  } = useUserStore();
+
+  const debouncedSearch = useCallback(debounce(setSearch, 500), [setSearch]);
 
   return (
     <>
@@ -37,21 +50,45 @@ export function UserTableActions({ table }) {
       <div className="flex justify-end gap-2">
         <Input
           placeholder="Tìm..."
-          value={table.getColumn("email")?.getFilterValue() ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
+          onChange={(event) => debouncedSearch(event.target.value)}
           className="max-w-sm"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Cột</Button>
+            <Button variant="outline">
+              <ChevronDown className="size-4" />
+              <span className="mr-2">Tim theo</span>
+            </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            {table.getAllLeafColumns().reduce((acc, col) => {
-              const blackList = ["select", "actions"];
-              if (col.columnDef.meta?.label && !blackList.includes(col.id)) {
-                acc.push(
+            {table
+              .getAllLeafColumns()
+              .filter((col) => fields[col.id])
+              .map((col) => {
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={col.id}
+                    checked={col.id === searchBy}
+                    onCheckedChange={() => setSearchBy(col.id)}
+                  >
+                    {col.columnDef.meta?.label}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline">
+              <Eye className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {table
+              .getAllLeafColumns()
+              .filter((col) => fields[col.id])
+              .map((col) => {
+                return (
                   <DropdownMenuCheckboxItem
                     key={col.id}
                     checked={col.getIsVisible()}
@@ -62,9 +99,7 @@ export function UserTableActions({ table }) {
                     {col.columnDef.meta?.label}
                   </DropdownMenuCheckboxItem>
                 );
-              }
-              return acc;
-            }, [])}
+              })}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

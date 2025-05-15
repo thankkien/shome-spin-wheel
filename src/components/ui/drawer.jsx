@@ -6,9 +6,10 @@ import { Drawer as DrawerPrimitive } from "vaul"
 import { cn } from "@/lib/utils"
 
 function Drawer({
+  modal = false,
   ...props
 }) {
-  return <DrawerPrimitive.Root data-slot="drawer" {...props} />;
+  return <DrawerPrimitive.Root data-slot="drawer" modal={modal} {...props} />;
 }
 
 function DrawerTrigger({

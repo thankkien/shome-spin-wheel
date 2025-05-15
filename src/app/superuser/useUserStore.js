@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { userService } from "@/services/user.service";
 import { toast } from "sonner";
 import Papa from "papaparse";
-import lodash from "lodash";
 import { useAuthStore } from "@/stores/useAuthStore";
 
 export const useUserStore = create((set, get) => ({
@@ -17,17 +16,13 @@ export const useUserStore = create((set, get) => ({
     id: true,
     email: true,
     employeeId: true,
-    role: true,
     fullname: true,
     department: true,
+    password: true,
+    role: true,
   },
-  filters: {
-    email: "",
-    employeeId: "",
-    role: [],
-    fullname: "",
-    department: "",
-  },
+  search: "",
+  searchBy: "email",
   sorting: [],
   selections: {},
   selectedUsers: [],
@@ -48,8 +43,8 @@ export const useUserStore = create((set, get) => ({
         limit: state.pagination.limit,
         "order-by": state.sorting[0]?.id,
         order: state.sorting[0]?.desc,
-        search: state.filters.email,
-        "search-by": "email",
+        search: state.search,
+        "search-by": state.searchBy,
         fields: Object.keys(state.fields).filter((key) => state.fields[key]),
         ...params,
       };
@@ -74,6 +69,22 @@ export const useUserStore = create((set, get) => ({
     } finally {
       set({ loading: false });
     }
+  },
+
+  setSearch: (search) => {
+    set((state) => ({
+      search,
+      pagination: { ...state.pagination, page: 1 },
+    }));
+    get().fetchUsers();
+  },
+
+  setSearchBy: (searchBy) => {
+    set((state) => ({
+      searchBy,
+      pagination: { ...state.pagination, page: 1 },
+    }));
+    get().fetchUsers();
   },
 
   setPage: (page) => {

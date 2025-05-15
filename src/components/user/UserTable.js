@@ -130,11 +130,6 @@ export function UserTable() {
       header: ({ column }) => <SortableHeader column={column} />,
     },
     {
-      accessorKey: "role",
-      meta: { label: "Role" },
-      header: ({ column }) => <SortableHeader column={column} />,
-    },
-    {
       accessorKey: "fullname",
       meta: { label: "Họ tên" },
       header: ({ column }) => <SortableHeader column={column} />,
@@ -142,6 +137,16 @@ export function UserTable() {
     {
       accessorKey: "department",
       meta: { label: "Bộ phận" },
+      header: ({ column }) => <SortableHeader column={column} />,
+    },
+    {
+      accessorKey: "password",
+      meta: { label: "Mật khẩu" },
+      header: ({ column }) => <SortableHeader column={column} />,
+    },
+    {
+      accessorKey: "role",
+      meta: { label: "Role" },
       header: ({ column }) => <SortableHeader column={column} />,
     },
     {
