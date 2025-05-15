@@ -1,8 +1,9 @@
-import { create } from 'zustand';
-import { userService } from '@/services/user.service';
-import { toast } from 'sonner';
-import Papa from 'papaparse';
-import lodash from 'lodash';
+import { create } from "zustand";
+import { userService } from "@/services/user.service";
+import { toast } from "sonner";
+import Papa from "papaparse";
+import lodash from "lodash";
+import { useAuthStore } from "@/stores/useAuthStore";
 
 export const useUserStore = create((set, get) => ({
   users: [],
@@ -21,15 +22,22 @@ export const useUserStore = create((set, get) => ({
     department: true,
   },
   filters: {
-    email: '',
-    employeeId: '',
+    email: "",
+    employeeId: "",
     role: [],
-    fullname: '',
-    department: '',
+    fullname: "",
+    department: "",
   },
   sorting: [],
   selections: {},
   selectedUsers: [],
+
+  user: null,
+  isOpenForm: false,
+  closeForm: () => set({ isOpenForm: false, user: null }),
+  openCreateForm: () => set({ isOpenForm: true, user: null }),
+  openEditForm: (user) => set({ isOpenForm: true, user }),
+  toggleForm: () => set((state) => ({ isOpenForm: !state.isOpenForm })),
 
   fetchUsers: async (params = {}) => {
     set({ loading: true });
@@ -38,11 +46,11 @@ export const useUserStore = create((set, get) => ({
       const queryParams = {
         page: state.pagination.page,
         limit: state.pagination.limit,
-        'order-by': state.sorting[0]?.id,
+        "order-by": state.sorting[0]?.id,
         order: state.sorting[0]?.desc,
         search: state.filters.email,
-        'search-by': 'email',
-        fields: Object.keys(state.fields).filter(key => state.fields[key]),
+        "search-by": "email",
+        fields: Object.keys(state.fields).filter((key) => state.fields[key]),
         ...params,
       };
 
@@ -57,7 +65,7 @@ export const useUserStore = create((set, get) => ({
           },
         });
       } else {
-        toast.error(data.error || 'Không thể tải danh sách người dùng');
+        toast.error(data.error || "Không thể tải danh sách người dùng");
         set({ users: [] });
       }
     } catch (e) {
@@ -69,51 +77,64 @@ export const useUserStore = create((set, get) => ({
   },
 
   setPage: (page) => {
-    set(state => ({
-      pagination: { ...state.pagination, page }
+    set((state) => ({
+      pagination: { ...state.pagination, page },
     }));
     get().fetchUsers();
   },
 
   setFields: (newFields) => {
-    set(state => {
+    set((state) => {
       const test = {
         fields: { ...state.fields, ...newFields },
-      }
-      return test
+      };
+      return test;
     });
     get().fetchUsers();
   },
 
   setFilters: (newFilters) => {
-    set(state => ({
+    set((state) => ({
       filters: { ...state.filters, ...newFilters },
-      pagination: { ...state.pagination, page: 1 }
+      pagination: { ...state.pagination, page: 1 },
     }));
     get().fetchUsers();
   },
 
   setSorting: (sorting) => {
-    set(state => ({
+    set((state) => ({
       sorting,
-      pagination: { ...state.pagination, page: 1 }
+      pagination: { ...state.pagination, page: 1 },
     }));
     get().fetchUsers();
   },
 
   setSelectedUsers: (selections) => {
-    console.log(selections)
-    set({
-      selections,
-      selectedUsers: lodash.pick(get().users, Object.keys(selections)).map((user) => user.id)
-    });
+    const authUserId = useAuthStore.getState().user.id;
+    const filterSelections = () => {
+      return Object.keys(selections).reduce(
+        (acc, idx) => {
+          const user = get().users[idx];
+          if (user.id != authUserId) {
+            acc.selections[idx] = true;
+            acc.selectedUsers.push(user);
+          }
+          return acc;
+        },
+        {
+          selections: {},
+          selectedUsers: [],
+        }
+      );
+    };
+    set(filterSelections());
   },
 
   createUser: async (userData) => {
     try {
       const data = await userService.create(userData);
       if (data.success) {
-        toast.success('Thêm user thành công');
+        toast.success("Thêm user thành công");
         get().fetchUsers();
         return true;
       } else {
@@ -121,7 +142,7 @@ export const useUserStore = create((set, get) => ({
         return false;
       }
     } catch (e) {
-      toast.error(e.error || 'Lỗi hệ thống');
+      toast.error(e.error || "Lỗi hệ thống");
       return false;
     }
   },
@@ -130,7 +151,7 @@ export const useUserStore = create((set, get) => ({
     try {
       const data = await userService.update(id, userData);
       if (data.success) {
-        toast.success('Cập nhật user thành công');
+        toast.success("Cập nhật user thành công");
         get().fetchUsers();
         return true;
       } else {
@@ -138,18 +159,18 @@ export const useUserStore = create((set, get) => ({
         return false;
       }
     } catch (e) {
-      toast.error(e.error || 'Lỗi hệ thống');
+      toast.error(e.error || "Lỗi hệ thống");
       return false;
     }
   },
 
   deleteUsers: async (ids) => {
-    if (!window.confirm('Bạn chắc chắn muốn xóa?')) return;
+    if (!window.confirm("Bạn chắc chắn muốn xóa?")) return;
 
     try {
       const data = await userService.delete(ids);
       if (data.success) {
-        toast.success('Đã xóa user');
+        toast.success("Đã xóa user");
         get().fetchUsers();
         set({ selectedUsers: [] });
         return true;
@@ -158,7 +179,7 @@ export const useUserStore = create((set, get) => ({
         return false;
       }
     } catch (e) {
-      toast.error(e.error || 'Lỗi hệ thống');
+      toast.error(e.error || "Lỗi hệ thống");
       return false;
     }
   },
@@ -167,11 +188,11 @@ export const useUserStore = create((set, get) => ({
     const state = get();
     const filteredUsers = state.users;
     const csv = Papa.unparse(filteredUsers);
-    const blob = new Blob([csv], { type: 'text/csv' });
+    const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'users.csv';
+    a.download = "users.csv";
     a.click();
     URL.revokeObjectURL(url);
   },

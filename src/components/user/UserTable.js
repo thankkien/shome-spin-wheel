@@ -23,8 +23,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useUserStore } from "@/stores/useUserStore";
+import { useUserStore } from "@/app/superuser/useUserStore";
 import { UserTableActions } from '@/components/user/UserTableActions';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const SortIcon = ({ column }) => {
   const isNumeric = column.columnDef.meta?.type === 'number';
@@ -71,9 +72,7 @@ const SortableHeader = ({ column }) => {
   );
 };
 
-export function UserTable({
-  openEditModal,
-}) {
+export function UserTable() {
   const {
     users,
     loading,
@@ -86,7 +85,9 @@ export function UserTable({
     setSorting,
     fields,
     setFields,
+    openEditForm,
   } = useUserStore();
+  const { user } = useAuthStore();
 
   const userColumns = [
     {
@@ -106,6 +107,7 @@ export function UserTable({
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
           aria-label="Chọn dòng"
+          disabled={user.id === row.original.id}
         />
       ),
       enableSorting: false,
@@ -158,7 +160,7 @@ export function UserTable({
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => openEditModal(u)}
+                    onClick={() => openEditForm(u)}
                   >
                     <Edit className="w-4 h-4" />
                   </Button>
@@ -173,6 +175,7 @@ export function UserTable({
                     variant="ghost"
                     size="icon"
                     onClick={() => deleteUsers([u.id])}
+                    disabled={user.id === u.id}
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>

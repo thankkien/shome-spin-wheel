@@ -1,33 +1,40 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { 
-  Drawer, 
-  DrawerContent, 
-  DrawerHeader, 
-  DrawerTitle, 
-  DrawerFooter 
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerFooter,
 } from "@/components/ui/drawer";
-import { 
-  Form, 
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormLabel, 
-  FormMessage 
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  InputOTP,
+  InputOTPSeparator,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
-import { useUserStore } from "@/stores/useUserStore";
+import { useUserStore } from "@/app/superuser/useUserStore";
 
 const userSchema = z.object({
   email: z.string().email(),
@@ -41,51 +48,55 @@ const userSchema = z.object({
   department: z.string().min(1),
 });
 
-export function UserModal({ 
-  open, 
-  onOpenChange, 
-  editingUser 
-}) {
-  const { createUser, updateUser } = useUserStore();
+export function UserDrawer() {
+  const { createUser, updateUser, closeForm, toggleForm, user, isOpenForm } =
+    useUserStore();
 
   const form = useForm({
     resolver: zodResolver(userSchema),
-    defaultValues: editingUser ? {
-      ...editingUser,
-      password: '', // Always reset password field
-    } : {
-      email: '',
-      password: '',
-      employeeId: '',
-      role: 'user',
-      fullname: '',
-      department: '',
-    },
   });
+
+  useEffect(() => {
+    if (isOpenForm) {
+      form.reset(
+        user ?? {
+          email: "",
+          password: "",
+          employeeId: "",
+          role: "user",
+          fullname: "",
+          department: "",
+        }
+      );
+    }
+  }, [isOpenForm, user]);
 
   const onSubmit = async (values) => {
     const submitData = { ...values };
     if (!submitData.password) delete submitData.password;
 
-    const success = editingUser 
-      ? await updateUser(editingUser.id, submitData)
+    const success = user
+      ? await updateUser(user.id, submitData)
       : await createUser(submitData);
 
     if (success) {
-      onOpenChange(false);
+      closeForm();
     }
   };
 
   return (
-    <Drawer open={open} onOpenChange={onOpenChange}>
+    <Drawer open={isOpenForm} onOpenChange={toggleForm}>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>
-            {editingUser ? 'Chỉnh sửa người dùng' : 'Thêm người dùng mới'}
+            {user ? "Chỉnh sửa người dùng" : "Thêm người dùng mới"}
           </DrawerTitle>
         </DrawerHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 p-4">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 p-4"
+          >
             <FormField
               control={form.control}
               name="email"
@@ -105,13 +116,48 @@ export function UserModal({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Mật khẩu</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="password" 
-                      placeholder={editingUser ? 'Để trống nếu không thay đổi' : 'Nhập mật khẩu'} 
-                      {...field} 
-                    />
-                  </FormControl>
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    <FormControl style={{ flex: 1 }}>
+                      <InputOTP maxLength={6} {...field}>
+                        <InputOTPGroup>
+                          <InputOTPSlot index={0} />
+                          <InputOTPSlot index={1} />
+                          <InputOTPSlot index={2} />
+                        </InputOTPGroup>
+                        <InputOTPSeparator />
+                        <InputOTPGroup>
+                          <InputOTPSlot index={3} />
+                          <InputOTPSlot index={4} />
+                          <InputOTPSlot index={5} />
+                        </InputOTPGroup>
+                      </InputOTP>
+                    </FormControl>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => {
+                        const otp = Math.floor(
+                          100000 + Math.random() * 900000
+                        ).toString();
+                        field.onChange(otp);
+                      }}
+                    >
+                      Tạo mã
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => {
+                        if (navigator.clipboard) {
+                          navigator.clipboard.writeText(field.value || "");
+                        }
+                      }}
+                    >
+                      Sao chép
+                    </Button>
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}
@@ -135,7 +181,10 @@ export function UserModal({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Vai trò</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Chọn vai trò" />
@@ -177,13 +226,8 @@ export function UserModal({
               )}
             />
             <DrawerFooter>
-              <Button type="submit">
-                {editingUser ? 'Cập nhật' : 'Thêm mới'}
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => onOpenChange(false)}
-              >
+              <Button type="submit">{user ? "Cập nhật" : "Thêm mới"}</Button>
+              <Button variant="outline" onClick={() => closeModal()}>
                 Hủy
               </Button>
             </DrawerFooter>
