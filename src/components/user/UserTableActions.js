@@ -25,6 +25,14 @@ export function UserTableActions({ table }) {
     setSearchBy,
   } = useUserStore();
 
+  const searchByOptions = {
+    email: "Email",
+    fullname: "Tên",
+    employeeId: "Mã nhân viên",
+    department: "Phòng ban",
+    role: "Vai trò",
+  };
+
   const debouncedSearch = useCallback(debounce(setSearch, 500), [setSearch]);
 
   return (
@@ -49,7 +57,7 @@ export function UserTableActions({ table }) {
       </div>
       <div className="flex justify-end gap-2">
         <Input
-          placeholder="Tìm..."
+          placeholder={`Tìm...`}
           onChange={(event) => debouncedSearch(event.target.value)}
           className="max-w-sm"
         />
@@ -57,7 +65,7 @@ export function UserTableActions({ table }) {
           <DropdownMenuTrigger asChild>
             <Button variant="outline">
               <ChevronDown className="size-4" />
-              <span className="mr-2">Tim theo</span>
+              <span className="mr-2">{searchByOptions[searchBy]}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
