@@ -13,8 +13,17 @@ async function seedUsers() {
         "022235",
         "NSH-ADMIN",
         "admin",
-        "Trần Thành Kiên",
-        "Quản trị hệ thống"
+        "Trần Thành KiênTT",
+        "Chăn gà"
+      ]);
+
+      await run("INSERT INTO users (email, password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?)", [
+        "test@shome.vn",
+        "022235",
+        "NSH-TEST",
+        "user",
+        "KiênTT",
+        "Chăn bò"
       ]);
 
       console.log("Đã thêm dữ liệu người dùng mẫu");
@@ -35,12 +44,16 @@ async function seedPrizes() {
 
     if (existingPrizes[0].count === 0) {
       const prizes = [
-        { label: "Voucher 500.000đ", quantity: 5, active: 1 },
-        { label: "Voucher 300.000đ", quantity: 10, active: 1 },
-        { label: "Voucher 200.000đ", quantity: 15, active: 1 },
-        { label: "Voucher 100.000đ", quantity: 20, active: 1 },
-        { label: "Phiếu giảm giá 10%", quantity: 30, active: 1 },
-        { label: "Chúc may mắn lần sau", quantity: 999, active: 1 },
+        { label: "Bento dinh dưỡng", quantity: 5, active: 1 },
+        { label: "Bảo tháp Dư Dả", quantity: 5, active: 1 },
+        { label: "Ánh sáng an nhiên", quantity: 20, active: 1 },
+        { label: "Cơn Gió Thanh Xuân", quantity: 20, active: 1 },
+        { label: "Găng Siêu Xayda", quantity: 10, active: 1 },
+        { label: "Lá chắn vương giả", quantity: 5, active: 1 },
+        { label: "Trạm sạc Năng Lượng", quantity: 1, active: 1 },
+        { label: "Loa Phát Sóng Tình Yêu", quantity: 1, active: 1 },
+        { label: "Hộp Cất Vàng", quantity: 5, active: 1 },
+        { label: "Bento dinh dưỡng", quantity: 3, active: 1 },
       ];
 
       for (const prize of prizes) {

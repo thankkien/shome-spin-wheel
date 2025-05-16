@@ -39,6 +39,9 @@ export const useAuthStore = create(
           });
           return data.success;
         } catch (error) {
+          set({
+            user: null,
+          });
           return false;
         }
       },
