@@ -107,7 +107,7 @@ export function UserTable() {
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
           aria-label="Chọn dòng"
-          disabled={user.id === row.original.id}
+          disabled={user?.id === row.original.id}
         />
       ),
       enableSorting: false,
@@ -180,7 +180,7 @@ export function UserTable() {
                     variant="ghost"
                     size="icon"
                     onClick={() => deleteUsers([u.id])}
-                    disabled={user.id === u.id}
+                    disabled={user?.id === u.id}
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>

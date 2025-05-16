@@ -41,7 +41,7 @@ const userSchema = z.object({
   email: z.string().email(),
   password: z
     .string()
-    .regex(REGEXP_ONLY_DIGITS, "Mật khẩu phải là 6 số")
+    .regex(new RegExp(REGEXP_ONLY_DIGITS), "Mật khẩu phải là 6 số")
     .optional(),
   employeeId: z.string().min(1),
   role: z.enum(["admin", "user"]),

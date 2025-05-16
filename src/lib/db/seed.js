@@ -10,7 +10,7 @@ async function seedUsers() {
     if (existingUsers[0].count === 0) {
       await run("INSERT INTO users (email, password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?)", [
         "admin@shome.vn",
-        "@dmin246",
+        "022235",
         "NSH-ADMIN",
         "admin",
         "Trần Thành Kiên",

@@ -13,7 +13,7 @@ export const useAuthStore = create(
           set({
             user: data.user,
           });
-          return data.success;
+          return data;
         } catch (error) {
           return false;
         }

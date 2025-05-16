@@ -61,9 +61,13 @@ function Login() {
     setError("");
 
     try {
-      const success = await login(data.email, data.password);
+      const {success, user} = await login(data.email, data.password);
       if (success) {
-        router.push("/");
+        if (user.role === "admin") {
+          router.push("/superuser");
+        } else {
+          router.push("/");
+        }
       } else {
         setError("Email hoặc mật khẩu không đúng");
       }

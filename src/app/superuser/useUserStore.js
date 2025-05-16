@@ -121,12 +121,12 @@ export const useUserStore = create((set, get) => ({
   },
 
   setSelectedUsers: (selections) => {
-    const authUserId = useAuthStore.getState().user.id;
+    const authUserId = useAuthStore.getState().user?.id;
     const filterSelections = () => {
       return Object.keys(selections).reduce(
         (acc, idx) => {
           const user = get().users[idx];
-          if (user.id != authUserId) {
+          if (user?.id != authUserId) {
             acc.selections[idx] = true;
             acc.selectedUsers.push(user);
           }
