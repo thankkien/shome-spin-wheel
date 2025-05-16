@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
+import { useEffect } from "react";
 import { useUserStore } from "./useUserStore";
-
 import { UserTable } from "@/components/user/UserTable";
 import { UserDrawer } from "@/components/user/UserDrawer";
 import withAuth from "@/components/hoc/withAuth";

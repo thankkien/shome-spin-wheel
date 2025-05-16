@@ -12,7 +12,7 @@ export default function Header() {
 
   const [isHomePage, setIsHomePage] = useState(false);
 
-  useEffect(() => setIsHomePage(pathname === "/"), [pathname]);
+  useEffect(() => setIsHomePage(["/", "/superuser"].includes(pathname)), [pathname]);
 
   const handleLogout = useCallback(async () => {
     await logout();
@@ -20,6 +20,30 @@ export default function Header() {
   }, [logout, router]);
 
   const handleGoHome = useCallback(() => router.push("/"), [router]);
+
+  const renderButton = () => {
+    if (isHomePage) {
+      return (
+        <button
+          onClick={handleLogout}
+          className="text-sm text-gray-500 hover:text-red-500 transition-colors"
+        >
+          Đăng xuất
+        </button>
+      );
+    }
+    if (pathname === "/login") {
+      return null;
+    }
+    return (
+      <button
+        onClick={handleGoHome}
+        className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
+      >
+        Quay lại
+      </button>
+    );
+  };
 
   return (
     <header className="py-4 gap-2 w-full flex flex-col justify-between items-center">
@@ -43,21 +67,7 @@ export default function Header() {
         ) : (
           <span></span>
         )}
-        {isHomePage ? (
-          <button
-            onClick={handleLogout}
-            className="text-sm text-gray-500 hover:text-red-500 transition-colors"
-          >
-            Đăng xuất
-          </button>
-        ) : (
-          <button
-            onClick={handleGoHome}
-            className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
-          >
-            Quay lại
-          </button>
-        )}
+        {renderButton()}
       </div>
     </header>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,12 +35,13 @@ import {
 } from "@/components/ui/select";
 import { useUserStore } from "@/app/superuser/useUserStore";
 import { RotateCcwKey, ClipboardCopy } from "lucide-react";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
 
 const userSchema = z.object({
   email: z.string().email(),
   password: z
     .string()
-    .regex(/^\d{6}$/, "Mật khẩu phải là 6 số")
+    .regex(REGEXP_ONLY_DIGITS, "Mật khẩu phải là 6 số")
     .optional(),
   employeeId: z.string().min(1),
   role: z.enum(["admin", "user"]),
@@ -122,7 +123,7 @@ export function UserDrawer() {
                       }}
                     >
                       <FormControl style={{ flex: 1 }}>
-                        <InputOTP maxLength={6} {...field}>
+                        <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS} {...field}>
                           <InputOTPGroup>
                             <InputOTPSlot index={0} />
                             <InputOTPSlot index={1} />
