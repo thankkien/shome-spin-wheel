@@ -9,7 +9,7 @@ import { COOKIE_NAME } from "@/lib/jwt";
 export async function POST() {
   try {
     // Xóa cookie
-    cookies().delete(COOKIE_NAME);
+    await cookies().delete(COOKIE_NAME);
 
     return NextResponse.json({
       success: true,

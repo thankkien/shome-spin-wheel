@@ -1,18 +1,28 @@
-import jwt from "jsonwebtoken";
+import { SignJWT, jwtVerify } from 'jose';
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const encoder = new TextEncoder();
+const secret = encoder.encode(JWT_SECRET);
 
 export const COOKIE_NAME = "act";
 
 export const jwtService = {
-  sign: (payload, expiresIn = "7d") => {
-    return jwt.sign(payload, JWT_SECRET, { expiresIn });
+  sign: async (payload, expiresIn = "7d") => {
+    const iat = Math.floor(Date.now() / 1000);
+    const exp = iat + 7 * 24 * 60 * 60; // 7 ngày
+    return await new SignJWT({ ...payload })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt(iat)
+      .setExpirationTime(exp)
+      .sign(secret);
   },
 
-  verify: (token) => {
+  verify: async (token) => {
     try {
-      return jwt.verify(token, JWT_SECRET);
+      const { payload } = await jwtVerify(token, secret);
+      return payload;
     } catch (error) {
+      console.log(error);
       return null;
     }
   },
@@ -26,10 +36,10 @@ export const jwtService = {
   },
 };
 
-export function getUserFromRequest(request) {
-  const cookie = request.headers.get("cookie") || "";
-  const match = cookie.match(new RegExp(`${COOKIE_NAME}=([^;]+)`));
-  if (!match) return null;
-  const token = match[1];
-  return jwtService.verify(token);
+export function getUserFromRequest(response) {
+  try {
+    return JSON.parse(decodeURIComponent(response.headers.get("x-user")));
+  } catch (error) {
+    return null;
+  }
 }

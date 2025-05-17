@@ -7,7 +7,4 @@ export const authService = {
   logout: async () => {
     return axios.post("/auth/logout");
   },
-  verify: async () => {
-    return axios.post("/auth/verify");
-  },
 };

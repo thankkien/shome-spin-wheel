@@ -60,7 +60,7 @@ export default function PrizeBadge({ className }) {
             animate && "scale-110"
           )}
         >
-          {prize?.label ?? ""}
+          {prize?.prize_label ?? ""}
         </p>
       </div>
     </div>

@@ -2002,5 +2002,17 @@
         "user_id": 257,
         "prize_id": 3,
         "spin_index": 2
+    },
+    {
+        "id": 335,
+        "user_id": 998,
+        "prize_id": 11,
+        "spin_index": 1
+    },
+    {
+        "id": 336,
+        "user_id": 998,
+        "prize_id": 3,
+        "spin_index": 2
     }
 ]

@@ -30,22 +30,9 @@ export const useAuthStore = create(
           return false;
         }
       },
-
-      verify: async () => {
-        try {
-          const data = await authService.verify();
-          set({
-            user: data.user,
-          });
-          return data.success;
-        } catch (error) {
-          set({
-            user: null,
-          });
-          return false;
-        }
-      },
-    }), {
-    name: "auth-storage",
-  })
+    }),
+    {
+      name: "auth-storage",
+    }
+  )
 );

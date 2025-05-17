@@ -2,22 +2,19 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import { useAuthStore, useSpinWheelStore } from "@/stores";
+import { useSpinWheelStore } from "@/stores";
 import PrizeBadge from "@/components/PrizeBadge";
 import withAuth from "@/components/hoc/withAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 function HomePage() {
-  const user = useAuthStore((state) => state.user);
   const hasSpun = useSpinWheelStore((state) => state.hasSpun);
-  const fetchSpinStatus = useSpinWheelStore((state) => state.fetchSpinStatus);
+  const getSpinStatus = useSpinWheelStore((state) => state.getSpinStatus);
 
   useEffect(() => {
-    if (user) {
-      fetchSpinStatus(user.id);
-    }
-  }, [user]);
+    getSpinStatus();
+  }, []);
 
   return (
     <>
@@ -25,14 +22,10 @@ function HomePage() {
 
       <Card>
         <CardContent className="p-6">
-          <Button
-            asChild
-            className="w-full h-12"
-            variant="default"
-          >
+          <Button asChild className="w-full h-12" variant="default">
             <Link href="/spin-wheel">
-          {hasSpun ? "Xem Lại Vòng Quay" : "Vòng Quay May Mắn"}
-        </Link>
+              {hasSpun ? "Xem Lại Vòng Quay" : "Vòng Quay May Mắn"}
+            </Link>
           </Button>
         </CardContent>
       </Card>

@@ -1,65 +1,53 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { useAuthStore } from "./useAuthStore";
 import * as lodash from "lodash";
+import { spinService } from "@/services/spint.service";
+
+const calcSpinToValues = (itemIndex) => {
+  const duration = Math.floor(Math.random() * (3600 - 2600 + 1)) + 2600;
+  const spinToCenter = false;
+  const numberOfRevolutions = 10;
+  const direction = 1;
+  const easingFunction = null;
+  return [
+    itemIndex,
+    duration,
+    spinToCenter,
+    numberOfRevolutions,
+    direction,
+    easingFunction,
+  ];
+};
 
 export const useSpinWheelStore = create(
   persist(
     (set, get) => ({
       isSpinning: false,
-      setIsSpinning: (isSpinning) => set({ isSpinning }),
       isLoading: false,
-      hasSpun: null,
-      setHasSpun: (hasSpun) => set({ hasSpun }),
+      hasSpun: false,
+      isCanSpin: true,
       prize: null,
-      setPrize: (prize) => set({ prize }),
+      prizes: null,
       prizeList: [],
+      setIsSpinning: (isSpinning) => set({ isSpinning }),
+      spinCallback: () => {},
 
-      spin: async () => {
-        try {
-          const authState = useAuthStore.getState();
-          if (!authState?.user?.id) {
-            return { success: false, error: "ID người dùng không hợp lệ" };
-          }
-
-          set({ isSpinning: true });
-
-          const response = await fetch("/api/spin", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userId: authState.user.id }),
-          });
-
-          const data = await response.json();
-
-          return data;
-        } catch (error) {
-          return { success: false, error: "Lỗi kết nối máy chủ" };
-        } finally {
-          set({ isSpinning: false });
-        }
-      },
-
-      fetchSpinStatus: async (userId) => {
-        if (!userId) return null;
-
+      getSpinStatus: async () => {
         try {
           set({ isLoading: true });
 
-          const response = await fetch(`/api/spin?user-id=${userId}`, {
-            method: "GET",
-          });
-          const data = await response.json();
+          const { success, hasSpun, isCanSpin, prizes } =
+            await spinService.getSpinStatus();
 
-          if (data.success) {
+          if (success) {
             set({
-              hasSpun: data.hasSpun,
-              prize: data.prize,
+              hasSpun,
+              isCanSpin,
+              prizes,
+              prize: lodash.last(prizes),
             });
           }
-          return data;
+          return { success, hasSpun, isCanSpin, prizes };
         } catch (error) {
           return null;
         } finally {
@@ -67,15 +55,11 @@ export const useSpinWheelStore = create(
         }
       },
 
-      fetchPrizes: async () => {
+      getPrizes: async () => {
         try {
           set({ isLoading: true });
 
-          const response = await fetch("/api/prizes", {
-            method: "GET",
-          });
-
-          const data = await response.json();
+          const data = await spinService.getPrizes();
 
           if (data.success) {
             const setupPrizeList = (prizeList) => {
@@ -106,9 +90,45 @@ export const useSpinWheelStore = create(
           set({ isLoading: false });
         }
       },
+
+      spin: async () => {
+        try {
+          set({ isSpinning: true });
+          const { hasSpun, isCanSpin, prizes } = await spinService.spin();
+          const prize = lodash.last(prizes);
+
+          const prizeIndex = get().prizeList.findIndex(
+            (item) => item.id === prize.prize_id
+          );
+
+          if (prizeIndex === -1) {
+            throw new Error("Có lỗi khi quay");
+          }
+          set({
+            spinCallback: () => {
+              console.log("callback");
+              set({
+                hasSpun,
+                isCanSpin,
+                prizes,
+                prize,
+                isSpinning: false,
+              });
+            },
+          });
+          return calcSpinToValues(prizeIndex);
+        } catch (error) {
+          set({ isSpinning: false });
+          return { success: false, error: error?.message || "Lỗi máy chủ" };
+        }
+      },
     }),
     {
       name: "spin-wheel-storage",
+      partialize: (state) => {
+        const { isSpinning, ...rest } = state;
+        return rest;
+      },
     }
   )
 );
