@@ -2,11 +2,12 @@ import { Be_Vietnam_Pro, Amatic_SC } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
 
 const beVietnamPro = Be_Vietnam_Pro({
   variable: "--font-be-vietnam-pro",
   subsets: ["vietnamese"],
-  weight: ["100", "200","300","400", "500","600", "700","800","900",],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   preload: true,
 });
 
@@ -37,7 +38,8 @@ export default function RootLayout({ children }) {
       <body
         className={cn(
           "antialiased max-w-md mx-auto min-h-screen p-2 flex flex-col w-[100vw]",
-          beVietnamPro.variable, amaticSc.variable
+          beVietnamPro.variable,
+          amaticSc.variable
         )}
       >
         <Header />
@@ -47,6 +49,7 @@ export default function RootLayout({ children }) {
             <span>©</span> Copyright 2023. Công ty TNHH TM S.Home Solution
           </p>
         </footer>
+        <Toaster position="top-center" />
       </body>
     </html>
   );

@@ -4,7 +4,6 @@ import { z } from "zod";
 import { getUserFromRequest } from "@/lib/jwt";
 
 const updateUserSchema = z.object({
-  email: z.string().email().optional(),
   password: z.string().min(6).optional(),
   employeeId: z.string().min(1).optional(),
   role: z.enum(["admin", "user"]).optional(),
@@ -33,17 +32,6 @@ export async function PATCH(request, { params }) {
     const user = await get("SELECT * FROM users WHERE id = ?", [id]);
     if (!user) {
       throw new Error("Không tìm thấy user");
-    }
-
-    // Kiểm tra email mới nếu có
-    if (data.email && data.email !== user.email) {
-      const existingUser = await get(
-        "SELECT * FROM users WHERE email = ? AND id != ?",
-        [data.email, id]
-      );
-      if (existingUser) {
-        throw new Error("Email đã tồn tại");
-      }
     }
 
     // Kiểm tra employeeId mới nếu có

@@ -10,23 +10,24 @@ import { omit } from "lodash";
  */
 export async function POST(request) {
   try {
-    const { email, password } = await request.json();
+    const { employeeId, password } = await request.json();
 
     const user = await get(
-      `SELECT * FROM users WHERE email = ?`,
-      [email]
+      `SELECT * FROM users WHERE employeeId = ?`,
+      [employeeId]
     );
+    console.log({ employeeId, password, user });
 
     if (!user || user.password !== password) {
       return NextResponse.json(
-        { success: false, error: "Email hoặc mật khẩu không đúng" },
+        { success: false, error: "Mã nhân sự hoặc mật khẩu không đúng" },
         { status: 401 }
       );
     }
 
     const token = jwtService.sign({
       id: user.id,
-      email: user.email,
+      employeeId: user.employeeId,
       role: user.role,
     });
 
@@ -37,10 +38,9 @@ export async function POST(request) {
       maxAge: 7 * 24 * 60 * 60, // 7 days
     });
 
-    const userWithoutPassword = omit(user, ['password']);
     return NextResponse.json({
       success: true,
-      user: userWithoutPassword,
+      user: omit(user, ['password']),
     });
   } catch (error) {
     console.error("Login error:", error);

@@ -14,7 +14,6 @@ export const useUserStore = create((set, get) => ({
   },
   fields: {
     id: true,
-    email: true,
     employeeId: true,
     fullname: true,
     department: true,
@@ -22,7 +21,7 @@ export const useUserStore = create((set, get) => ({
     role: true,
   },
   search: "",
-  searchBy: "email",
+  searchBy: "employeeId",
   sorting: [],
   selections: {},
   selectedUsers: [],

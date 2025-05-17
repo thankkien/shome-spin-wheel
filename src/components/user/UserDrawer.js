@@ -36,9 +36,9 @@ import {
 import { useUserStore } from "@/app/superuser/useUserStore";
 import { RotateCcwKey, ClipboardCopy } from "lucide-react";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { toast } from "sonner";
 
 const userSchema = z.object({
-  email: z.string().email(),
   password: z
     .string()
     .regex(new RegExp(REGEXP_ONLY_DIGITS), "Mật khẩu phải là 6 số")
@@ -61,7 +61,6 @@ export function UserDrawer() {
     if (isOpenForm) {
       form.reset(
         user ?? {
-          email: "",
           password: "",
           employeeId: "",
           role: "user",
@@ -98,12 +97,12 @@ export function UserDrawer() {
             <form className="space-y-4 p-4 overflow-y-auto h-[350px]">
               <FormField
                 control={form.control}
-                name="email"
+                name="employeeId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>Mã nhân sự</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nhập email" {...field} />
+                      <Input placeholder="Nhập mã nhân sự" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -123,7 +122,11 @@ export function UserDrawer() {
                       }}
                     >
                       <FormControl style={{ flex: 1 }}>
-                        <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS} {...field}>
+                        <InputOTP
+                          maxLength={6}
+                          pattern={REGEXP_ONLY_DIGITS}
+                          {...field}
+                        >
                           <InputOTPGroup>
                             <InputOTPSlot index={0} />
                             <InputOTPSlot index={1} />
@@ -138,10 +141,15 @@ export function UserDrawer() {
                         type="button"
                         variant="outline"
                         onClick={() => {
-                          const otp = Math.floor(
-                            100000 + Math.random() * 900000
-                          ).toString();
-                          field.onChange(otp);
+                          try {
+                            const otp = Math.floor(
+                              100000 + Math.random() * 900000
+                            ).toString();
+                            field.onChange(otp);
+                            toast.success("Mật khẩu đã được tạo tự động");
+                          } catch (error) {
+                            toast.error("Lỗi tạo mật khẩu: " + error.message);
+                          }
                         }}
                       >
                         <RotateCcwKey />
@@ -149,28 +157,24 @@ export function UserDrawer() {
                       <Button
                         type="button"
                         variant="outline"
-                        onClick={() => {
-                          if (navigator.clipboard) {
-                            navigator.clipboard.writeText(field.value || "");
+                        onClick={async () => {
+                          try {
+                            if (navigator.clipboard) {
+                              await navigator.clipboard.writeText(
+                                field.value || ""
+                              );
+                              toast.success("Mật khẩu đã được sao chép");
+                            }
+                          } catch (error) {
+                            toast.error(
+                              "Lỗi sao chép mật khẩu: " + error.message
+                            );
                           }
                         }}
                       >
                         <ClipboardCopy />
                       </Button>
                     </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="employeeId"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Mã nhân sự</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Nhập mã nhân sự" {...field} />
-                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}

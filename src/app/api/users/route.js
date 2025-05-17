@@ -3,8 +3,8 @@ import { query, run } from "@/lib/db";
 import { z } from "zod";
 import { getUserFromRequest } from "@/lib/jwt";
 import lodash from "lodash";
+
 const userSchema = z.object({
-  email: z.string().email(),
   password: z.string().min(6),
   employeeId: z.string().min(1),
   role: z.enum(["admin", "user"]).default("user"),
@@ -34,22 +34,14 @@ export async function GET(request) {
   const orderBy = searchParams.get("order-by") || "id";
   const order = (searchParams.get("order") || "asc").toUpperCase();
 
-  const validColumns = [
-    "id",
-    "email",
-    "employeeId",
-    "role",
-    "fullname",
-    "department",
-  ];
+  const validColumns = ["id", "employeeId", "role", "fullname", "department"];
   const safeOrderBy = validColumns.includes(orderBy) ? orderBy : "id";
   const safeOrder = ["ASC", "DESC"].includes(order) ? order : "ASC";
 
   const fields = lodash.uniq(searchParams.getAll("fields[]") ?? validColumns);
-console.log(fields)
+
   const search = searchParams.get("search") || "";
-  const searchByParam =
-    searchParams.get("search-by") || "email,fullname,department";
+  const searchByParam = searchParams.get("search-by") || "fullname,department";
   const searchBy = searchByParam
     .split(",")
     .filter((field) => validColumns.includes(field));
@@ -112,14 +104,6 @@ export async function POST(request) {
     const body = await request.json();
     const data = userSchema.parse(body);
 
-    // Kiểm tra email đã tồn tại
-    const existingUser = await query("SELECT * FROM users WHERE email = ?", [
-      data.email,
-    ]);
-    if (existingUser.length > 0) {
-      throw new Error("Email đã tồn tại");
-    }
-
     // Kiểm tra employeeId đã tồn tại
     const existingEmployee = await query(
       "SELECT * FROM users WHERE employeeId = ?",
@@ -130,9 +114,8 @@ export async function POST(request) {
     }
 
     const result = await run(
-      "INSERT INTO users (email, password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO users (password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?)",
       [
-        data.email,
         data.password,
         data.employeeId,
         data.role,

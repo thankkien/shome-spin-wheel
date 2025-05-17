@@ -5,45 +5,40 @@ const { run, initializeDatabase, query } = require("./index");
  */
 async function seedUsers() {
   try {
-    await run(
-      `INSERT INTO users (email, password, employeeId, role, fullname, department)
-      VALUES (?, ?, ?, ?, ?, ?) 
-      ON CONFLICT(email)
-      DO UPDATE SET password = ?, employeeId = ?, role = ?, fullname = ?, department = ?`,
-      [
-        "admin@shome.vn",
-        "022235",
-        "NSH-ADMIN",
-        "admin",
-        "KiênTT",
-        "Chăn gà",
-        "022235",
-        "NSH-ADMIN",
-        "admin",
-        "KiênTT",
-        "Chăn gà",
-      ]
-    );
+    const users = [
+      {
+        password: "022235",
+        employeeId: "NSH-ADMIN",
+        role: "admin",
+        fullname: "KiênTT",
+        department: "Chăn gà",
+      },
+      {
+        password: "022235",
+        employeeId: "NSH-TEST",
+        role: "user",
+        fullname: "KiênTT",
+        department: "Chăn bò",
+      },
+    ];
 
-    await run(
-      `INSERT INTO users (email, password, employeeId, role, fullname, department)
-      VALUES (?, ?, ?, ?, ?, ?) 
-      ON CONFLICT(email)
-      DO UPDATE SET password = ?, employeeId = ?, role = ?, fullname = ?, department = ?`,
-      [
-        "test@shome.vn",
-        "022235",
-        "NSH-TEST",
-        "user",
-        "KiênTT",
-        "Chăn bò",
-        "022235",
-        "NSH-TEST",
-        "user",
-        "KiênTT",
-        "Chăn bò",
-      ]
-    );
+    for (const user of users) {
+      await run(
+        `INSERT INTO users (password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(employeeId) DO UPDATE SET password = ?, employeeId = ?, role = ?, fullname = ?, department = ?`,
+        [
+          user.password,
+          user.employeeId,
+          user.role,
+          user.fullname,
+          user.department,
+          user.password,
+          user.employeeId,
+          user.role,
+          user.fullname,
+          user.department,
+        ]
+      );
+    }
 
     console.log("Đã thêm dữ liệu người dùng mẫu");
   } catch (error) {
@@ -74,7 +69,15 @@ async function seedPrizes() {
     for (const prize of prizes) {
       await run(
         "INSERT INTO prizes (id, label, quantity, active) VALUES (?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET label = ?, quantity = ?, active = ?",
-        [prize.id, prize.label, prize.quantity, prize.active, prize.label, prize.quantity, prize.active]
+        [
+          prize.id,
+          prize.label,
+          prize.quantity,
+          prize.active,
+          prize.label,
+          prize.quantity,
+          prize.active,
+        ]
       );
     }
 

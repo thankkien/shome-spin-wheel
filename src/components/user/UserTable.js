@@ -119,12 +119,6 @@ export function UserTable() {
       header: ({ column }) => <SortableHeader column={column} />,
     },
     {
-      accessorKey: "email",
-      meta: { label: "Email" },
-      header: ({ column }) => <SortableHeader column={column} />,
-      cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-    },
-    {
       accessorKey: "employeeId",
       meta: { label: "Mã nhân sự" },
       header: ({ column }) => <SortableHeader column={column} />,

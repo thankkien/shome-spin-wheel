@@ -7,9 +7,9 @@ export const useAuthStore = create(
     (set) => ({
       user: null,
 
-      login: async (email, password) => {
+      login: async (employeeId, password) => {
         try {
-          const data = await authService.login(email, password);
+          const data = await authService.login(employeeId, password);
           set({
             user: data.user,
           });

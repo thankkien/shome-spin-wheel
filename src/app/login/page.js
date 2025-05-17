@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from 'next/navigation'
 import { useAuthStore } from "@/stores/useAuthStore";
 import withAuth from "@/components/hoc/withAuth";
 import { useForm } from "react-hook-form";
@@ -29,12 +30,13 @@ import {
 import { AlertCircle } from "lucide-react";
 
 const loginSchema = z.object({
-  email: z.string().email("Email không hợp lệ"),
+  employeeId: z.string().startsWith("NSH", "Mã nhân sự không hợp lệ"),
   password: z.string().min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
 });
 
 function Login() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const login = useAuthStore((state) => state.login);
   const user = useAuthStore((state) => state.user);
 
@@ -44,7 +46,7 @@ function Login() {
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
+      employeeId: "",
       password: "",
     },
     mode: "onChange",
@@ -61,7 +63,7 @@ function Login() {
     setError("");
 
     try {
-      const {success, user} = await login(data.email, data.password);
+      const {success, user} = await login(data.employeeId, data.password);
       if (success) {
         if (user.role === "admin") {
           router.push("/superuser");
@@ -69,7 +71,7 @@ function Login() {
           router.push("/");
         }
       } else {
-        setError("Email hoặc mật khẩu không đúng");
+        setError("Mã nhân sự hoặc mật khẩu không đúng");
       }
     } catch (err) {
       setError("Có lỗi xảy ra, vui lòng thử lại");
@@ -77,6 +79,13 @@ function Login() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const employeeId = searchParams.get('employee-id');
+    if (employeeId) {
+      form.setValue("employeeId", employeeId);
+    }
+  }, []);
 
   return (
     <div className="flex items-center justify-center">
@@ -102,16 +111,16 @@ function Login() {
 
               <FormField
                 control={form.control}
-                name="email"
+                name="employeeId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>Mã nhân sự</FormLabel>
                     <FormControl>
                       <Input
-                        type="email"
-                        placeholder="Nhập email của bạn"
+                        type="text"
+                        placeholder="Nhập mã nhân sự"
                         {...field}
-                        autoComplete="email"
+                        autoComplete="employeeId"
                       />
                     </FormControl>
                     <FormMessage />

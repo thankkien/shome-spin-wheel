@@ -10,12 +10,12 @@
 const createUsersTable = `
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  email TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
   employeeId TEXT UNIQUE NOT NULL,
   role TEXT NOT NULL DEFAULT 'user',
   fullname TEXT NOT NULL,
-  department TEXT NOT NULL
+  department TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 `;
 
@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS spin_history (
   user_id INTEGER NOT NULL UNIQUE,
   prize_id INTEGER,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  spun_at TIMESTAMP,
+  spin_index INTEGER,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
   FOREIGN KEY (prize_id) REFERENCES prizes (id) ON DELETE SET NULL
 )

@@ -55,14 +55,14 @@ export default function Header() {
         priority
       />
       <div className="w-full flex justify-between items-center">
-        <h1 className="w-full text-2xl font-bold text-center text-primary-color">
+        <h1 className="w-full text-2xl font-bold text-center text-yellow-500">
           <span>Chúc Mừng Sinh Nhật 7 tuổi</span>
         </h1>
       </div>
       <div className="w-full flex justify-between items-center mb-6">
         {user ? (
           <p className="text-gray-600 dark:text-gray-300">
-            Xin chào, <span className="font-medium">{user.email}</span>
+            Xin chào, <span className="font-medium">{user.fullname}</span>
           </p>
         ) : (
           <span></span>

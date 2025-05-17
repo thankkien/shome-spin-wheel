@@ -26,7 +26,6 @@ export function UserTableActions({ table }) {
   } = useUserStore();
 
   const searchByOptions = {
-    email: "Email",
     fullname: "Tên",
     employeeId: "Mã nhân viên",
     department: "Phòng ban",
