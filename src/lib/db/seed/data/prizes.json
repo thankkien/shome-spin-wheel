@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "label": "Bento dinh dưỡng",
+    "description": "1 Bento dinh dưỡng"
+  },
+  {
+    "id": 2,
+    "label": "Bảo tháp Dư Dả",
+    "description": "1 Bảo tháp Dư Dả"
+  },
+  {
+    "id": 3,
+    "label": "Ánh sáng an nhiên",
+    "description": "1 Ánh sáng an nhiên"
+  },
+  {
+    "id": 4,
+    "label": "Cơn Gió Thanh Xuân",
+    "description": "1 Cơn Gió Thanh Xuân"
+  },
+  {
+    "id": 5,
+    "label": "Găng Siêu Xayda",
+    "description": "1 Găng Siêu Xayda"
+  },
+  {
+    "id": 6,
+    "label": "Lá chắn vương giả",
+    "description": "1 Lá chắn vương giả"
+  },
+  {
+    "id": 7,
+    "label": "Trạm sạc Năng Lượng",
+    "description": "1 Trạm sạc Năng Lượng"
+  },
+  {
+    "id": 8,
+    "label": "Loa Phát Sóng Tình Yêu",
+    "description": "1 Loa Phát Sóng Tình Yêu"
+  },
+  {
+    "id": 9,
+    "label": "Hộp Cất Vàng",
+    "description": "1 Hộp Cất Vàng"
+  },
+  {
+    "id": 10,
+    "label": "Bento Dinh Dưỡng",
+    "description": "1 Bento Dinh Dưỡng"
+  },
+  {
+    "id": 11,
+    "label": "Vạn Sự May Mắn",
+    "description": "{greating}. Và thêm 1 lượt quay may mắn!!"
+  },
+  {
+    "id": 12,
+    "label": "Vạn Sự Cát Tường",
+    "description": "{greating}"
+  }
+]

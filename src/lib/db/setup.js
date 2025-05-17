@@ -1,4 +1,4 @@
-const { initializeDatabase } = require("./index");
+const initializeDatabase = require("./initializeDatabase");
 const { seedDatabase } = require("./seed");
 
 /**

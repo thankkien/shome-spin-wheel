@@ -24,8 +24,7 @@ const createPrizesTable = `
 CREATE TABLE IF NOT EXISTS prizes (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   label TEXT NOT NULL UNIQUE,
-  quantity INTEGER DEFAULT 0,
-  active BOOLEAN DEFAULT 1
+  description TEXT
 )
 `;
 
@@ -33,11 +32,11 @@ CREATE TABLE IF NOT EXISTS prizes (
 const createSpinHistoryTable = `
 CREATE TABLE IF NOT EXISTS spin_history (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_id INTEGER NOT NULL UNIQUE,
-  prize_id INTEGER,
+  user_id INTEGER NOT NULL,
+  prize_id INTEGER NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   spun_at TIMESTAMP,
-  spin_index INTEGER,
+  spin_index INTEGER DEFAULT 0,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
   FOREIGN KEY (prize_id) REFERENCES prizes (id) ON DELETE SET NULL
 )
