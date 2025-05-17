@@ -87,12 +87,12 @@ export default function SpinWheelClient() {
         itemLabelRadius: 0.93,
         itemLabelRotation: 180,
         itemLabelAlign: "left",
-        itemLabelColors: ["#000"],
         itemLabelBaselineOffset: -0.06,
-        itemLabelFont: "Arial",
-        itemLabelFontSizeMax: 22,
-        lineWidth: 1,
-        lineColor: "#000",
+        itemLabelFont: "Be Vietnam Pro",
+        itemLabelFontSizeMax: 24,
+        itemLabelFontWeight: "bold",
+        lineWidth: 2,
+        lineColor: "#2E51BF",
         overlayImage: overlayImg,
         items: prizeList,
         isInteractive: false,
@@ -111,6 +111,7 @@ export default function SpinWheelClient() {
       const newWheel = new Wheel(wheelContainerRef.current, props);
       setWheel(newWheel);
 
+      // init prize
       if (prize) {
         const prizeIndex = prizeList.findIndex((item) => item.id === prize.id);
         if (prizeIndex !== -1) {
@@ -127,7 +128,7 @@ export default function SpinWheelClient() {
       <div
         ref={wheelContainerRef}
         className={cn(
-          "size-73 md:size-82 mx-auto transition-opacity duration-300",
+          "size-73 md:size-95 mx-auto transition-opacity duration-300",
           !isSpinning && !prize ? "opacity-60" : "opacity-100"
         )}
       ></div>

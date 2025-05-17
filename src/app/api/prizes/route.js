@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { query } from "@/lib/db";
-import { pick } from "lodash";
 
 /**
  * Lấy danh sách giải thưởng
@@ -8,11 +7,11 @@ import { pick } from "lodash";
  */
 export async function GET() {
   try {
-    const prizes = await query("SELECT * FROM prizes ORDER BY id ASC");
+    const prizes = await query("SELECT id, label, quantity, active FROM prizes ORDER BY id ASC");
 
     return NextResponse.json({
       success: true,
-      prizes: prizes.map((prize) => pick(prize, ["id", "label", "active"])),
+      prizes,
     });
   } catch (error) {
     console.error("Lỗi khi lấy danh sách giải thưởng:", error);

@@ -33,20 +33,24 @@ export async function GET(request) {
     }
 
     // Kiểm tra trạng thái quay trong ngày
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const todayISO = today.toISOString();
     const spinHistory = await get(
-      "SELECT * FROM spin_history WHERE user_id = ? AND date(created_at) = date(?)",
-      [userId, todayISO]
+      `SELECT sh.*, p.label AS prize_label
+FROM spin_history sh
+LEFT JOIN prizes p ON sh.prize_id = p.id
+WHERE sh.user_id = ?`,
+      [userId]
     );
-    const hasSpun = !!spinHistory;
 
     return NextResponse.json({
       success: true,
       user: { id: user.id, name: user.name },
-      hasSpun,
-      prize: spinHistory ? spinHistory.prize_label : null,
+      hasSpun: !!spinHistory,
+      prize: spinHistory
+        ? {
+            id: spinHistory.prize_id,
+            label: spinHistory.prize_label,
+          }
+        : null,
     });
   } catch (error) {
     console.error("Lỗi khi lấy thông tin người dùng:", error);
@@ -122,8 +126,8 @@ export async function POST(request) {
 
     // Lưu lịch sử quay
     await run(
-      "INSERT INTO spin_history (user_id, prize_id, prize_label, created_at) VALUES (?, ?, ?, datetime('now'))",
-      [userId, prize.id, prize.label]
+      "INSERT INTO spin_history (user_id, prize_id, created_at) VALUES (?, ?, datetime('now'))",
+      [userId, prize.id]
     );
 
     return NextResponse.json({

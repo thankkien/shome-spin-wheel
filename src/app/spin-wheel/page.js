@@ -29,11 +29,10 @@ function SpinWheelPage() {
 
   return (
     <>
-      <PrizeBadge className="mb-4" />
-
+      <PrizeBadge className="mb-4 p-0" />
       <Card>
-        <CardContent className="p-6">
-        <SpinWheelClient />
+        <CardContent>
+          <SpinWheelClient />
         </CardContent>
       </Card>
     </>

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { useAuthStore } from "./useAuthStore";
+import * as lodash from "lodash";
 
 export const useSpinWheelStore = create(
   persist(
@@ -77,7 +78,24 @@ export const useSpinWheelStore = create(
           const data = await response.json();
 
           if (data.success) {
-            set({ prizeList: data.prizes });
+            const setupPrizeList = (prizeList) => {
+              const styles = [
+                {
+                  backgroundColor: "#c9e4ff",
+                  labelColor: "#152553",
+                },
+                {
+                  backgroundColor: "#ffe2b8",
+                  labelColor: "#152553",
+                },
+              ];
+              return lodash.map(lodash.shuffle(prizeList), (prize, idx) => ({
+                ...prize,
+                weight: 1,
+                ...styles[idx % styles.length],
+              }));
+            };
+            set({ prizeList: setupPrizeList(data.prizes) });
           }
 
           return data;
