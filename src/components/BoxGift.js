@@ -10,6 +10,8 @@ export default function BoxGift({ onFinish }) {
   const [isOpening, setIsOpening] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const handleOpen = () => {
+    const audio = new Audio("/assets/OpenPrizeBox.mp3");
+    audio.play();
     setIsOpening(true);
     setTimeout(() => {
       setIsOpened(true);

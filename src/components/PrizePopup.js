@@ -7,6 +7,7 @@ import FireworkEffect from "./animation/FireworkEffect";
 import ConfettiEffect from "./animation/ConfettiEffect";
 import BoxGift from "./BoxGift";
 import PrizeBadge from "./PrizeBadge";
+import { Button } from "./ui/button";
 
 export default function PrizePopup({ className }) {
   const hasSpun = useSpinWheelStore((state) => state.hasSpun);
@@ -14,14 +15,15 @@ export default function PrizePopup({ className }) {
 
   if (!hasSpun || !prize) return null;
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [showBox, setShowBox] = useState(false);
   const [showPrize, setShowPrize] = useState(false);
 
   useEffect(() => {
     if (prize) {
-      setShowPrize(false);
+      setIsOpen(true);
       setShowBox(true);
+      setShowPrize(false);
     }
   }, [prize]);
 
@@ -64,7 +66,20 @@ export default function PrizePopup({ className }) {
         </div>
         <div className={cn("absolute inset-0 opacity-0")}></div>
         {showBox && <BoxGift onFinish={handleBoxFinish} />}
-        {showPrize && <PrizeBadge />}
+        {showPrize && (
+          <>
+            <PrizeBadge />
+            <Button
+              className="absolute top-2 right-2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 hover:bg-white text-black text-2xl font-bold shadow transition-all duration-200"
+              onClick={handleClose}
+              aria-label="Đóng"
+              style={{ lineHeight: 1 }}
+              variant="ghost"
+            >
+              ×
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );

@@ -13,11 +13,11 @@ export async function POST(request) {
     const { employeeId, password } = await request.json();
 
     const user = await get(
-      `SELECT * FROM users WHERE employeeId = ?`,
-      [employeeId]
+      `SELECT * FROM users WHERE employeeId = ? AND password = ?`,
+      [employeeId, password]
     );
 
-    if (!user || user.password !== password) {
+    if (!user) {
       return NextResponse.json(
         { success: false, error: "Mã nhân sự hoặc mật khẩu không đúng" },
         { status: 401 }
@@ -30,7 +30,8 @@ export async function POST(request) {
       role: user.role,
     });
 
-    await cookies().set(COOKIE_NAME, token, {
+    const cookieStore = await cookies();
+    cookieStore.set(COOKIE_NAME, token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
