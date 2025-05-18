@@ -194,16 +194,22 @@ export const useUserStore = create((set, get) => ({
     }
   },
 
-  exportUsers: () => {
-    const state = get();
-    const filteredUsers = state.users;
-    const csv = Papa.unparse(filteredUsers);
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "users.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+  exportUsers: async () => {
+    try {
+      const blob = await userService.exportUsers();
+      console.log(blob); // as string
+      const bom = "\uFEFF";
+      const url = URL.createObjectURL(
+        new Blob([bom + blob], { type: "text/csv" })
+      );
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "users.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      console.error(e);
+      toast.error("Export thất bại");
+    }
   },
 }));

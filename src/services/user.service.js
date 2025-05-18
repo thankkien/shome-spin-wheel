@@ -6,9 +6,9 @@ export const userService = {
       page = 1,
       limit = 10,
       order,
-      'order-by': orderBy,
-      search = '',
-      'search-by': searchBy,
+      "order-by": orderBy,
+      search = "",
+      "search-by": searchBy,
       fields,
     } = params;
 
@@ -36,5 +36,8 @@ export const userService = {
     } else {
       return axios.delete(`/users/${ids}`);
     }
+  },
+  exportUsers: async () => {
+    return await axios.get("/users/export");
   },
 };
