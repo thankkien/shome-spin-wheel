@@ -8,7 +8,7 @@ async function getSpinHistory(request) {
   const user = getUserFromRequest(request);
 
   const spinHistory = await query(
-    `SELECT sh.*, p.label AS prize_label
+    `SELECT sh.*, p.label AS prize_label, p.description AS prize_description
 FROM spin_history sh
 LEFT JOIN prizes p ON sh.prize_id = p.id
 WHERE sh.user_id = ?
@@ -35,7 +35,6 @@ ORDER BY sh.spin_index ASC`,
         lodash.pick(item, ["id", "prize_id", "prize_label", "spun_at"])
       )
     : [];
-  console.log({ spinHistory, user, hasSpun, isCanSpin, prizes, notSpunPrizes });
   return { spinHistory, user, hasSpun, isCanSpin, prizes, notSpunPrizes };
 }
 

@@ -16,7 +16,6 @@ export async function POST(request) {
       `SELECT * FROM users WHERE employeeId = ?`,
       [employeeId]
     );
-    console.log({ employeeId, password, user });
 
     if (!user || user.password !== password) {
       return NextResponse.json(

@@ -22,7 +22,7 @@ export const jwtService = {
       const { payload } = await jwtVerify(token, secret);
       return payload;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return null;
     }
   },
