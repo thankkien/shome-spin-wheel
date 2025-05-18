@@ -85,7 +85,7 @@ export default function SpinWheelClient() {
       console.error("Lỗi khởi tạo vòng quay:", error);
     }
   }, [overlayImg]);
-  console.log(isSpinning, isSpinning);
+
   return (
     <div className="relative">
       <div

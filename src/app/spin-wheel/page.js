@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useSpinWheelStore } from "@/stores";
 import dynamic from "next/dynamic";
-import PrizeBadge from "@/components/PrizeBadge";
+import PrizePopup from "@/components/PrizePopup";
 import withAuth from "@/components/hoc/withAuth";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -31,7 +31,7 @@ function SpinWheelPage() {
 
   return (
     <>
-      <PrizeBadge className="mb-4 p-0" key={prize?.id} />
+      <PrizePopup className="mb-4 p-0" key={prize?.id} />
       <Card>
         <CardContent>
           <SpinWheelClient />

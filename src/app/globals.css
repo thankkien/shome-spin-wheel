@@ -117,7 +117,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Be Vietnam Pro', sans-serif !important;
+    font-family: "Be Vietnam Pro", sans-serif !important;
   }
 }
 
@@ -137,7 +137,7 @@
     }
 
     100% {
-      transform: scale(1.5) translateY(-20px);
+      transform: scale(1.5) translateY(20px);
       opacity: 0;
     }
   }
@@ -240,66 +240,11 @@
   }
 }
 
-/* Hiệu ứng nhấp nháy */
-@theme {
-  --animate-pulse: pulse 1s ease-in-out infinite;
-
-  @keyframes pulse {
-
-    0%,
-    100% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.1);
-    }
-  }
-}
-
-/* Hiệu ứng viền lấp lánh */
-@theme {
-  --animate-sparkle-border: sparkle-border 3s ease-in-out infinite;
-
-  @keyframes sparkle-border {
-    0% {
-      border-color: rgba(255, 215, 0, 0);
-      box-shadow: 0 0 0 rgba(255, 215, 0, 0);
-      opacity: 0;
-    }
-
-    25% {
-      border-color: rgba(255, 215, 0, 0.8);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      opacity: 0.5;
-    }
-
-    50% {
-      border-color: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-      opacity: 0.3;
-    }
-
-    75% {
-      border-color: rgba(255, 215, 0, 0.8);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      opacity: 0.5;
-    }
-
-    100% {
-      border-color: rgba(255, 215, 0, 0);
-      box-shadow: 0 0 0 rgba(255, 215, 0, 0);
-      opacity: 0;
-    }
-  }
-}
-
 /* Hiệu ứng phần thưởng phát sáng */
 @theme {
   --animate-prize-glow: prize-glow 1.5s ease-in-out infinite;
 
   @keyframes prize-glow {
-
     0%,
     100% {
       box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
@@ -326,8 +271,4 @@
       opacity: 0;
     }
   }
-}
-
-body {
-  font-family: 'Be Vietnam Pro', sans-serif;
 }
