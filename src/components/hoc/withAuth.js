@@ -9,11 +9,14 @@ export default function withAuth(Component) {
     const router = useRouter();
     const pathname = usePathname();
     const user = useAuthStore((state) => state.user);
+    const hasHydrated = useAuthStore((state) => state._hasHydrated);
 
     useEffect(() => {
       const validateAuth = async () => {
         try {
-          if (!user) {
+          if (!hasHydrated) {
+            return;
+          } else if (!user) {
             router.push("/login");
           } else if (user?.role === "admin") {
             router.push("/superuser");
@@ -27,7 +30,7 @@ export default function withAuth(Component) {
       };
 
       validateAuth();
-    }, [pathname, router, user]);
+    }, [pathname, router, user, hasHydrated]);
 
     return <Component {...props} />;
   };

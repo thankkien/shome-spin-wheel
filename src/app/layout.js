@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "antialiased max-w-md mx-auto min-h-screen p-2 flex flex-col w-[100vw]",
+          "antialiased min-w-sm max-w-md mx-auto min-h-screen p-2 flex flex-col w-[100vw]",
           beVietnamPro.variable,
           amaticSc.variable
         )}

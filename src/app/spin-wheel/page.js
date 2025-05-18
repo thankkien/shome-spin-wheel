@@ -7,6 +7,7 @@ import PrizeBadge from "@/components/PrizeBadge";
 import withAuth from "@/components/hoc/withAuth";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { usePathname } from "next/navigation";
 
 const SpinWheelClient = dynamic(() => import("@/components/SpinWheel"), {
   ssr: false,
@@ -18,20 +19,19 @@ const SpinWheelClient = dynamic(() => import("@/components/SpinWheel"), {
 });
 
 function SpinWheelPage() {
+  const pathname = usePathname();
   const getSpinStatus = useSpinWheelStore((state) => state.getSpinStatus);
   const getPrizes = useSpinWheelStore((state) => state.getPrizes);
+  const prize = useSpinWheelStore((state) => state.prize);
 
   useEffect(() => {
     getSpinStatus();
-  }, []);
-
-  useEffect(() => {
     getPrizes();
-  }, []);
+  }, [pathname]);
 
   return (
     <>
-      <PrizeBadge className="mb-4 p-0" />
+      <PrizeBadge className="mb-4 p-0" key={prize?.id} />
       <Card>
         <CardContent>
           <SpinWheelClient />

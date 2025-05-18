@@ -110,6 +110,9 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
+      easing-utils:
+        specifier: ^1.0.0
+        version: 1.0.0
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.1.0)
@@ -1402,6 +1405,9 @@ packages:
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
+
+  easing-utils@1.0.0:
+    resolution: {integrity: sha512-9oabISTqjTJSZyu85nJMfYtlV2tT/Uwo0M3uqODrBWCxme0eyLqEXRuG2/uYpyqzc7iSHjV/KW2mEKTqhdtESA==}
 
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
@@ -3391,6 +3397,8 @@ snapshots:
       call-bind-apply-helpers: 1.0.2
       es-errors: 1.3.0
       gopd: 1.2.0
+
+  easing-utils@1.0.0: {}
 
   ecdsa-sig-formatter@1.0.11:
     dependencies:

@@ -6,19 +6,19 @@ import { cn } from "@/utils/classname";
 import { Wheel } from "spin-wheel";
 
 export default function SpinWheelClient() {
+  const prizeList = useSpinWheelStore((state) => state.prizeList);
+  const prizes = useSpinWheelStore((state) => state.prizes);
+  const spin = useSpinWheelStore((state) => state.spin);
+  const isSpinning = useSpinWheelStore((state) => state.isSpinning);
+  const setIsSpinning = useSpinWheelStore((state) => state.setIsSpinning);
+  const isLoading = useSpinWheelStore((state) => state.isLoading);
+  const isCanSpin = useSpinWheelStore((state) => state.isCanSpin);
+
   const wheelContainerRef = useRef(null);
 
-  const {
-    prizeList,
-    prizes,
-    spin,
-    isSpinning,
-    setIsSpinning,
-    isLoading,
-    isCanSpin,
-  } = useSpinWheelStore((state) => state);
   const [wheel, setWheel] = useState(null);
   const [overlayImg, setOverlayImg] = useState(null);
+
   const spinCallback = useSpinWheelStore((state) => state.spinCallback);
   const spinCallbackRef = useRef(spinCallback);
   useEffect(() => {
@@ -31,6 +31,8 @@ export default function SpinWheelClient() {
     }
     const props = await spin();
     if (props) {
+      const audio = new Audio("/PrizeWheelSpinSound.mp3");
+      audio.play();
       wheel.spinToItem(...props);
     }
   };
@@ -83,13 +85,13 @@ export default function SpinWheelClient() {
       console.error("Lỗi khởi tạo vòng quay:", error);
     }
   }, [overlayImg]);
-
+  console.log(isSpinning, isSpinning);
   return (
     <div className="relative">
       <div
         ref={wheelContainerRef}
         className={cn(
-          "size-73 md:size-95 mx-auto transition-opacity duration-300",
+          "size-80 sm:size-95 mx-auto transition-opacity duration-300",
           !isSpinning && !prizes?.length ? "opacity-60" : "opacity-100"
         )}
       ></div>

@@ -24,7 +24,7 @@ export async function POST(request) {
       );
     }
 
-    const token = jwtService.sign({
+    const token = await jwtService.sign({
       id: user.id,
       employeeId: user.employeeId,
       role: user.role,

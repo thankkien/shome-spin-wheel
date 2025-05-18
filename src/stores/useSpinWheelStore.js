@@ -2,13 +2,26 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import * as lodash from "lodash";
 import { spinService } from "@/services/spint.service";
+import { easeOutCirc } from "easing-utils";
+
+const styles = [
+  {
+    backgroundColor: "#c9e4ff",
+    labelColor: "#152553",
+  },
+  {
+    backgroundColor: "#ffe2b8",
+    labelColor: "#152553",
+  },
+];
 
 const calcSpinToValues = (itemIndex) => {
-  const duration = Math.floor(Math.random() * (3600 - 2600 + 1)) + 2600;
+  const duration = 5800;
   const spinToCenter = false;
-  const numberOfRevolutions = 10;
+  const numberOfRevolutions = 6;
   const direction = 1;
-  const easingFunction = null;
+  const easingFunction = easeOutCirc;
+
   return [
     itemIndex,
     duration,
@@ -30,7 +43,7 @@ export const useSpinWheelStore = create(
       prizes: null,
       prizeList: [],
       setIsSpinning: (isSpinning) => set({ isSpinning }),
-      spinCallback: () => {},
+      spinCallback: () => set({ isSpinning: false }),
 
       getSpinStatus: async () => {
         try {
@@ -44,7 +57,7 @@ export const useSpinWheelStore = create(
               hasSpun,
               isCanSpin,
               prizes,
-              prize: lodash.last(prizes),
+              prize: null,
             });
           }
           return { success, hasSpun, isCanSpin, prizes };
@@ -63,19 +76,8 @@ export const useSpinWheelStore = create(
 
           if (data.success) {
             const setupPrizeList = (prizeList) => {
-              const styles = [
-                {
-                  backgroundColor: "#c9e4ff",
-                  labelColor: "#152553",
-                },
-                {
-                  backgroundColor: "#ffe2b8",
-                  labelColor: "#152553",
-                },
-              ];
               return lodash.map(lodash.shuffle(prizeList), (prize, idx) => ({
                 ...prize,
-                weight: 1,
                 ...styles[idx % styles.length],
               }));
             };
@@ -125,10 +127,10 @@ export const useSpinWheelStore = create(
     }),
     {
       name: "spin-wheel-storage",
-      partialize: (state) => {
-        const { isSpinning, ...rest } = state;
-        return rest;
-      },
+      partialize: (state) => ({
+        ...state,
+        isSpinning: false,
+      }),
     }
   )
 );
