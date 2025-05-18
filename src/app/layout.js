@@ -28,7 +28,7 @@ export const metadata = {
   title: "SHome's 7th Birthday",
   description: "Lucky spin to celebrate SHome's 7th Birthday",
   icons: {
-    icon: "/favicon.png",
+    icon: "/assets/favicon.png",
   },
 };
 

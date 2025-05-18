@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/useAuthStore";
-import withAuth from "@/components/hoc/withAuth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -63,7 +62,7 @@ function Login() {
     setError("");
 
     try {
-      const {success, user} = await login(data.employeeId, data.password);
+      const { success, user } = await login(data.employeeId, data.password);
       if (success) {
         if (user.role === "admin") {
           router.push("/superuser");
@@ -81,7 +80,7 @@ function Login() {
   };
 
   useEffect(() => {
-    const employeeId = searchParams.get('employee-id');
+    const employeeId = searchParams.get("employee-id");
     if (employeeId) {
       form.setValue("employeeId", employeeId);
     }
@@ -189,4 +188,4 @@ function Login() {
   );
 }
 
-export default withAuth(Login);
+export default Login;

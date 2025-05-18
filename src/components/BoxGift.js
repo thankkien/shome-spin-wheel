@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { cn } from "@/utils/classname";
 import { useSpinWheelStore } from "@/stores";
 
 export default function BoxGift({ onFinish }) {
-  const [isOpening, setIsOpening] = useState(false);
-  const [isOpened, setIsOpened] = useState(false);
-  
   const prize = useSpinWheelStore((state) => state.prize);
+
   if (!prize) return null;
 
+  const [isOpening, setIsOpening] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
   const handleOpen = () => {
     setIsOpening(true);
     setTimeout(() => {
@@ -33,7 +33,7 @@ export default function BoxGift({ onFinish }) {
         disabled={isOpening || isOpened}
       >
         <img
-          src="/box.svg"
+          src="/assets/box.svg"
           className={cn(
             "max-w-48 size-48 transition-all duration-700",
             isOpening ? "scale-110 rotate-6 brightness-[1.2]" : "scale-100"
@@ -41,7 +41,9 @@ export default function BoxGift({ onFinish }) {
           alt="box"
         />
         <div className="mt-4">
-          <p className="text-sm whitespace-nowrap capitalize font-medium mb-1">Hộp quà {prize.prize_label} bí ẩn</p>
+          <p className="text-sm whitespace-nowrap capitalize font-medium mb-1">
+            Hộp quà {prize.prize_label} bí ẩn
+          </p>
         </div>
       </button>
     </div>

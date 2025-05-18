@@ -48,7 +48,7 @@ export default function Header() {
   return (
     <header className="py-4 gap-2 w-full flex flex-col justify-between items-center">
       <Image
-        src="/logo.svg"
+        src="/assets/logo.svg"
         alt="SHome logo"
         width={200}
         height={50}

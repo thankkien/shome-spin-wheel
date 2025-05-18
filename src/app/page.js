@@ -1,27 +1,43 @@
 "use client";
 
-import Link from "next/link";
+import { useEffect } from "react";
 import { useSpinWheelStore } from "@/stores";
-import withAuth from "@/components/hoc/withAuth";
-import { Button } from "@/components/ui/button";
+import dynamic from "next/dynamic";
+import PrizePopup from "@/components/PrizePopup";
 import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { usePathname } from "next/navigation";
 
-function HomePage() {
-  const hasSpun = useSpinWheelStore((state) => state.hasSpun);
+const SpinWheelClient = dynamic(() => import("@/components/SpinWheel"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full max-w-lg mx-auto mb-6 h-[500px] flex items-center justify-center">
+      <Skeleton className="w-full h-full" />
+    </div>
+  ),
+});
+
+function SpinWheelPage() {
+  const pathname = usePathname();
+  const getSpinStatus = useSpinWheelStore((state) => state.getSpinStatus);
+  const getPrizes = useSpinWheelStore((state) => state.getPrizes);
+  const prize = useSpinWheelStore((state) => state.prize);
+
+  useEffect(() => {
+    getSpinStatus();
+    getPrizes();
+  }, [pathname]);
 
   return (
     <>
+      <PrizePopup className="mb-4 p-0" key={prize?.id} />
       <Card>
-        <CardContent className="p-6">
-          <Button asChild className="w-full h-12" variant="default">
-            <Link href="/spin-wheel">
-              {hasSpun ? "Xem Lại Vòng Quay" : "Vòng Quay May Mắn"}
-            </Link>
-          </Button>
+        <CardContent>
+          <SpinWheelClient />
         </CardContent>
       </Card>
     </>
   );
 }
 
-export default withAuth(HomePage);
+export default SpinWheelPage;

@@ -9,13 +9,14 @@ import BoxGift from "./BoxGift";
 import PrizeBadge from "./PrizeBadge";
 
 export default function PrizePopup({ className }) {
+  const hasSpun = useSpinWheelStore((state) => state.hasSpun);
+  const prize = useSpinWheelStore((state) => state.prize);
+
+  if (!hasSpun || !prize) return null;
+
   const [isOpen, setIsOpen] = useState(true);
   const [showBox, setShowBox] = useState(false);
   const [showPrize, setShowPrize] = useState(false);
-
-  const hasSpun = useSpinWheelStore((state) => state.hasSpun);
-  const prize = useSpinWheelStore((state) => state.prize);
-  const isHydrated = useSpinWheelStore((state) => state._hydrated);
 
   useEffect(() => {
     if (prize) {
@@ -36,8 +37,6 @@ export default function PrizePopup({ className }) {
       setShowPrize(false);
     }
   };
-
-  if (!isHydrated || !hasSpun || !prize) return null;
 
   return (
     <div

@@ -5,12 +5,16 @@ const PUBLIC_API = ["/api/auth"];
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
+  const isApi = pathname.startsWith("/api");
+  const isLoginPage = pathname === "/login";
+  const isSuperuserPage = pathname === "/superuser";
+  const isRoot = pathname === "/";
 
+  const cookie = request.cookies.get(COOKIE_NAME)?.value;
   if (
-    pathname.startsWith("/api") &&
+    isApi &&
     !PUBLIC_API.some((pub) => pathname.startsWith(pub))
   ) {
-    const cookie = request.cookies.get(COOKIE_NAME)?.value;
     if (!cookie) {
       return NextResponse.json(
         { message: "Unauthorized: No token" },
@@ -28,9 +32,29 @@ export async function middleware(request) {
     response.headers.set("x-user", encodeURIComponent(JSON.stringify(user)));
     return response;
   }
+
+  if (!isApi && !isLoginPage) {
+    if (!cookie) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+    const user = await jwtService.verify(cookie);
+    if (!user) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+    if (user.role === "admin" && !isSuperuserPage) {
+      return NextResponse.redirect(new URL("/superuser", request.url));
+    }
+    if (isLoginPage) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/api/:path*"],
+  matcher: [
+    "/api/:path*",
+    "/((?!_next|static|favicon.ico|login|register|assets).*)",
+  ],
 };

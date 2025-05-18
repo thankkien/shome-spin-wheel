@@ -31,7 +31,7 @@ export default function SpinWheelClient() {
     }
     const props = await spin();
     if (props) {
-      const audio = new Audio("/PrizeWheelSpinSound.mp3");
+      const audio = new Audio("/assets/PrizeWheelSpinSound.mp3");
       audio.play();
       wheel.spinToItem(...props);
     }
@@ -43,7 +43,7 @@ export default function SpinWheelClient() {
     img.onerror = (error) => {
       console.error("Lỗi khi tải hình ảnh overlay:", error);
     };
-    img.src = "/overlay.svg";
+    img.src = "/assets/overlay.svg";
   }, []);
 
   useEffect(() => {
@@ -108,7 +108,7 @@ export default function SpinWheelClient() {
                 : "bg-blue-600 hover:bg-blue-700"
             )}
           >
-            {isLoading ? "ĐANG XỬ LÝ..." : wheel ? "QUAY NGAY" : "Đang tải..."}
+            {isLoading ? "Đang tải..." : wheel ? "QUAY NGAY" : "Đang tải..."}
           </button>
         </div>
       )}

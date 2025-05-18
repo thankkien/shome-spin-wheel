@@ -62,6 +62,7 @@ export const useSpinWheelStore = create(
           }
           return { success, hasSpun, isCanSpin, prizes };
         } catch (error) {
+          console.error("Lỗi khi lấy thông tin quay trúng:", error);
           return null;
         } finally {
           set({ isLoading: false });
@@ -121,7 +122,7 @@ export const useSpinWheelStore = create(
           return calcSpinToValues(prizeIndex);
         } catch (error) {
           set({ isSpinning: false });
-          return { success: false, error: error?.message || "Lỗi máy chủ" };
+          return [];
         }
       },
     }),
@@ -130,6 +131,10 @@ export const useSpinWheelStore = create(
       partialize: (state) => ({
         ...state,
         isSpinning: false,
+      }),
+      merge: (persisted, current) => ({
+        ...current,
+        ...persisted,
       }),
     }
   )

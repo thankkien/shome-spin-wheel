@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useAuthStore } from "@/stores";
 
 const axiosInstance = axios.create({
   baseURL: "/api",
@@ -14,15 +15,19 @@ axiosInstance.interceptors.request.use(
 );
 
 axiosInstance.interceptors.response.use(
-  (response) =>  response.data,
+  (response) => response.data,
   (error) => {
     if (error.response) {
-      return Promise.reject(error.response || { success: false, error: "Lỗi server" });
+      if (error.response.status === 401) {
+        useAuthStore.setState({ user: null });
+        return Promise.reject("Unauthorized");
+      }
+      return Promise.reject(error.response.message ?? "Lỗi server");
     }
-    return Promise.reject({
-      success: false,
-      error: "Không thể kết nối đến server",
-    });
+    if (error.request) {
+      return Promise.reject("Lỗi kết nối");
+    }
+    return Promise.reject("Lỗi không xác định");
   }
 );
 

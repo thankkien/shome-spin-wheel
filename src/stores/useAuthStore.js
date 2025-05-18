@@ -33,6 +33,10 @@ export const useAuthStore = create(
     }),
     {
       name: "auth-storage",
+      merge: (persisted, current) => ({
+        ...current,
+        ...persisted,
+      }),
     }
   )
 );
