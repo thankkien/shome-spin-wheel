@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Plus, Trash2, FileDown, Eye, ChevronDown } from "lucide-react";
-import { useUserStore } from "@/app/superuser/useUserStore";
+import { useUserStore } from "@/stores/useUserStore";
 import {
   DropdownMenu,
   DropdownMenuContent,

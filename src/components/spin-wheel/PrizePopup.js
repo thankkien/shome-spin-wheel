@@ -3,11 +3,11 @@
 import { cn } from "@/utils/classname";
 import { useEffect, useState } from "react";
 import { useSpinWheelStore } from "@/stores";
-import FireworkEffect from "./animation/FireworkEffect";
-import ConfettiEffect from "./animation/ConfettiEffect";
+import FireworkEffect from "../animation/FireworkEffect";
+import ConfettiEffect from "../animation/ConfettiEffect";
 import BoxGift from "./BoxGift";
 import PrizeBadge from "./PrizeBadge";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export default function PrizePopup({ className }) {
   const hasSpun = useSpinWheelStore((state) => state.hasSpun);

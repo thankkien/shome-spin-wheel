@@ -23,7 +23,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useUserStore } from "@/app/superuser/useUserStore";
+import { useUserStore } from "@/stores/useUserStore";
 import { UserTableActions } from '@/components/user/UserTableActions';
 import { useAuthStore } from '@/stores/useAuthStore';
 

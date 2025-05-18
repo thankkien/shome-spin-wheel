@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useUserStore } from "./useUserStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { UserTable } from "@/components/user/UserTable";
 import { UserDrawer } from "@/components/user/UserDrawer";
 

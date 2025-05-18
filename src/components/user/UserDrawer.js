@@ -33,7 +33,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useUserStore } from "@/app/superuser/useUserStore";
+import { useUserStore } from "@/stores/useUserStore";
 import { RotateCcwKey, ClipboardCopy } from "lucide-react";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { toast } from "sonner";

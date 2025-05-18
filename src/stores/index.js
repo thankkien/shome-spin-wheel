@@ -1,3 +1,3 @@
 export * from "./useAuthStore";
 export * from "./useSpinWheelStore";
-export * from "../app/superuser/useUserStore";
+export * from "./useUserStore";
