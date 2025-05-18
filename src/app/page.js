@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useSpinWheelStore } from "@/stores";
 import dynamic from "next/dynamic";
 import PrizePopup from "@/components/PrizePopup";
+import RecentSpins from "@/components/RecentSpins";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { usePathname } from "next/navigation";
@@ -11,7 +12,7 @@ import { usePathname } from "next/navigation";
 const SpinWheelClient = dynamic(() => import("@/components/SpinWheel"), {
   ssr: false,
   loading: () => (
-    <div className="w-full max-w-lg mx-auto mb-6 h-[500px] flex items-center justify-center">
+    <div className="w-full max-w-lg mx-auto h-80 flex items-center justify-center">
       <Skeleton className="w-full h-full" />
     </div>
   ),
@@ -36,6 +37,7 @@ function SpinWheelPage() {
           <SpinWheelClient />
         </CardContent>
       </Card>
+      <RecentSpins />
     </>
   );
 }

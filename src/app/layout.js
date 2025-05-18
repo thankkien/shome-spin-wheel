@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
         <main className="w-full flex-grow">{children}</main>
         <footer className="flex gap-4 flex-wrap items-center justify-center py-6 text-xs text-muted-foreground mt-auto">
           <p className="flex items-center">
-            <span>©</span> Copyright 2023. Công ty TNHH TM S.Home Solution
+            <span>©</span> Copyright 2025. Công ty TNHH TM S.Home Solution
           </p>
         </footer>
         <Toaster position="top-center" />

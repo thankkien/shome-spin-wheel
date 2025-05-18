@@ -42,8 +42,21 @@ export const useSpinWheelStore = create(
       prize: null,
       prizes: null,
       prizeList: [],
+      recentSpins: [],
+
       setIsSpinning: (isSpinning) => set({ isSpinning }),
       spinCallback: () => set({ isSpinning: false }),
+
+      getRecentSpins: async () => {
+        try {
+          const data = await spinService.getRecentSpins();
+          if (data?.success) {
+            set({ recentSpins: data.spins || [] });
+          }
+        } catch (error) {
+          console.error("Lỗi khi lấy danh sách quay gần nhất:", error);
+        }
+      },
 
       getSpinStatus: async () => {
         try {
@@ -109,7 +122,6 @@ export const useSpinWheelStore = create(
           }
           set({
             spinCallback: () => {
-              console.log("callback");
               set({
                 hasSpun,
                 isCanSpin,
@@ -117,6 +129,7 @@ export const useSpinWheelStore = create(
                 prize,
                 isSpinning: false,
               });
+              get().getRecentSpins();
             },
           });
           return calcSpinToValues(prizeIndex);

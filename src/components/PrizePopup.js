@@ -49,7 +49,6 @@ export default function PrizePopup({ className }) {
     >
       <div
         className="fixed inset-0 bg-black/10 backdrop-blur-sm"
-        onClick={handleClose}
       />
       <div
         className={cn(
