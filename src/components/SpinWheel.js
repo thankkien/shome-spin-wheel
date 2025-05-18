@@ -47,7 +47,7 @@ export default function SpinWheelClient() {
   }, []);
 
   useEffect(() => {
-    if (!overlayImg || !wheelContainerRef.current || wheel) return;
+    if (!overlayImg || isLoading || !wheelContainerRef.current || wheel) return;
 
     try {
       const props = {
@@ -67,6 +67,7 @@ export default function SpinWheelClient() {
         isInteractive: false,
         onRest: () => spinCallbackRef.current(),
         onSpin: () => setIsSpinning(true),
+        debug: process.env.NODE_ENV === "development",
       };
 
       const newWheel = new Wheel(wheelContainerRef.current, props);
@@ -81,10 +82,11 @@ export default function SpinWheelClient() {
           newWheel.spinToItem(prizeIndex, 0, false, 0, 1, null);
         }
       }
+      console.log("prizeList", prizeList);
     } catch (error) {
       console.error("Lỗi khởi tạo vòng quay:", error);
     }
-  }, [overlayImg]);
+  }, [overlayImg, isLoading, prizeList]);
 
   return (
     <div className="relative">
