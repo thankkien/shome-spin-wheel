@@ -28,6 +28,7 @@ export default function BoxGift({ onFinish }) {
     >
       <button
         className={cn(
+          "flex flex-col items-center justify-center",
           "focus:outline-none bg-transparent border-none p-0",
           "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-[70%] z-100"
         )}
@@ -44,7 +45,7 @@ export default function BoxGift({ onFinish }) {
         />
         <div className="mt-4">
           <p className="text-sm whitespace-nowrap capitalize font-medium mb-1">
-            Hộp quà {prize.prize_label} bí ẩn
+            Hộp quà - {prize.prize_label}
           </p>
         </div>
       </button>

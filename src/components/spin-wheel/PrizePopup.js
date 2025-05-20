@@ -8,6 +8,7 @@ import ConfettiEffect from "../animation/ConfettiEffect";
 import BoxGift from "./BoxGift";
 import PrizeBadge from "./PrizeBadge";
 import { Button } from "../ui/button";
+import Letter from "./Letter";
 
 export default function PrizePopup({ className }) {
   const hasSpun = useSpinWheelStore((state) => state.hasSpun);
@@ -18,6 +19,7 @@ export default function PrizePopup({ className }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showBox, setShowBox] = useState(false);
   const [showPrize, setShowPrize] = useState(false);
+  const [showLetter, setShowLetter] = useState(false);
 
   useEffect(() => {
     if (prize) {
@@ -29,15 +31,22 @@ export default function PrizePopup({ className }) {
 
   const handleBoxFinish = () => {
     setShowBox(false);
+    if (prize.prize_id === 11) {
+      setShowLetter(true);
+    } else {
+      setShowPrize(true);
+    }
+  };
+
+  const handleLetterFinish = () => {
+    setShowLetter(false);
     setShowPrize(true);
   };
 
-  const handleClose = () => {
-    if (showPrize) {
-      setIsOpen(false);
-      setShowBox(false);
-      setShowPrize(false);
-    }
+  const handleGiftFinish = () => {
+    setIsOpen(false);
+    setShowBox(false);
+    setShowPrize(false);
   };
 
   return (
@@ -47,30 +56,31 @@ export default function PrizePopup({ className }) {
         isOpen ? "" : "hidden"
       )}
     >
-      <div
-        className="fixed inset-0 bg-black/10 backdrop-blur-sm"
-      />
+      <div className="fixed inset-0 bg-black/10 backdrop-blur-sm" />
       <div
         className={cn(
-          "relative h-50 w-full max-w-md mx-auto p-6 rounded-lg text-center overflow-hidden",
+          showLetter ? "h-fit" : "h-50",
+          "relative w-full max-w-md mx-auto p-6 rounded-lg text-center overflow-hidden",
           "bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 dark:from-yellow-600 dark:via-yellow-500 dark:to-yellow-600",
           "border-2 border-dashed border-yellow-500 dark:border-yellow-400",
           "shadow-xl transform transition-all duration-500",
           className
         )}
       >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <FireworkEffect />
-          <ConfettiEffect />
-        </div>
-        <div className={cn("absolute inset-0 opacity-0")}></div>
+        {(showBox || showPrize) && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <FireworkEffect />
+            <ConfettiEffect />
+          </div>
+        )}
         {showBox && <BoxGift onFinish={handleBoxFinish} />}
-        {showPrize && (
+        {(showPrize || showLetter) && (
           <>
-            <PrizeBadge />
+            {showLetter && <Letter onClick={handleLetterFinish} />}
+            {showPrize && <PrizeBadge />}
             <Button
               className="absolute top-2 right-2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 hover:bg-white text-black text-2xl font-bold shadow transition-all duration-200"
-              onClick={handleClose}
+              onClick={showPrize ? handleGiftFinish : handleLetterFinish}
               aria-label="Đóng"
               style={{ lineHeight: 1 }}
               variant="ghost"

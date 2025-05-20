@@ -1,4 +1,4 @@
-import { Be_Vietnam_Pro, Amatic_SC } from "next/font/google";
+import { Be_Vietnam_Pro, Amatic_SC, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,13 @@ const amaticSc = Amatic_SC({
   variable: "--font-amatic-sc",
   subsets: ["vietnamese"],
   weight: ["400", "700"],
+  preload: true,
+});
+
+const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
+  subsets: ["vietnamese"],
+  weight: ["400", "500", "600", "700"],
   preload: true,
 });
 
@@ -39,7 +46,8 @@ export default function RootLayout({ children }) {
         className={cn(
           "antialiased min-w-sm max-w-md mx-auto min-h-screen p-2 flex flex-col w-[100vw]",
           beVietnamPro.variable,
-          amaticSc.variable
+          amaticSc.variable,
+          dancingScript.variable
         )}
       >
         <Header />

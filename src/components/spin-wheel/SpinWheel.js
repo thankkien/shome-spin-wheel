@@ -67,7 +67,6 @@ export default function SpinWheelClient() {
         isInteractive: false,
         onRest: () => spinCallbackRef.current(),
         onSpin: () => setIsSpinning(true),
-        debug: process.env.NODE_ENV === "development",
       };
 
       const newWheel = new Wheel(wheelContainerRef.current, props);

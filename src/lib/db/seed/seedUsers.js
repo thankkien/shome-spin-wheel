@@ -14,7 +14,7 @@ function seedUsers() {
           user.role = "user";
         }
         const query =
-          "INSERT INTO users (id, password, employeeId, role, fullname, department) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(employeeId) DO UPDATE SET password = ?, employeeId = ?, role = ?, fullname = ?, department = ?;";
+          "INSERT INTO users (id, password, employeeId, role, fullname, department, gender, season, workday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(employeeId) DO UPDATE SET password = ?, employeeId = ?, role = ?, fullname = ?, department = ?, gender = ?, season = ?, workday = ?;";
         const params = [
           user.id,
           user.password,
@@ -22,11 +22,17 @@ function seedUsers() {
           user.role,
           user.fullname,
           user.department,
+          user.gender,
+          user.season,
+          user.workday,
           user.password,
           user.employeeId,
           user.role,
           user.fullname,
           user.department,
+          user.gender,
+          user.season,
+          user.workday,
         ];
 
         return new Promise((resolve, reject) => {

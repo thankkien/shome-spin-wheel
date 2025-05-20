@@ -5,1819 +5,2609 @@
     "employeeId": "NSH-ADMIN",
     "role": "admin",
     "fullname": "KiênTT",
-    "department": "Chăn bò"
+    "department": "Chăn bò",
+    "gender": "male",
+    "season": "fall",
+    "workday": "2557"
   },
   {
     "id": "998",
     "password": "022235",
     "employeeId": "NSH-TEST",
     "fullname": "KiênTT - Test",
-    "department": "Chăn bò"
+    "department": "Chăn bò",
+    "gender": "male",
+    "season": "fall",
+    "workday": "2557"
   },
   {
     "id": "1",
     "password": "640067",
     "employeeId": "NSH000001",
     "fullname": "Cao Xuân Vịnh",
-    "department": "Ban Giám đốc"
+    "department": "Ban Giám đốc",
+    "gender": "male",
+    "season": "summer",
+    "workday": "2557"
   },
   {
     "id": "2",
     "password": "728962",
     "employeeId": "NSH000345",
     "fullname": "Chu Quốc Việt",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "male",
+    "season": "summer",
+    "workday": "781"
   },
   {
     "id": "3",
     "password": "489212",
     "employeeId": "NSH000014",
     "fullname": "Lê Đình Trường",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1342"
   },
   {
     "id": "4",
     "password": "162942",
     "employeeId": "NSH000681",
     "fullname": "Phạm Bùi Bích Ngọc",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "female",
+    "season": "summer",
+    "workday": "42"
   },
   {
     "id": "5",
     "password": "831136",
     "employeeId": "NSH000460",
     "fullname": "Lã Anh Thơ",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "female",
+    "season": "summer",
+    "workday": "410"
   },
   {
     "id": "6",
     "password": "356915",
     "employeeId": "NSH000450",
     "fullname": "Nguyễn Doãn Quyết Thắng",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "male",
+    "season": "spring",
+    "workday": "448"
   },
   {
     "id": "7",
     "password": "667708",
     "employeeId": "NSH000436",
     "fullname": "Nguyễn Thị Thương",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "female",
+    "season": "spring",
+    "workday": "455"
   },
   {
     "id": "8",
     "password": "831377",
     "employeeId": "NSH000385",
     "fullname": "Nguyễn Khắc Nam",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "male",
+    "season": "fall",
+    "workday": "657"
   },
   {
     "id": "9",
     "password": "583872",
     "employeeId": "NSH000682",
     "fullname": "Nguyễn Quang Công",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "male",
+    "season": "summer",
+    "workday": "42"
   },
   {
     "id": "10",
     "password": "348575",
     "employeeId": "NSH000683",
     "fullname": "Vũ Thị Minh Hiền",
-    "department": "Phòng Marketing"
+    "department": "Phòng Marketing",
+    "gender": "female",
+    "season": "summer",
+    "workday": "42"
   },
   {
     "id": "11",
     "password": "148924",
     "employeeId": "NSH000028",
     "fullname": "Trần Thị Tâm",
-    "department": "Phòng Tư vấn bán hàng Online"
+    "department": "Phòng Tư vấn bán hàng Online",
+    "gender": "female",
+    "season": "summer",
+    "workday": "2557"
   },
   {
     "id": "12",
     "password": "517784",
     "employeeId": "NSH000292",
     "fullname": "Ngô Thị Hồng Dương",
-    "department": "Phòng Tư vấn bán hàng Online"
+    "department": "Phòng Tư vấn bán hàng Online",
+    "gender": "female",
+    "season": "winter",
+    "workday": "959"
   },
   {
     "id": "13",
     "password": "182391",
     "employeeId": "NSH000013",
     "fullname": "Cao Duy Thái",
-    "department": "Phòng Tư vấn bán hàng Online"
+    "department": "Phòng Tư vấn bán hàng Online",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1721"
   },
   {
     "id": "14",
     "password": "173700",
     "employeeId": "NSH000606",
     "fullname": "Đàm Thanh Tùng",
-    "department": "Phòng Tư vấn bán hàng Online"
+    "department": "Phòng Tư vấn bán hàng Online",
+    "gender": "male",
+    "season": "winter",
+    "workday": "237"
   },
   {
     "id": "15",
     "password": "346700",
     "employeeId": "NSH000666",
     "fullname": "Hoàng Thị Hà Phương",
-    "department": "Phòng Tư vấn bán hàng Online"
+    "department": "Phòng Tư vấn bán hàng Online",
+    "gender": "female",
+    "season": "spring",
+    "workday": "62"
   },
   {
     "id": "16",
     "password": "561244",
     "employeeId": "NSH000674",
     "fullname": "Nguyễn Thị Thuỳ Dinh",
-    "department": "Phòng Tư vấn bán hàng Online"
+    "department": "Phòng Tư vấn bán hàng Online",
+    "gender": "female",
+    "season": "summer",
+    "workday": "54"
   },
   {
     "id": "17",
     "password": "983086",
     "employeeId": "NSH000675",
     "fullname": "Nguyễn Khánh Duy",
-    "department": "Phòng Tư vấn bán hàng Online"
+    "department": "Phòng Tư vấn bán hàng Online",
+    "gender": "male",
+    "season": "summer",
+    "workday": "54"
   },
   {
     "id": "18",
     "password": "500689",
     "employeeId": "NSH000693",
     "fullname": "Lê Thị Thùy Dung",
-    "department": "Phòng kinh doanh Online"
+    "department": "Phòng kinh doanh Online",
+    "gender": "female",
+    "season": "summer",
+    "workday": "14"
   },
   {
     "id": "19",
     "password": "247732",
     "employeeId": "NSH000316",
     "fullname": "Nguyễn Hải Đăng",
-    "department": "Phòng Cung ứng"
+    "department": "Phòng Cung ứng",
+    "gender": "male",
+    "season": "winter",
+    "workday": "924"
   },
   {
     "id": "20",
     "password": "846852",
     "employeeId": "NSH000325",
     "fullname": "Đào Duy Lượng",
-    "department": "Phòng Cung ứng"
+    "department": "Phòng Cung ứng",
+    "gender": "male",
+    "season": "winter",
+    "workday": "882"
   },
   {
     "id": "21",
     "password": "718956",
     "employeeId": "NSH000439",
     "fullname": "Nguyễn Xuân Ngọc",
-    "department": "Phòng Cung ứng"
+    "department": "Phòng Cung ứng",
+    "gender": "male",
+    "season": "spring",
+    "workday": "451"
   },
   {
     "id": "22",
     "password": "708026",
     "employeeId": "NSH000030",
     "fullname": "Phùng Hải Quang",
-    "department": "Phòng Cung ứng"
+    "department": "Phòng Cung ứng",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1706"
   },
   {
     "id": "23",
     "password": "643615",
     "employeeId": "NSH000027",
     "fullname": "Đoàn Thị Nga",
-    "department": "Phòng Cung ứng"
+    "department": "Phòng Cung ứng",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1134"
   },
   {
     "id": "24",
     "password": "821476",
     "employeeId": "NSH000226",
     "fullname": "Chu Đức Dương",
-    "department": "Phòng Cung ứng"
+    "department": "Phòng Cung ứng",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1027"
   },
   {
     "id": "25",
     "password": "384642",
     "employeeId": "NSH000026",
     "fullname": "Nghiêm Quang Thiệp",
-    "department": "Phòng Cung ứng"
+    "department": "Phòng Cung ứng",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1455"
   },
   {
     "id": "26",
     "password": "910587",
     "employeeId": "NSH000635",
     "fullname": "Nguyễn Quang Hưng",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "winter",
+    "workday": "171"
   },
   {
     "id": "27",
     "password": "416495",
     "employeeId": "NSH000023",
     "fullname": "Nguyễn Văn Minh",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1941"
   },
   {
     "id": "28",
     "password": "809653",
     "employeeId": "NSH000146",
     "fullname": "Thân Mạnh Trí",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1106"
   },
   {
     "id": "29",
     "password": "304691",
     "employeeId": "NSH000515",
     "fullname": "Lê Anh Tuấn",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "summer",
+    "workday": "342"
   },
   {
     "id": "30",
     "password": "189452",
     "employeeId": "NSH000549",
     "fullname": "Nguyễn Tiến Hùng",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "fall",
+    "workday": "297"
   },
   {
     "id": "31",
     "password": "929413",
     "employeeId": "NSH000548",
     "fullname": "Nguyễn Phú Nhất",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "fall",
+    "workday": "297"
   },
   {
     "id": "32",
     "password": "939063",
     "employeeId": "NSH000636",
     "fullname": "Nguyễn Thị Anh Thư",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "female",
+    "season": "winter",
+    "workday": "168"
   },
   {
     "id": "33",
     "password": "545641",
     "employeeId": "NSH000697",
     "fullname": "Đinh Thị Thu Phương",
-    "department": "Phòng Nhân sự"
+    "department": "Phòng Nhân sự",
+    "gender": "female",
+    "season": "summer",
+    "workday": "11"
   },
   {
     "id": "34",
     "password": "825568",
     "employeeId": "NSH000498",
     "fullname": "Trần Quỳnh Anh",
-    "department": "Phòng Nhân sự"
+    "department": "Phòng Nhân sự",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1410"
   },
   {
     "id": "35",
     "password": "764315",
     "employeeId": "NSH000684",
     "fullname": "Đỗ Thị Phương",
-    "department": "Phòng Nhân sự"
+    "department": "Phòng Nhân sự",
+    "gender": "female",
+    "season": "summer",
+    "workday": "39"
   },
   {
     "id": "36",
     "password": "326111",
     "employeeId": "NSH000185",
     "fullname": "Lê Thị Thùy Linh",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1060"
   },
   {
     "id": "37",
     "password": "835441",
     "employeeId": "NSH000012",
     "fullname": "Đỗ Hồng Nhung",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1168"
   },
   {
     "id": "38",
     "password": "181680",
     "employeeId": "NSH000180",
     "fullname": "Lã Ngọc Thủy",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1063"
   },
   {
     "id": "39",
     "password": "654339",
     "employeeId": "NSH000223",
     "fullname": "Nguyễn Thị Hằng",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1029"
   },
   {
     "id": "40",
     "password": "698022",
     "employeeId": "NSH000528",
     "fullname": "Nguyễn Thị Thắm",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "fall",
+    "workday": "328"
   },
   {
     "id": "41",
     "password": "177504",
     "employeeId": "NSH000634",
     "fullname": "Nguyễn Lệ Quyên",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "winter",
+    "workday": "175"
   },
   {
     "id": "42",
     "password": "256278",
     "employeeId": "NSH000558",
     "fullname": "Phạm Phương Anh",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "fall",
+    "workday": "297"
   },
   {
     "id": "43",
     "password": "265040",
     "employeeId": "NSH000655",
     "fullname": "Hoàng Thị Ngọc Trang ",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "spring",
+    "workday": "84"
   },
   {
     "id": "44",
     "password": "198493",
     "employeeId": "NSH000661",
     "fullname": "Trần Thị Ngần",
-    "department": "Phòng Tài chính Kế toán"
+    "department": "Phòng Tài chính Kế toán",
+    "gender": "female",
+    "season": "spring",
+    "workday": "75"
   },
   {
     "id": "45",
     "password": "467419",
     "employeeId": "NSH000020",
     "fullname": "Trần Thị Hoa",
-    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG"
+    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG",
+    "gender": "female",
+    "season": "fall",
+    "workday": "2482"
   },
   {
     "id": "46",
     "password": "732469",
     "employeeId": "NSH000021",
     "fullname": "Phạm Thùy Dung",
-    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG"
+    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG",
+    "gender": "female",
+    "season": "winter",
+    "workday": "1314"
   },
   {
     "id": "47",
     "password": "596660",
     "employeeId": "NSH000518",
     "fullname": "Vũ Thị Oanh",
-    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG"
+    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG",
+    "gender": "female",
+    "season": "summer",
+    "workday": "336"
   },
   {
     "id": "48",
     "password": "789688",
     "employeeId": "NSH000610",
     "fullname": "Vũ Phương Bắc",
-    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG"
+    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG",
+    "gender": "male",
+    "season": "winter",
+    "workday": "235"
   },
   {
     "id": "49",
     "password": "162836",
     "employeeId": "NSH000638",
     "fullname": "Vy Thị Trang",
-    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG"
+    "department": "PHÒNG TRẢI NGHIỆM KHÁCH HÀNG",
+    "gender": "female",
+    "season": "winter",
+    "workday": "154"
   },
   {
     "id": "50",
     "password": "548567",
     "employeeId": "NSH000495",
     "fullname": "Bùi Hải Phong",
-    "department": "PHÒNG CÔNG NGHỆ THÔNG TIN"
+    "department": "PHÒNG CÔNG NGHỆ THÔNG TIN",
+    "gender": "male",
+    "season": "summer",
+    "workday": "359"
   },
   {
     "id": "51",
     "password": "360956",
     "employeeId": "NSH000643",
     "fullname": "Trần Nhật Ninh",
-    "department": "PHÒNG CÔNG NGHỆ THÔNG TIN"
+    "department": "PHÒNG CÔNG NGHỆ THÔNG TIN",
+    "gender": "male",
+    "season": "spring",
+    "workday": "105"
   },
   {
     "id": "52",
     "password": "145574",
     "employeeId": "NSH000514",
     "fullname": "Đỗ Xuân Sơn",
-    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực"
+    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực",
+    "gender": "male",
+    "season": "summer",
+    "workday": "342"
   },
   {
     "id": "53",
     "password": "461116",
     "employeeId": "NSH000564",
     "fullname": "Bùi Thị Quỳnh Như",
-    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực"
+    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực",
+    "gender": "female",
+    "season": "fall",
+    "workday": "287"
   },
   {
     "id": "54",
     "password": "358915",
     "employeeId": "NSH000174",
     "fullname": "Phạm Phương Lan",
-    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực"
+    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1070"
   },
   {
     "id": "55",
     "password": "602052",
     "employeeId": "NSH000454",
     "fullname": "Giáp Thị Thanh Thủy",
-    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực"
+    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực",
+    "gender": "female",
+    "season": "spring",
+    "workday": "427"
   },
   {
     "id": "56",
     "password": "781172",
     "employeeId": "NSH000677",
     "fullname": "Trần Khánh Linh",
-    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực"
+    "department": "Phòng Đào Tạo và Phát triển nguồn nhân lực",
+    "gender": "female",
+    "season": "summer",
+    "workday": "53"
   },
   {
     "id": "57",
     "password": "534167",
     "employeeId": "NSH000490",
     "fullname": "Phan Văn Trọng",
-    "department": "Phòng Phát triển mặt bằng"
+    "department": "Phòng Phát triển mặt bằng",
+    "gender": "male",
+    "season": "summer",
+    "workday": "420"
   },
   {
     "id": "58",
     "password": "817561",
     "employeeId": "NSH000646",
     "fullname": "Nguyễn Văn Hùng",
-    "department": "Hoàng Mai"
+    "department": "Hoàng Mai",
+    "gender": "male",
+    "season": "spring",
+    "workday": "89"
   },
   {
     "id": "59",
     "password": "430925",
     "employeeId": "NSH000024",
     "fullname": "Lê Trung Hiếu",
-    "department": "Hoàng Mai"
+    "department": "Hoàng Mai",
+    "gender": "male",
+    "season": "summer",
+    "workday": "2247"
   },
   {
     "id": "60",
     "password": "186756",
     "employeeId": "NSH000603",
     "fullname": "Lê Thị Thoa",
-    "department": "Hoàng Mai"
+    "department": "Hoàng Mai",
+    "gender": "female",
+    "season": "fall",
+    "workday": "245"
   },
   {
     "id": "61",
     "password": "912614",
     "employeeId": "NSH000622",
     "fullname": "Lê Thị Diệu Linh",
-    "department": "Hoàng Mai"
+    "department": "Hoàng Mai",
+    "gender": "female",
+    "season": "winter",
+    "workday": "210"
   },
   {
     "id": "62",
     "password": "917896",
     "employeeId": "NSH000627",
     "fullname": "Lê Đức Trung",
-    "department": "Hoàng Mai"
+    "department": "Hoàng Mai",
+    "gender": "male",
+    "season": "winter",
+    "workday": "189"
   },
   {
     "id": "63",
     "password": "747175",
     "employeeId": "NSH000692",
     "fullname": "Phạm Trung Thành",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "male",
+    "season": "summer",
+    "workday": "19"
   },
   {
     "id": "64",
     "password": "390279",
     "employeeId": "NSH000383",
     "fullname": "Lưu Tuấn Phong",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "male",
+    "season": "fall",
+    "workday": "664"
   },
   {
     "id": "65",
     "password": "300583",
     "employeeId": "NSH000685",
     "fullname": "Nguyễn Quý Khải",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "male",
+    "season": "summer",
+    "workday": "35"
   },
   {
     "id": "66",
     "password": "441851",
     "employeeId": "NSH000686",
     "fullname": "Phạm Ngọc Cường",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "male",
+    "season": "summer",
+    "workday": "35"
   },
   {
     "id": "67",
     "password": "644737",
     "employeeId": "NSH000689",
     "fullname": "Nguyễn Văn Lượng",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "male",
+    "season": "summer",
+    "workday": "31"
   },
   {
     "id": "68",
     "password": "393867",
     "employeeId": "NSH000690",
     "fullname": "Nguyễn Thị Hằng",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "female",
+    "season": "summer",
+    "workday": "31"
   },
   {
     "id": "69",
     "password": "830492",
     "employeeId": "NSH000532",
     "fullname": "Nguyễn Thanh Trang",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "female",
+    "season": "fall",
+    "workday": "321"
   },
   {
     "id": "70",
     "password": "272253",
     "employeeId": "NSH000452",
     "fullname": "Đỗ Thế Phong",
-    "department": "Lê Trọng Tấn, Hà Đông"
+    "department": "Lê Trọng Tấn, Hà Đông",
+    "gender": "male",
+    "season": "spring",
+    "workday": "444"
   },
   {
     "id": "71",
     "password": "524092",
     "employeeId": "NSH000641",
     "fullname": "Lê Đức Quân",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "male",
+    "season": "spring",
+    "workday": "135"
   },
   {
     "id": "72",
     "password": "920402",
     "employeeId": "NSH000038",
     "fullname": "Nguyễn Thị Phượng",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "female",
+    "season": "winter",
+    "workday": "1649"
   },
   {
     "id": "73",
     "password": "630233",
     "employeeId": "NSH000039",
     "fullname": "Trần Thu Hiền",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1337"
   },
   {
     "id": "74",
     "password": "613318",
     "employeeId": "NSH000407",
     "fullname": "Hà Văn Dũng",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "male",
+    "season": "winter",
+    "workday": "602"
   },
   {
     "id": "75",
     "password": "432261",
     "employeeId": "NSH000043",
     "fullname": "Trần Đức Chính",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1621"
   },
   {
     "id": "76",
     "password": "994029",
     "employeeId": "NSH000623",
     "fullname": "Phạm Mạnh Hùng",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "male",
+    "season": "winter",
+    "workday": "204"
   },
   {
     "id": "77",
     "password": "473527",
     "employeeId": "NSH000694",
     "fullname": "Trương Thị Thu Trang",
-    "department": "Phòng Bán lẻ"
+    "department": "Phòng Bán lẻ",
+    "gender": "female",
+    "season": "summer",
+    "workday": "14"
   },
   {
     "id": "78",
     "password": "470583",
     "employeeId": "NSH000048",
     "fullname": "Lê Thị Tân",
-    "department": "Vĩnh Phúc"
+    "department": "Vĩnh Phúc",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1547"
   },
   {
     "id": "79",
     "password": "665356",
     "employeeId": "NSH000414",
     "fullname": "Nguyễn Thị Hồng",
-    "department": "Vĩnh Phúc"
+    "department": "Vĩnh Phúc",
+    "gender": "female",
+    "season": "winter",
+    "workday": "572"
   },
   {
     "id": "80",
     "password": "181900",
     "employeeId": "NSH000491",
     "fullname": "Nguyễn Văn Anh",
-    "department": "Vĩnh Phúc"
+    "department": "Vĩnh Phúc",
+    "gender": "male",
+    "season": "summer",
+    "workday": "378"
   },
   {
     "id": "81",
     "password": "142549",
     "employeeId": "NSH000576",
     "fullname": "Vũ Thành Dinh",
-    "department": "Vĩnh Phúc"
+    "department": "Vĩnh Phúc",
+    "gender": "male",
+    "season": "fall",
+    "workday": "278"
   },
   {
     "id": "82",
     "password": "697337",
     "employeeId": "NSH000642",
     "fullname": "Nguyễn Văn Hoàn",
-    "department": "Vĩnh Phúc"
+    "department": "Vĩnh Phúc",
+    "gender": "male",
+    "season": "spring",
+    "workday": "105"
   },
   {
     "id": "83",
     "password": "109240",
     "employeeId": "NSH000658",
     "fullname": "Nguyễn Quốc Huy",
-    "department": "Vĩnh Phúc"
+    "department": "Vĩnh Phúc",
+    "gender": "male",
+    "season": "spring",
+    "workday": "79"
   },
   {
     "id": "84",
     "password": "383618",
     "employeeId": "NSH000056",
     "fullname": "Đinh Thị Nguyệt",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1432"
   },
   {
     "id": "85",
     "password": "525197",
     "employeeId": "NSH000058",
     "fullname": "Mai Ngọc Nguyệt Ánh",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1391"
   },
   {
     "id": "86",
     "password": "604264",
     "employeeId": "NSH000272",
     "fullname": "Lê Duy Khánh",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "male",
+    "season": "fall",
+    "workday": "981"
   },
   {
     "id": "87",
     "password": "821249",
     "employeeId": "NSH000060",
     "fullname": "Nguyễn Thị Thanh Huyền",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1442"
   },
   {
     "id": "88",
     "password": "971174",
     "employeeId": "NSH000061",
     "fullname": "Vũ Thị Phương Hảo",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1346"
   },
   {
     "id": "89",
     "password": "549350",
     "employeeId": "NSH000062",
     "fullname": "Nguyễn Tiến Thao",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1400"
   },
   {
     "id": "90",
     "password": "413511",
     "employeeId": "NSH000066",
     "fullname": "Vũ Ngọc Thắng",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1288"
   },
   {
     "id": "91",
     "password": "426427",
     "employeeId": "NSH000337",
     "fullname": "Lê Đức Thắng",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "male",
+    "season": "spring",
+    "workday": "817"
   },
   {
     "id": "92",
     "password": "802899",
     "employeeId": "NSH000153",
     "fullname": "Nguyễn Ngọc Quý",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1151"
   },
   {
     "id": "93",
     "password": "623537",
     "employeeId": "NSH000497",
     "fullname": "Nguyễn Văn Đại",
-    "department": "HẢI PHÒNG "
+    "department": "HẢI PHÒNG ",
+    "gender": "male",
+    "season": "summer",
+    "workday": "378"
   },
   {
     "id": "94",
     "password": "908154",
     "employeeId": "NSH000583",
     "fullname": "Nguyễn Văn Cường",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "male",
+    "season": "fall",
+    "workday": "264"
   },
   {
     "id": "95",
     "password": "608274",
     "employeeId": "NSH000068",
     "fullname": "Nguyễn Thị Sen",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1333"
   },
   {
     "id": "96",
     "password": "325042",
     "employeeId": "NSH000069",
     "fullname": "Nguyễn Bảo Hiếu",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1333"
   },
   {
     "id": "97",
     "password": "424638",
     "employeeId": "NSH000562",
     "fullname": "Nguyễn Thị Thùy Trang",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "female",
+    "season": "fall",
+    "workday": "293"
   },
   {
     "id": "98",
     "password": "856346",
     "employeeId": "NSH000072",
     "fullname": "Bùi Huy Hùng",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1333"
   },
   {
     "id": "99",
     "password": "228872",
     "employeeId": "NSH000451",
     "fullname": "Nguyễn Văn Thành",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "male",
+    "season": "spring",
+    "workday": "448"
   },
   {
     "id": "100",
     "password": "584182",
     "employeeId": "NSH000071",
     "fullname": "Nguyễn Thị Phương",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "female",
+    "season": "winter",
+    "workday": "1302"
   },
   {
     "id": "101",
     "password": "281556",
     "employeeId": "NSH000669",
     "fullname": "Nguyễn Thị Mai Hương",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "female",
+    "season": "spring",
+    "workday": "61"
   },
   {
     "id": "102",
     "password": "356205",
     "employeeId": "NSH000671",
     "fullname": "Lê Thị Bảo Dung",
-    "department": "Việt Trì, Phú Thọ"
+    "department": "Việt Trì, Phú Thọ",
+    "gender": "female",
+    "season": "summer",
+    "workday": "55"
   },
   {
     "id": "103",
     "password": "360326",
     "employeeId": "NSH000388",
     "fullname": "Trịnh Đình Văn",
-    "department": "Ninh Bình"
+    "department": "Ninh Bình",
+    "gender": "male",
+    "season": "fall",
+    "workday": "650"
   },
   {
     "id": "104",
     "password": "249937",
     "employeeId": "NSH000423",
     "fullname": "Đinh Xuân Chung",
-    "department": "Ninh Bình"
+    "department": "Ninh Bình",
+    "gender": "male",
+    "season": "winter",
+    "workday": "568"
   },
   {
     "id": "105",
     "password": "709063",
     "employeeId": "NSH000503",
     "fullname": "Nguyễn Ngọc Thương",
-    "department": "Ninh Bình"
+    "department": "Ninh Bình",
+    "gender": "female",
+    "season": "summer",
+    "workday": "350"
   },
   {
     "id": "106",
     "password": "814864",
     "employeeId": "NSH000563",
     "fullname": "Lê Thị Phương",
-    "department": "Ninh Bình "
+    "department": "Ninh Bình ",
+    "gender": "female",
+    "season": "fall",
+    "workday": "292"
   },
   {
     "id": "107",
     "password": "510795",
     "employeeId": "NSH000466",
     "fullname": "Phạm Hồng Minh",
-    "department": "Ninh Bình"
+    "department": "Ninh Bình",
+    "gender": "male",
+    "season": "summer",
+    "workday": "399"
   },
   {
     "id": "108",
     "password": "461727",
     "employeeId": "NSH000080",
     "fullname": "An Thị Thoa",
-    "department": "Ninh Bình"
+    "department": "Ninh Bình",
+    "gender": "female",
+    "season": "winter",
+    "workday": "1331"
   },
   {
     "id": "109",
     "password": "198924",
     "employeeId": "NSH000079",
     "fullname": "Phạm Văn Lệnh",
-    "department": "Ninh Bình"
+    "department": "Ninh Bình",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1331"
   },
   {
     "id": "110",
     "password": "832131",
     "employeeId": "NSH000633",
     "fullname": "Nguyễn Quang Trung",
-    "department": "Ninh Bình"
+    "department": "Ninh Bình",
+    "gender": "male",
+    "season": "winter",
+    "workday": "176"
   },
   {
     "id": "111",
     "password": "950729",
     "employeeId": "NSH000472",
     "fullname": "Lê Huy Vũ",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "male",
+    "season": "summer",
+    "workday": "389"
   },
   {
     "id": "112",
     "password": "969598",
     "employeeId": "NSH000365",
     "fullname": "Tạ Hồng Sơn",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "male",
+    "season": "summer",
+    "workday": "742"
   },
   {
     "id": "113",
     "password": "946953",
     "employeeId": "NSH000390",
     "fullname": "Nguyễn Thị Hà Trang",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "female",
+    "season": "fall",
+    "workday": "626"
   },
   {
     "id": "114",
     "password": "464908",
     "employeeId": "NSH000392",
     "fullname": "Nguyễn Thị Linh",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "female",
+    "season": "fall",
+    "workday": "623"
   },
   {
     "id": "115",
     "password": "614016",
     "employeeId": "NSH000086",
     "fullname": "Trần Thị Sinh",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1182"
   },
   {
     "id": "116",
     "password": "572340",
     "employeeId": "NSH000084",
     "fullname": "Hà Văn Thuật",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1182"
   },
   {
     "id": "117",
     "password": "852644",
     "employeeId": "NSH000082",
     "fullname": "Hoàng Nam Hiếu",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1200"
   },
   {
     "id": "118",
     "password": "609474",
     "employeeId": "NSH000083",
     "fullname": "Nguyễn Văn Hùng",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1193"
   },
   {
     "id": "119",
     "password": "951780",
     "employeeId": "NSH000688",
     "fullname": "Lê Xuân Anh",
-    "department": "Thanh Hóa"
+    "department": "Thanh Hóa",
+    "gender": "male",
+    "season": "summer",
+    "workday": "34"
   },
   {
     "id": "120",
     "password": "775754",
     "employeeId": "NSH000092",
     "fullname": "Trần Quốc Đạt",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1167"
   },
   {
     "id": "121",
     "password": "867365",
     "employeeId": "NSH000093",
     "fullname": "Đặng Thị Lan Chi",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1167"
   },
   {
     "id": "122",
     "password": "567736",
     "employeeId": "NSH000097",
     "fullname": "Nguyễn Thị Lâm",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1167"
   },
   {
     "id": "123",
     "password": "706379",
     "employeeId": "NSH000584",
     "fullname": "Trần Thị Tuyết Nhung",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "female",
+    "season": "fall",
+    "workday": "265"
   },
   {
     "id": "124",
     "password": "828553",
     "employeeId": "NSH000099",
     "fullname": "Hoàng Văn Sáng",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1184"
   },
   {
     "id": "125",
     "password": "999142",
     "employeeId": "NSH000220",
     "fullname": "Trần Ngọc Hiệp",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1029"
   },
   {
     "id": "126",
     "password": "332429",
     "employeeId": "NSH000486",
     "fullname": "Nguyễn Văn Linh",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "male",
+    "season": "summer",
+    "workday": "382"
   },
   {
     "id": "127",
     "password": "554494",
     "employeeId": "NSH000096",
     "fullname": "Nguyễn Thị Hồng",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1182"
   },
   {
     "id": "128",
     "password": "500548",
     "employeeId": "NSH000679",
     "fullname": "Đào Xuân Chiêm",
-    "department": "Nam Định"
+    "department": "Nam Định",
+    "gender": "male",
+    "season": "summer",
+    "workday": "48"
   },
   {
     "id": "129",
     "password": "199781",
     "employeeId": "NSH000649",
     "fullname": "Hoàng Văn Đảm",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "male",
+    "season": "spring",
+    "workday": "89"
   },
   {
     "id": "130",
     "password": "411165",
     "employeeId": "NSH000458",
     "fullname": "Nguyễn Mạnh Toàn",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "male",
+    "season": "summer",
+    "workday": "415"
   },
   {
     "id": "131",
     "password": "720667",
     "employeeId": "NSH000409",
     "fullname": " Phạm Văn Thao",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "male",
+    "season": "winter",
+    "workday": "595"
   },
   {
     "id": "132",
     "password": "248251",
     "employeeId": "NSH000540",
     "fullname": "Vũ Ngọc Khải",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "male",
+    "season": "fall",
+    "workday": "313"
   },
   {
     "id": "133",
     "password": "671502",
     "employeeId": "NSH000619",
     "fullname": "Nguyễn Trung Luy",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "male",
+    "season": "winter",
+    "workday": "221"
   },
   {
     "id": "134",
     "password": "602136",
     "employeeId": "NSH000455",
     "fullname": "Đào Thị Mỹ Huyền",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "female",
+    "season": "summer",
+    "workday": "420"
   },
   {
     "id": "135",
     "password": "220426",
     "employeeId": "NSH000553",
     "fullname": "Nguyễn Thị Huyền",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "female",
+    "season": "fall",
+    "workday": "294"
   },
   {
     "id": "136",
     "password": "617734",
     "employeeId": "NSH000364",
     "fullname": "Dương thị Hồng",
-    "department": "Thái Bình"
+    "department": "Thái Bình",
+    "gender": "female",
+    "season": "summer",
+    "workday": "742"
   },
   {
     "id": "137",
     "password": "624110",
     "employeeId": "NSH000074",
     "fullname": "Vũ Xuân Phong",
-    "department": "Hà Nam"
+    "department": "Hà Nam",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1169"
   },
   {
     "id": "138",
     "password": "942846",
     "employeeId": "NSH000235",
     "fullname": "Nguyễn Thị Ánh Nguyệt",
-    "department": "Hà Nam"
+    "department": "Hà Nam",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1060"
   },
   {
     "id": "139",
     "password": "138198",
     "employeeId": "NSH000386",
     "fullname": "Nguyễn Thị Ánh",
-    "department": "Hà Nam"
+    "department": "Hà Nam",
+    "gender": "female",
+    "season": "fall",
+    "workday": "656"
   },
   {
     "id": "140",
     "password": "707821",
     "employeeId": "NSH000582",
     "fullname": "Đinh Chí Đông",
-    "department": "Hà Nam"
+    "department": "Hà Nam",
+    "gender": "male",
+    "season": "fall",
+    "workday": "267"
   },
   {
     "id": "141",
     "password": "583704",
     "employeeId": "NSH000238",
     "fullname": "Phạm Trung Hiếu",
-    "department": "Hà Nam"
+    "department": "Hà Nam",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1060"
   },
   {
     "id": "142",
     "password": "440640",
     "employeeId": "NSH000687",
     "fullname": "Nguyễn Thị Thu Hương",
-    "department": "Hà Nam"
+    "department": "Hà Nam",
+    "gender": "female",
+    "season": "summer",
+    "workday": "35"
   },
   {
     "id": "143",
     "password": "643953",
     "employeeId": "NSH000592",
     "fullname": "Huỳnh Thanh Thoại",
-    "department": "Bạch Đằng, TP. HCM"
+    "department": "Bạch Đằng, TP. HCM",
+    "gender": "male",
+    "season": "fall",
+    "workday": "253"
   },
   {
     "id": "144",
     "password": "382453",
     "employeeId": "NSH000493",
     "fullname": "Yin Minh Quân",
-    "department": "Bạch Đằng, TP. HCM"
+    "department": "Bạch Đằng, TP. HCM",
+    "gender": "male",
+    "season": "summer",
+    "workday": "376"
   },
   {
     "id": "145",
     "password": "855340",
     "employeeId": "NSH000542",
     "fullname": "Huỳnh Thị Quỳnh Như",
-    "department": "Bạch Đằng, TP. HCM"
+    "department": "Bạch Đằng, TP. HCM",
+    "gender": "female",
+    "season": "fall",
+    "workday": "310"
   },
   {
     "id": "146",
     "password": "727200",
     "employeeId": "NSH000552",
     "fullname": "Nguyễn Thị Thanh Hoa",
-    "department": "Bạch Đằng, TP. HCM"
+    "department": "Bạch Đằng, TP. HCM",
+    "gender": "female",
+    "season": "fall",
+    "workday": "296"
   },
   {
     "id": "147",
     "password": "481064",
     "employeeId": "NSH000644",
     "fullname": "Nguyễn Văn Huy ",
-    "department": "Bạch Đằng, TP. HCM"
+    "department": "Bạch Đằng, TP. HCM",
+    "gender": "male",
+    "season": "spring",
+    "workday": "91"
   },
   {
     "id": "148",
     "password": "867046",
     "employeeId": "NSH000101",
     "fullname": "Trần Thái Minh",
-    "department": "Nguyễn Thị Thập, TP. HCM"
+    "department": "Nguyễn Thị Thập, TP. HCM",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1333"
   },
   {
     "id": "149",
     "password": "356688",
     "employeeId": "NSH000179",
     "fullname": "Trần Vũ Hiệp",
-    "department": "Nguyễn Thị Thập, TP. HCM"
+    "department": "Nguyễn Thị Thập, TP. HCM",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1089"
   },
   {
     "id": "150",
     "password": "731028",
     "employeeId": "NSH000544",
     "fullname": "Nguyễn Mai Kim Ngân",
-    "department": "Nguyễn Thị Thập, TP.HCM"
+    "department": "Nguyễn Thị Thập, TP.HCM",
+    "gender": "female",
+    "season": "fall",
+    "workday": "307"
   },
   {
     "id": "151",
     "password": "644409",
     "employeeId": "NSH000419",
     "fullname": "Trần Ngọc Hùng",
-    "department": "Nguyễn Thị Thập, TP. HCM"
+    "department": "Nguyễn Thị Thập, TP. HCM",
+    "gender": "female",
+    "season": "winter",
+    "workday": "542"
   },
   {
     "id": "152",
     "password": "439217",
     "employeeId": "NSH000191",
     "fullname": "Tiêu Thị Mỹ Trinh",
-    "department": "Nguyễn Thị Thập, TP. HCM"
+    "department": "Nguyễn Thị Thập, TP. HCM",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1058"
   },
   {
     "id": "153",
     "password": "669807",
     "employeeId": "NSH000102",
     "fullname": "Phùng Thị Thanh Huyền",
-    "department": "Kho Điện Biên Phủ, TP. HCM"
+    "department": "Kho Điện Biên Phủ, TP. HCM",
+    "gender": "female",
+    "season": "fall",
+    "workday": "2125"
   },
   {
     "id": "154",
     "password": "903742",
     "employeeId": "NSH000184",
     "fullname": "Nguyễn Thủy Tiên",
-    "department": "Kho Điện Biên Phủ, TP. HCM"
+    "department": "Kho Điện Biên Phủ, TP. HCM",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1075"
   },
   {
     "id": "155",
     "password": "524161",
     "employeeId": "NSH000109",
     "fullname": "Nguyễn Văn Năng",
-    "department": "Kho Điện Biên Phủ, TP. HCM"
+    "department": "Kho Điện Biên Phủ, TP. HCM",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1972"
   },
   {
     "id": "156",
     "password": "610594",
     "employeeId": "NSH000162",
     "fullname": "Trần Đình An",
-    "department": "Kho Điện Biên Phủ, TP. HCM"
+    "department": "Kho Điện Biên Phủ, TP. HCM",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1113"
   },
   {
     "id": "157",
     "password": "500702",
     "employeeId": "NSH000373",
     "fullname": "Đào Đức Quang",
-    "department": "Kho Điện Biên Phủ, TP. HCM"
+    "department": "Kho Điện Biên Phủ, TP. HCM",
+    "gender": "male",
+    "season": "summer",
+    "workday": "711"
   },
   {
     "id": "158",
     "password": "516954",
     "employeeId": "NSH000173",
     "fullname": "Ngô Ngọc Tài",
-    "department": "Kho Điện Biên Phủ, TP. HCM"
+    "department": "Kho Điện Biên Phủ, TP. HCM",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1094"
   },
   {
     "id": "159",
     "password": "863402",
     "employeeId": "NSH000172",
     "fullname": "Vũ Thanh Tùng",
-    "department": "Kho Điện Biên Phủ, TP. HCM"
+    "department": "Kho Điện Biên Phủ, TP. HCM",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1089"
   },
   {
     "id": "160",
     "password": "321746",
     "employeeId": "NSH000640",
     "fullname": "Vũ Thị Ngọc Quỳnh",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "female",
+    "season": "spring",
+    "workday": "138"
   },
   {
     "id": "161",
     "password": "228724",
     "employeeId": "NSH000121",
     "fullname": "Nguyễn Thị Hương",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1182"
   },
   {
     "id": "162",
     "password": "147170",
     "employeeId": "NSH000124",
     "fullname": "Lương Văn Vũ",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1160"
   },
   {
     "id": "163",
     "password": "596888",
     "employeeId": "NSH000482",
     "fullname": "Bùi Thanh Tuấn",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "male",
+    "season": "summer",
+    "workday": "386"
   },
   {
     "id": "164",
     "password": "946205",
     "employeeId": "NSH000150",
     "fullname": "Nguyễn Văn Kiêm",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1104"
   },
   {
     "id": "165",
     "password": "531470",
     "employeeId": "NSH000530",
     "fullname": "Quách Văn Tùng",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "male",
+    "season": "fall",
+    "workday": "324"
   },
   {
     "id": "166",
     "password": "861940",
     "employeeId": "NSH000621",
     "fullname": "Nguyễn Thành Tuân",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "male",
+    "season": "winter",
+    "workday": "214"
   },
   {
     "id": "167",
     "password": "150314",
     "employeeId": "NSH000650",
     "fullname": "Nguyễn Thị Thùy ",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "female",
+    "season": "spring",
+    "workday": "86"
   },
   {
     "id": "168",
     "password": "942382",
     "employeeId": "NSH000654",
     "fullname": "Nguyễn Thị Nguyệt Anh",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "female",
+    "season": "spring",
+    "workday": "83"
   },
   {
     "id": "169",
     "password": "830963",
     "employeeId": "NSH000556",
     "fullname": "Nguyễn Văn Thăng",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "male",
+    "season": "fall",
+    "workday": "293"
   },
   {
     "id": "170",
     "password": "868002",
     "employeeId": "NSH000659",
     "fullname": "Nguyễn Trọng Linh",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "male",
+    "season": "spring",
+    "workday": "76"
   },
   {
     "id": "171",
     "password": "538598",
     "employeeId": "NSH000662",
     "fullname": "Nguyễn Thị Bích Phương",
-    "department": "Bắc Ninh"
+    "department": "Bắc Ninh",
+    "gender": "female",
+    "season": "spring",
+    "workday": "72"
   },
   {
     "id": "172",
     "password": "477091",
     "employeeId": "NSH000156",
     "fullname": "Nguyễn Thị Lành",
-    "department": "Tuyên Quang"
+    "department": "Tuyên Quang",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1131"
   },
   {
     "id": "173",
     "password": "704707",
     "employeeId": "NSH000245",
     "fullname": "Trần Thị Mai Anh",
-    "department": "Tuyên Quang"
+    "department": "Tuyên Quang",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1012"
   },
   {
     "id": "174",
     "password": "669054",
     "employeeId": "NSH000507",
     "fullname": "Bùi Kim Công",
-    "department": "Tuyên Quang"
+    "department": "Tuyên Quang",
+    "gender": "male",
+    "season": "summer",
+    "workday": "347"
   },
   {
     "id": "175",
     "password": "403581",
     "employeeId": "NSH000508",
     "fullname": "Lương Hồng Trang",
-    "department": "Tuyên Quang"
+    "department": "Tuyên Quang",
+    "gender": "female",
+    "season": "summer",
+    "workday": "347"
   },
   {
     "id": "176",
     "password": "436993",
     "employeeId": "NSH000307",
     "fullname": "Nguyễn Thanh Liêm",
-    "department": "Tuyên Quang"
+    "department": "Tuyên Quang",
+    "gender": "male",
+    "season": "winter",
+    "workday": "953"
   },
   {
     "id": "177",
     "password": "677358",
     "employeeId": "NSH000660",
     "fullname": "Hoàng Văn Kiên",
-    "department": "Tuyên Quang"
+    "department": "Tuyên Quang",
+    "gender": "male",
+    "season": "spring",
+    "workday": "75"
   },
   {
     "id": "178",
     "password": "290662",
     "employeeId": "NSH000648",
     "fullname": "Nguyễn Duy Khánh",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "male",
+    "season": "spring",
+    "workday": "89"
   },
   {
     "id": "179",
     "password": "864264",
     "employeeId": "NSH000513",
     "fullname": "Đào Thị Thủy Anh",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "female",
+    "season": "summer",
+    "workday": "343"
   },
   {
     "id": "180",
     "password": "856584",
     "employeeId": "NSH000395",
     "fullname": "Trương Thị Phượng",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "female",
+    "season": "fall",
+    "workday": "623"
   },
   {
     "id": "181",
     "password": "735115",
     "employeeId": "NSH000608",
     "fullname": "Lê Minh Hà",
-    "department": "Hải Dương "
+    "department": "Hải Dương ",
+    "gender": "male",
+    "season": "winter",
+    "workday": "237"
   },
   {
     "id": "182",
     "password": "772534",
     "employeeId": "NSH000629",
     "fullname": "Nguyễn Huy Hoàng",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "male",
+    "season": "winter",
+    "workday": "189"
   },
   {
     "id": "183",
     "password": "239007",
     "employeeId": "NSH000637",
     "fullname": "Lê Văn Thành",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "male",
+    "season": "winter",
+    "workday": "174"
   },
   {
     "id": "184",
     "password": "566068",
     "employeeId": "NSH000663",
     "fullname": "Lê Quý Khánh",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "male",
+    "season": "spring",
+    "workday": "73"
   },
   {
     "id": "185",
     "password": "566982",
     "employeeId": "NSH000665",
     "fullname": "Lê Đức Long",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "male",
+    "season": "spring",
+    "workday": "70"
   },
   {
     "id": "186",
     "password": "796677",
     "employeeId": "NSH000691",
     "fullname": "Đinh Thị Kim Anh ",
-    "department": "Hải Dương"
+    "department": "Hải Dương",
+    "gender": "female",
+    "season": "summer",
+    "workday": "21"
   },
   {
     "id": "187",
     "password": "544139",
     "employeeId": "NSH000195",
     "fullname": "Tăng Thị Thùy",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1082"
   },
   {
     "id": "188",
     "password": "588893",
     "employeeId": "NSH000213",
     "fullname": "Phạm Thị Ngọc Trà",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1047"
   },
   {
     "id": "189",
     "password": "647175",
     "employeeId": "NSH000276",
     "fullname": "Lê Xuân Sơn",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "male",
+    "season": "fall",
+    "workday": "988"
   },
   {
     "id": "190",
     "password": "141617",
     "employeeId": "NSH000377",
     "fullname": "Trần Bình Minh",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "male",
+    "season": "summer",
+    "workday": "716"
   },
   {
     "id": "191",
     "password": "275071",
     "employeeId": "NSH000485",
     "fullname": "Trần Thị Hồng Vân",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "female",
+    "season": "summer",
+    "workday": "385"
   },
   {
     "id": "192",
     "password": "435212",
     "employeeId": "NSH000462",
     "fullname": "Nguyễn Tất Hải Ninh",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "male",
+    "season": "summer",
+    "workday": "420"
   },
   {
     "id": "193",
     "password": "378632",
     "employeeId": "NSH000442",
     "fullname": "Trần Minh Đức",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "male",
+    "season": "spring",
+    "workday": "451"
   },
   {
     "id": "194",
     "password": "796970",
     "employeeId": "NSH000198",
     "fullname": "Huỳnh Đức Lợi",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1062"
   },
   {
     "id": "195",
     "password": "107904",
     "employeeId": "NSH000322",
     "fullname": "Nguyễn Tắc Huy",
-    "department": "Buôn Ma Thuột"
+    "department": "Buôn Ma Thuột",
+    "gender": "male",
+    "season": "winter",
+    "workday": "937"
   },
   {
     "id": "196",
     "password": "545421",
     "employeeId": "NSH000547",
     "fullname": "Tạ Thanh Phương",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "male",
+    "season": "fall",
+    "workday": "297"
   },
   {
     "id": "197",
     "password": "867926",
     "employeeId": "NSH000626",
     "fullname": "Bùi Thị Hồng Nhung",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "female",
+    "season": "winter",
+    "workday": "189"
   },
   {
     "id": "198",
     "password": "937362",
     "employeeId": "NSH000672",
     "fullname": "Nguyễn Thị Thảo",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "female",
+    "season": "summer",
+    "workday": "55"
   },
   {
     "id": "199",
     "password": "354004",
     "employeeId": "NSH000032",
     "fullname": "Phan Văn Tú",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1536"
   },
   {
     "id": "200",
     "password": "674106",
     "employeeId": "NSH000283",
     "fullname": "Phan Thị Cẩm Thành",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "female",
+    "season": "winter",
+    "workday": "968"
   },
   {
     "id": "201",
     "password": "746623",
     "employeeId": "NSH000594",
     "fullname": "Nguyễn Ngọc Thảo",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "female",
+    "season": "fall",
+    "workday": "252"
   },
   {
     "id": "202",
     "password": "955053",
     "employeeId": "NSH000352",
     "fullname": "Nguyễn Kim Hải",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "male",
+    "season": "summer",
+    "workday": "771"
   },
   {
     "id": "203",
     "password": "327740",
     "employeeId": "NSH000567",
     "fullname": "Phan Bùi Hoàng",
-    "department": "Vinh, Nghệ An"
+    "department": "Vinh, Nghệ An",
+    "gender": "male",
+    "season": "fall",
+    "workday": "289"
   },
   {
     "id": "204",
     "password": "540720",
     "employeeId": "NSH000227",
     "fullname": "Nguyễn Đức Anh",
-    "department": "Bắc Giang"
+    "department": "Bắc Giang",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1026"
   },
   {
     "id": "205",
     "password": "600832",
     "employeeId": "NSH000557",
     "fullname": "Lã Thị Tuyết",
-    "department": "Bắc Giang"
+    "department": "Bắc Giang",
+    "gender": "female",
+    "season": "fall",
+    "workday": "293"
   },
   {
     "id": "206",
     "password": "734311",
     "employeeId": "NSH000570",
     "fullname": "Phạm Văn Phúc",
-    "department": "Bắc Giang"
+    "department": "Bắc Giang",
+    "gender": "male",
+    "season": "fall",
+    "workday": "288"
   },
   {
     "id": "207",
     "password": "122721",
     "employeeId": "NSH000569",
     "fullname": "Nguyễn Văn Luyện",
-    "department": "Bắc Giang"
+    "department": "Bắc Giang",
+    "gender": "male",
+    "season": "fall",
+    "workday": "288"
   },
   {
     "id": "208",
     "password": "433409",
     "employeeId": "NSH000590",
     "fullname": "Nguyễn Quang Thủy",
-    "department": "Bắc Giang"
+    "department": "Bắc Giang",
+    "gender": "male",
+    "season": "fall",
+    "workday": "259"
   },
   {
     "id": "209",
     "password": "353504",
     "employeeId": "NSH000560",
     "fullname": "Phạm Thị Huyền Trâm",
-    "department": "Bắc Giang"
+    "department": "Bắc Giang",
+    "gender": "female",
+    "season": "fall",
+    "workday": "293"
   },
   {
     "id": "210",
     "password": "649602",
     "employeeId": "NSH000630",
     "fullname": "Thân Nhân Ngọc",
-    "department": "Bắc Giang"
+    "department": "Bắc Giang",
+    "gender": "male",
+    "season": "winter",
+    "workday": "188"
   },
   {
     "id": "211",
     "password": "587482",
     "employeeId": "NSH000129",
     "fullname": "Hoàng Nam Hạnh",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "winter",
+    "workday": "2060"
   },
   {
     "id": "212",
     "password": "549822",
     "employeeId": "NSH000127",
     "fullname": "Lê Thị Mỹ Linh",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1808"
   },
   {
     "id": "213",
     "password": "605828",
     "employeeId": "NSH000523",
     "fullname": "Nguyễn Anh Tuấn",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "fall",
+    "workday": "329"
   },
   {
     "id": "214",
     "password": "477498",
     "employeeId": "NSH000133",
     "fullname": "Phạm Văn Kỳ",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1637"
   },
   {
     "id": "215",
     "password": "466881",
     "employeeId": "NSH000131",
     "fullname": "Lý Thế Dũng",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "spring",
+    "workday": "1912"
   },
   {
     "id": "216",
     "password": "443850",
     "employeeId": "NSH000398",
     "fullname": "Phạm Hồng Thái",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "fall",
+    "workday": "614"
   },
   {
     "id": "217",
     "password": "229893",
     "employeeId": "NSH000319",
     "fullname": "Đào Xuân Giáp",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "winter",
+    "workday": "936"
   },
   {
     "id": "218",
     "password": "778412",
     "employeeId": "NSH000215",
     "fullname": "Bùi Sỹ Nguyên",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1042"
   },
   {
     "id": "219",
     "password": "309332",
     "employeeId": "NSH000566",
     "fullname": "Trần Hữu Tùng",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "fall",
+    "workday": "287"
   },
   {
     "id": "220",
     "password": "319820",
     "employeeId": "NSH000132",
     "fullname": "Nguyễn Trọng Luân",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "winter",
+    "workday": "1689"
   },
   {
     "id": "221",
     "password": "952426",
     "employeeId": "NSH000137",
     "fullname": "Lê Tuấn Anh",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "winter",
+    "workday": "2064"
   },
   {
     "id": "222",
     "password": "923795",
     "employeeId": "NSH000130",
     "fullname": "Nguyễn Đăng Hùng",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "winter",
+    "workday": "2059"
   },
   {
     "id": "223",
     "password": "848784",
     "employeeId": "NSH000240",
     "fullname": "Trịnh Xuân Vững",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "fall",
+    "workday": "1022"
   },
   {
     "id": "224",
     "password": "925800",
     "employeeId": "NSH000651",
     "fullname": "Phùng Đình Na",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "spring",
+    "workday": "86"
   },
   {
     "id": "225",
     "password": "863255",
     "employeeId": "NSH000652",
     "fullname": "Lê Văn Thọ",
-    "department": "Phòng Kho vận"
+    "department": "Phòng Kho vận",
+    "gender": "male",
+    "season": "spring",
+    "workday": "86"
   },
   {
     "id": "226",
     "password": "441813",
     "employeeId": "NSH000698",
     "fullname": "Vũ Đình Thành",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "male",
+    "season": "summer",
+    "workday": "12"
   },
   {
     "id": "227",
     "password": "435759",
     "employeeId": "NSH000699",
     "fullname": "Tạ Quang Vinh",
-    "department": "Phòng CNTT"
+    "department": "Phòng CNTT",
+    "gender": "male",
+    "season": "summer",
+    "workday": "11"
   },
   {
     "id": "228",
     "password": "103869",
     "employeeId": "NSH000700",
     "fullname": "Nguyễn Quang Huy",
-    "department": "Hà Đông, Hà Nội"
+    "department": "Hà Đông, Hà Nội",
+    "gender": "male",
+    "season": "summer",
+    "workday": "10"
   },
   {
     "id": "229",
     "password": "110225",
     "employeeId": "NSH000701",
     "fullname": "Phan Anh Hiếu",
-    "department": "Hà Đông, Hà Nội"
+    "department": "Hà Đông, Hà Nội",
+    "gender": "male",
+    "season": "summer",
+    "workday": "10"
   },
   {
     "id": "230",
     "password": "434057",
     "employeeId": "NSH000702",
     "fullname": "Hoàng Văn Đại",
-    "department": "Hoàng Mai"
+    "department": "Hoàng Mai",
+    "gender": "male",
+    "season": "summer",
+    "workday": "10"
   },
   {
     "id": "231",
     "password": "673116",
     "employeeId": "NSH000703",
     "fullname": "Đỗ Thanh Doan",
-    "department": "Hoàng Mai"
+    "department": "Hoàng Mai",
+    "gender": "male",
+    "season": "summer",
+    "workday": "10"
   },
   {
     "id": "232",
     "password": "209209",
     "employeeId": "NSH000704",
     "fullname": "Từ Minh Hiếu",
-    "department": "Quảng Ninh"
+    "department": "Quảng Ninh",
+    "gender": "male",
+    "season": "summer",
+    "workday": "10"
   },
   {
     "id": "233",
-    "password": "473181",
-    "employeeId": "NSH000141",
-    "fullname": "Đặng Bình Anh",
-    "department": "Ban Giám đốc"
+    "password": "209209",
+    "employeeId": "NSH000705",
+    "fullname": "Trịnh Hữu Thực",
+    "department": "Phòng Kho vận - Kỹ thuật",
+    "gender": "male",
+    "season": "summer",
+    "workday": "9"
   },
   {
     "id": "234",
-    "password": "707014",
-    "employeeId": "NSH000005",
-    "fullname": "Lưu Thị Huyền",
-    "department": "Phòng Kế toán"
+    "password": "473181",
+    "employeeId": "NSH000141",
+    "fullname": "Đặng Bình Anh",
+    "department": "Ban Giám đốc",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1137"
   },
   {
     "id": "235",
-    "password": "487702",
-    "employeeId": "NSH000656",
-    "fullname": "Phương Nhật Thư",
-    "department": "Phòng Kế toán"
+    "password": "707014",
+    "employeeId": "NSH000005",
+    "fullname": "Lưu Thị Huyền",
+    "department": "Phòng Kế toán",
+    "gender": "female",
+    "season": "winter",
+    "workday": "1630"
   },
   {
     "id": "236",
-    "password": "474906",
-    "employeeId": "NSH000140",
-    "fullname": "Nguyễn Thị Duyên",
-    "department": "Phòng Chăm sóc Khách hàng"
+    "password": "487702",
+    "employeeId": "NSH000656",
+    "fullname": "Phương Nhật Thư",
+    "department": "Phòng Kế toán",
+    "gender": "female",
+    "season": "spring",
+    "workday": "83"
   },
   {
     "id": "237",
-    "password": "319544",
-    "employeeId": "NSH000151",
-    "fullname": "Hoàng Xuân Hiến",
-    "department": "Hà Đông, Hà Nội"
+    "password": "474906",
+    "employeeId": "NSH000140",
+    "fullname": "Nguyễn Thị Duyên",
+    "department": "Phòng Chăm sóc Khách hàng",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1139"
   },
   {
     "id": "238",
-    "password": "496541",
-    "employeeId": "NSH000033",
-    "fullname": "Bùi Thị Loan",
-    "department": "Hà Đông, Hà Nội"
+    "password": "319544",
+    "employeeId": "NSH000151",
+    "fullname": "Hoàng Xuân Hiến",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1128"
   },
   {
     "id": "239",
-    "password": "805495",
-    "employeeId": "NSH000210",
-    "fullname": "Trần Thị Mến",
-    "department": "Hà Đông, Hà Nội"
+    "password": "496541",
+    "employeeId": "NSH000033",
+    "fullname": "Bùi Thị Loan",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "female",
+    "season": "summer",
+    "workday": "1483"
   },
   {
     "id": "240",
-    "password": "181045",
-    "employeeId": "NSH000036",
-    "fullname": "Lê Thị Thanh Hiền",
-    "department": "Hà Đông, Hà Nội"
+    "password": "805495",
+    "employeeId": "NSH000210",
+    "fullname": "Trần Thị Mến",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1047"
   },
   {
     "id": "241",
-    "password": "266505",
-    "employeeId": "NSH000536",
-    "fullname": "Triệu Ánh Hồng",
-    "department": "Hà Đông, Hà Nội"
+    "password": "181045",
+    "employeeId": "NSH000036",
+    "fullname": "Lê Thị Thanh Hiền",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "female",
+    "season": "spring",
+    "workday": "1201"
   },
   {
     "id": "242",
-    "password": "204898",
-    "employeeId": "NSH000504",
-    "fullname": "Nguyễn Cường Việt",
-    "department": "Hà Đông, Hà Nội"
+    "password": "266505",
+    "employeeId": "NSH000536",
+    "fullname": "Triệu Ánh Hồng",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "female",
+    "season": "fall",
+    "workday": "315"
   },
   {
     "id": "243",
-    "password": "455201",
-    "employeeId": "NSH000670",
-    "fullname": "Hoàng Công Long",
-    "department": "Hà Đông, Hà Nội"
+    "password": "204898",
+    "employeeId": "NSH000504",
+    "fullname": "Nguyễn Cường Việt",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "male",
+    "season": "summer",
+    "workday": "350"
   },
   {
     "id": "244",
-    "password": "162661",
-    "employeeId": "NSH000695",
-    "fullname": "Nguyễn Chí Cường",
-    "department": "Phòng Bán lẻ"
+    "password": "455201",
+    "employeeId": "NSH000670",
+    "fullname": "Hoàng Công Long",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "male",
+    "season": "spring",
+    "workday": "58"
   },
   {
     "id": "245",
-    "password": "479524",
-    "employeeId": "NSH000696",
-    "fullname": "Nguyễn Trí Trường",
-    "department": "Phòng Bán lẻ"
+    "password": "162661",
+    "employeeId": "NSH000695",
+    "fullname": "Nguyễn Chí Cường",
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "summer",
+    "workday": "13"
   },
   {
     "id": "246",
-    "password": "908706",
-    "employeeId": "NSH000231",
-    "fullname": "Đỗ Thị Liên",
-    "department": "Hà Đông, Hà Nội"
+    "password": "479524",
+    "employeeId": "NSH000696",
+    "fullname": "Nguyễn Trí Trường",
+    "department": "Phòng Bán lẻ",
+    "gender": "male",
+    "season": "summer",
+    "workday": "13"
   },
   {
     "id": "247",
-    "password": "520589",
-    "employeeId": "NSH000239",
-    "fullname": "Nguyễn Thị Miện",
-    "department": "Hà Đông, Hà Nội"
+    "password": "908706",
+    "employeeId": "NSH000231",
+    "fullname": "Đỗ Thị Liên",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1026"
   },
   {
     "id": "248",
-    "password": "514580",
-    "employeeId": "NSH000440",
-    "fullname": "Nguyễn Chí Dũng",
-    "department": "Hà Đông, Hà Nội"
+    "password": "520589",
+    "employeeId": "NSH000239",
+    "fullname": "Nguyễn Thị Miện",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1014"
   },
   {
     "id": "249",
-    "password": "977170",
-    "employeeId": "NSH000612",
-    "fullname": "Lại Xuân Tiệp",
-    "department": "Hà Đông, Hà Nội"
+    "password": "514580",
+    "employeeId": "NSH000440",
+    "fullname": "Nguyễn Chí Dũng",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "male",
+    "season": "spring",
+    "workday": "451"
   },
   {
     "id": "250",
-    "password": "453348",
-    "employeeId": "NSH000428",
-    "fullname": "Nguyễn Thị Hoài",
-    "department": "HO"
+    "password": "977170",
+    "employeeId": "NSH000612",
+    "fullname": "Lại Xuân Tiệp",
+    "department": "Hà Đông, Hà Nội",
+    "gender": "male",
+    "season": "spring",
+    "workday": "230"
   },
   {
     "id": "251",
-    "password": "207162",
-    "employeeId": "NSH000128",
-    "fullname": "Đỗ Mạnh Tiến",
-    "department": "Kho vận"
+    "password": "453348",
+    "employeeId": "NSH000428",
+    "fullname": "Nguyễn Thị Hoài",
+    "department": "HO",
+    "gender": "female",
+    "season": "",
+    "workday": ""
   },
   {
     "id": "252",
-    "password": "596714",
-    "employeeId": "NSH000186",
-    "fullname": "Cao Thị Thanh Ngọc",
-    "department": "HO"
+    "password": "207162",
+    "employeeId": "NSH000128",
+    "fullname": "Đỗ Mạnh Tiến",
+    "department": "Kho vận",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1516"
   },
   {
     "id": "253",
-    "password": "940717",
-    "employeeId": "NSH000357",
-    "fullname": "Phạm Bảo Ngọc",
-    "department": "HO"
+    "password": "596714",
+    "employeeId": "NSH000186",
+    "fullname": "Cao Thị Thanh Ngọc",
+    "department": "HO",
+    "gender": "female",
+    "season": "fall",
+    "workday": "1056"
   },
   {
     "id": "254",
-    "password": "147917",
-    "employeeId": "NSH000143",
-    "fullname": "Nguyễn Trọng Tùng",
-    "department": "Kho vận"
+    "password": "940717",
+    "employeeId": "NSH000357",
+    "fullname": "Phạm Bảo Ngọc",
+    "department": "HO",
+    "gender": "female",
+    "season": "winter",
+    "workday": "968"
   },
   {
     "id": "255",
-    "password": "894959",
-    "employeeId": "NSH000139",
-    "fullname": "Trịnh Văn Sáng",
-    "department": "Phòng Kỹ thuật"
+    "password": "147917",
+    "employeeId": "NSH000143",
+    "fullname": "Nguyễn Trọng Tùng",
+    "department": "Kho vận",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1119"
   },
   {
     "id": "256",
-    "password": "310865",
-    "employeeId": "NSH000431",
-    "fullname": "Ngô Thị Chuyên",
-    "department": "Phòng kho vận"
+    "password": "894959",
+    "employeeId": "NSH000139",
+    "fullname": "Trịnh Văn Sáng",
+    "department": "Phòng Kỹ thuật",
+    "gender": "male",
+    "season": "summer",
+    "workday": "1814"
   },
   {
     "id": "257",
-    "password": "570488",
-    "employeeId": "NSH000427",
-    "fullname": "Nguyễn Thị Tâm",
-    "department": "Phòng kho vận"
+    "password": "310865",
+    "employeeId": "NSH000431",
+    "fullname": "Ngô Thị Chuyên",
+    "department": "Phòng kho vận",
+    "gender": "female",
+    "season": "spring",
+    "workday": "536"
   },
   {
     "id": "258",
+    "password": "570488",
+    "employeeId": "NSH000427",
+    "fullname": "Nguyễn Thị Tâm",
+    "department": "Phòng kho vận",
+    "gender": "female",
+    "season": "fall",
+    "workday": "651"
+  },
+  {
+    "id": "259",
     "password": "152751",
     "employeeId": "NSH000581",
     "fullname": "Nguyễn Trọng Bằng",
-    "department": "Phòng kho vận"
+    "department": "Phòng kho vận",
+    "gender": "male",
+    "season": "fall",
+    "workday": "284"
   }
 ]

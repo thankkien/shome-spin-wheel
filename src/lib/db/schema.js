@@ -15,6 +15,9 @@ CREATE TABLE IF NOT EXISTS users (
   role TEXT NOT NULL DEFAULT 'user',
   fullname TEXT NOT NULL,
   department TEXT NOT NULL,
+  gender TEXT NOT NULL,
+  season TEXT NOT NULL,
+  workday INTEGER NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 `;
