@@ -4,6 +4,22 @@ import { cn } from "@/utils/classname";
 import { useSpinWheelStore } from "@/stores";
 
 export default function PrizeBadge() {
+  // Hàm parse động placeholder {oneMore}
+  function parseDescription(description) {
+    if (!description) return null;
+    const regex = /({oneMore})/g;
+    const parts = description.split(regex);
+    return parts.map((part, idx) => {
+      if (part === '{oneMore}') {
+        return (
+          <span key={idx} style={{ color: '#f59e42', fontWeight: 600 }}>
+            và thêm 1 lượt quay may mắn!
+          </span>
+        );
+      }
+      return <span key={idx}>{part}</span>;
+    });
+  }
   const prize = useSpinWheelStore((state) => state.prize);
 
   if (!prize) return null;
@@ -21,7 +37,8 @@ export default function PrizeBadge() {
       >
         {prize.prize_label ?? ""}
       </p>
-      <p className="text-sm font-medium">{prize.prize_description}</p>
+      <p className="text-sm font-medium mb-4">{parseDescription(prize.prize_description)}</p>
+      <p className="text-xs italic text-yellow-600 dark:text-yellow-300 ">Phần quà sẽ được gửi đến bạn trong vài ngày tới</p>
     </div>
   );
 }

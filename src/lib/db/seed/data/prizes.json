@@ -1,62 +1,62 @@
 [
   {
     "id": 1,
-    "label": "Bento dinh dưỡng",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Bento Dinh Dưỡng",
+    "description": "Giữ bữa trưa của bạn luôn ngon miệng và gọn gàng – như cách bạn luôn chăm chút từng chi tiết trong công việc. S.Home cảm ơn bạn vì sự tận tâm mỗi ngày!"
   },
   {
     "id": 2,
-    "label": "Bảo tháp Dư Dả",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Bảo Tháp Dư Dả",
+    "description": "Thêm tầng, thêm yêu thương – mong bạn luôn đủ đầy năng lượng để đồng hành cùng S.Home trên hành trình phát triển!"
   },
   {
     "id": 3,
-    "label": "Ánh sáng an nhiên",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Ánh Sáng An Nhiên",
+    "description": "Ánh sáng nhỏ, tình cảm lớn. Mong bạn có những giấc ngủ ngon để sáng mai tiếp tục rực rỡ cùng đại gia đình S.Home"
   },
   {
     "id": 4,
     "label": "Cơn Gió Thanh Xuân",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "description": "Dù ngày nắng hay những lúc “cháy số”, S.Home luôn muốn bạn mát mẻ và thoải mái. Cảm ơn vì đã luôn nỗ lực không ngừng!"
   },
   {
     "id": 5,
     "label": "Găng Siêu Xayda",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "description": "S.Home luôn muốn bạn được bảo vệ dù đi đến đâu. Mong rằng bạn luôn mạnh mẽ và tự tin vươn xa, như chính tinh thần của chúng ta."
   },
   {
     "id": 6,
-    "label": "Lá chắn vương giả",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Lá Chắn Vương Giả",
+    "description": "Luôn bên bạn trong mọi thời tiết – như cách S.Home luôn đồng hành và che chở bạn qua mỗi chặng đường. Cảm ơn vì đã luôn ở đây!"
   },
   {
     "id": 7,
-    "label": "Trạm sạc Năng Lượng",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Ngọc Nạp Năng",
+    "description": "Nạp đầy năng lượng – như cách bạn tiếp thêm sức mạnh cho S.Home mỗi ngày. Cùng nhau, ta luôn sẵn sàng cho hành trình phía trước!"
   },
   {
     "id": 8,
-    "label": "Loa Phát Sóng Tình Yêu",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Trạm Sạc Năng Lượng",
+    "description": "Nguồn năng lượng mạnh mẽ – như chính tinh thần bền bỉ của bạn. S.Home biết ơn vì sự đóng góp không ngừng nghỉ!"
   },
   {
     "id": 9,
-    "label": "Hộp Cất Vàng",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Loa Phát Sóng Tình Yêu",
+    "description": "Lan toả âm thanh, kết nối yêu thương – chúc bạn luôn giữ được niềm vui và tinh thần lạc quan trong hành trình cùng S.Home."
   },
   {
     "id": 10,
-    "label": "Bento Dinh Dưỡng",
-    "description": "Phần quà sẽ được gửi đến bạn trong vài ngày tới"
+    "label": "Hộp Cất Vàng",
+    "description": "Ngăn nắp – tiện lợi – đầy yêu thương. Hy vọng món quà nhỏ này giúp bạn sắp xếp cuộc sống gọn gàng như cách bạn sắp xếp công việc mỗi ngày."
   },
   {
     "id": 11,
-    "label": "S.Home lên 7 - Khúc nhạc đắm say",
-    "description": "Cốc gỗ lưu niệm mừng S.Home 7 tuổi và thêm 1 lượt quay may mắn!!"
+    "label": "CỐC S.HOME 7 TUỔI",
+    "description": "Cốc gỗ lưu niệm mừng S.Home 7 tuổi {oneMore}"
   },
   {
     "id": 12,
-    "label": "Mừng S.Home tròn 7 tuổi",
+    "label": "CỐC GỖ S.HOME 7 TUỔI",
     "description": "Cốc gỗ lưu niệm mừng S.Home 7 tuổi"
   }
 ]

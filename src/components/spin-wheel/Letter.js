@@ -86,19 +86,39 @@ S.Home tự hào vì có bạn.`,
   },
 ];
 
-export default function Letter({ onClick }) {
+export default function Letter({ onClick, fullnameComponent, dayComponent }) {
   const user = useAuthStore((state) => state.user);
   const letter = letters.find(
     (letter) => letter.id === `${user.gender}-${user.season}`
   );
+
+  function parseContent(content) {
+    const regex = /({fullname}|{day})/g;
+    const parts = content.split(regex);
+    return parts.map((part, idx) => {
+      if (part === '{fullname}') {
+        return (
+          <span key={idx} style={{ color: '#F70D34', fontWeight: 600 }}>{user.fullname}</span>
+        );
+      }
+      if (part === '{day}') {
+        return (
+          <span key={idx} style={{ color: '#F70D34', fontWeight: 600 }}>{user.workday}</span>
+        );
+      }
+      return <span key={idx}>{part}</span>;
+    });
+  }
+
   return (
     <div
       className="flex flex-col items-center justify-center bg-transparent my-6 mx-4"
       onClick={onClick}
     >
-      <p className="text-lg text-gray-800 text-center whitespace-pre-line font-(family-name:--font-dancing-script)">
-        {letter.content.replace("{fullname}", user.fullname).replace("{day}", user.workday)}
+      <p className="text-lg text-gray-800 text-justify whitespace-pre-line font-[Helvetica Neue]">
+        {parseContent(letter.content)}
       </p>
     </div>
   );
 }
+

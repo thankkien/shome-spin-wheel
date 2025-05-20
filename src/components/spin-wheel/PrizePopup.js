@@ -59,7 +59,7 @@ export default function PrizePopup({ className }) {
       <div className="fixed inset-0 bg-black/10 backdrop-blur-sm" />
       <div
         className={cn(
-          showLetter ? "h-fit" : "h-50",
+          showLetter || showPrize ? "h-fit" : "h-50",
           "relative w-full max-w-md mx-auto p-6 rounded-lg text-center overflow-hidden",
           "bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 dark:from-yellow-600 dark:via-yellow-500 dark:to-yellow-600",
           "border-2 border-dashed border-yellow-500 dark:border-yellow-400",
