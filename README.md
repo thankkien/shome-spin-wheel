@@ -1,4 +1,5 @@
 This is a [Next.js](https://nextjs.org) project.
+- Node version: 22.13.1
 - Package management: pnpm
 - Database: sqlite
 

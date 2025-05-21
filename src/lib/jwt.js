@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify } from 'jose';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET || 'e114d48920b9cb8cb1a0a454d6c69f56';
 const encoder = new TextEncoder();
 const secret = encoder.encode(JWT_SECRET);
 

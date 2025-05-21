@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    container_name: s-home-spin-wheel
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - ./data:/app/data
+    env_file:
+      - .env
+    restart: unless-stopped

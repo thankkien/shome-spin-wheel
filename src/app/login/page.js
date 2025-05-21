@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/useAuthStore";
@@ -188,4 +188,10 @@ function Login() {
   );
 }
 
-export default Login;
+export default function LoginPageWithSuspense() {
+  return (
+    <Suspense fallback={null}>
+      <Login />
+    </Suspense>
+  );
+}
