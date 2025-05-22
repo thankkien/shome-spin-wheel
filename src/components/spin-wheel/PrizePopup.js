@@ -31,7 +31,7 @@ export default function PrizePopup({ className }) {
 
   const handleBoxFinish = () => {
     setShowBox(false);
-    if (prize.prize_id === 11) {
+    if ([11, 12].includes(prize.prize_id)) {
       setShowLetter(true);
     } else {
       setShowPrize(true);
