@@ -12,7 +12,10 @@ export default function Header() {
 
   const [isHomePage, setIsHomePage] = useState(false);
 
-  useEffect(() => setIsHomePage(["/", "/superuser"].includes(pathname)), [pathname]);
+  useEffect(
+    () => setIsHomePage(["/", "/superuser"].includes(pathname)),
+    [pathname]
+  );
 
   const handleLogout = useCallback(async () => {
     await logout();
@@ -46,14 +49,16 @@ export default function Header() {
   };
 
   return (
-    <header className="py-4 gap-2 w-full flex flex-col justify-between items-center">
-      <Image
-        src="/assets/logo.png"
-        alt="SHome logo"
-        width={100}
-        height={50}
-        priority
-      />
+    <header className="pb-4 gap-2 w-full flex flex-col justify-between items-center">
+      <div className="w-full bg-[#FBC34E] flex justify-center items-center rounded-t-lg">
+        <Image
+          src="/assets/logo.png"
+          alt="SHome logo"
+          width={100}
+          height={50}
+          priority
+        />
+      </div>
       <div className="w-full flex justify-between items-center mt-4 mb-16">
         <h1 className="w-full text-xl font-bold text-center text-yellow-500">
           <span>S.Home lên 7 - Khúc nhạc đắm say</span>
@@ -62,7 +67,8 @@ export default function Header() {
       <div className="w-full flex justify-between items-center mb-6 px-6">
         {user ? (
           <p className="text-gray-600 dark:text-gray-300">
-            Xin chào, <span className="font-medium text-red-400">{user.fullname}</span>
+            Xin chào,{" "}
+            <span className="font-medium text-red-400">{user.fullname}</span>
           </p>
         ) : (
           <span></span>

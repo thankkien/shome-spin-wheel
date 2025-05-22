@@ -63,7 +63,7 @@ Gọi bạn là “cô gái mùa hạ” vì chúng mình gặp nhau lần đầ
 Sự xuất hiện của bạn đã mang tới một làn gió mới mẻ, tinh khôi và đầy ắp sự hứng khởi cho mảnh đất vốn “dương thịnh” này.
 
 Chúc mừng chặng đường {day} ngày bên nhau của chúng ta.
-Cảm ơn bạn và thật hạnh diện biết bao khi có bạn đi cùng.`,
+Cảm ơn bạn và thật hãnh diện biết bao khi có bạn đi cùng.`,
   },
   {
     id: "female-fall",

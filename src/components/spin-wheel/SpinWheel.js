@@ -88,11 +88,11 @@ export default function SpinWheelClient() {
   }, [overlayImg, isLoading, prizeList]);
 
   return (
-    <div className="relative">
+    <div className="relative mb-6">
       <div
         ref={wheelContainerRef}
         className={cn(
-          "size-80 sm:size-95 mx-auto transition-opacity duration-300",
+          "size-90 sm:size-100 mx-auto transition-opacity duration-300",
           !isSpinning && !prizes?.length ? "opacity-60" : "opacity-100"
         )}
       ></div>

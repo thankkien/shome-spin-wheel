@@ -84,7 +84,7 @@ export async function POST(request) {
     }
 
     const [newPrize, ...remainingPrizes] = notSpunPrizes;
-    const prize = { ...newPrize, spun_at: new Date() };
+    const prize = { ...newPrize, spun_at: new Date().toISOString() };
     await run("UPDATE spin_history SET spun_at = ? WHERE id = ?", [
       prize.spun_at,
       prize.id,
