@@ -26,9 +26,11 @@ export function UserTableActions({ table }) {
   } = useUserStore();
 
   const searchByOptions = {
-    fullname: "Tên",
+    id: "ID",
     employeeId: "Mã nhân viên",
-    department: "Phòng ban",
+    fullname: "Họ tên",
+    department: "Bộ phận",
+    password: "Mật khẩu",
     role: "Vai trò",
   };
 

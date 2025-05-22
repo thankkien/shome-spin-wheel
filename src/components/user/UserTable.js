@@ -140,7 +140,7 @@ export function UserTable() {
     },
     {
       accessorKey: "role",
-      meta: { label: "Role" },
+      meta: { label: "Vai trò" },
       header: ({ column }) => <SortableHeader column={column} />,
     },
     {
