@@ -1590,12 +1590,6 @@
         "spin_index": "2"
     },
     {
-        "id": "265",
-        "user_id": "19",
-        "prize_id": "",
-        "spin_index": "2"
-    },
-    {
         "id": "266",
         "user_id": "23",
         "prize_id": "6",
@@ -1927,7 +1921,7 @@
     },
     {
         "id": "321",
-        "user_id": "192",
+        "user_id": "171",
         "prize_id": "3",
         "spin_index": "2"
     },
@@ -2019,6 +2013,12 @@
         "id": "336",
         "user_id": "998",
         "prize_id": "3",
+        "spin_index": "2"
+    },
+    {
+        "id": "337",
+        "user_id": "229",
+        "prize_id": "9",
         "spin_index": "2"
     }
 ]
